@@ -3,3 +3,6 @@
 log
 Gemfile.lock
 .bundle
+*/**/.DS_Store
+.DS_Store
+tmp
