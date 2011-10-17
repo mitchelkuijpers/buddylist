@@ -33,5 +33,13 @@ gem 'bson_ext'
 
 group :test do
   # Pretty printed test output
-  gem 'turn', :require => false
+  gem 'turn'
+  gem 'cucumber-rails'
+  gem 'database_cleaner'
+  gem 'minitest'
+end
+
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'capybara'
 end
