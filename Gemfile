@@ -33,5 +33,9 @@ gem 'bson_ext'
 
 group :test do
   # Pretty printed test output
-  gem 'turn', :require => false
+  gem 'turn'
+  gem 'rspec'
+  gem 'cucumber-rails'
+  # database_cleaner is not required, but highly recommended
+  gem 'database_cleaner'
 end
