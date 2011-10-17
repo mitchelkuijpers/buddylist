@@ -34,10 +34,12 @@ gem 'bson_ext'
 group :test do
   # Pretty printed test output
   gem 'turn'
-  gem 'rspec'
-  gem 'capybara'
   gem 'cucumber-rails'
-  # database_cleaner is not required, but highly recommended
   gem 'database_cleaner'
   gem 'minitest'
+end
+
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'capybara'
 end
