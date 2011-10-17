@@ -35,8 +35,9 @@ group :test do
   # Pretty printed test output
   gem 'turn'
   gem 'rspec'
-  gem 'cucumber-rails'
   gem 'capybara'
+  gem 'cucumber-rails'
   # database_cleaner is not required, but highly recommended
   gem 'database_cleaner'
+  gem 'minitest'
 end
