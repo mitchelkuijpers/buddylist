@@ -14,4 +14,5 @@
 
 <h2>Sharables</h2>
 
-<%= render :partial => person.sharables, :as => :sharable %>
+<%= render 'status_sharables/new' %>
+<%= render partial: person.sharables, as: :sharable %>
