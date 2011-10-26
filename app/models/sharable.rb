@@ -1,7 +1,10 @@
 class Sharable
+
   include MongoMapper::Document
 
   belongs_to :person
+  many :comments
 
-  many :comments, :as => :commentable
+  key :description
+
 end

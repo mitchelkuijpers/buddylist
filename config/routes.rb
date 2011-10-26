@@ -3,6 +3,9 @@ Buddylist::Application.routes.draw do
   # first created -> highest priority.
 
   match 'test/:action' => 'test#:action'
+  match 'relations/:action' => 'relations#:action'
+
+  match 'person/:person_id(.:format)' => 'people#view', :as => :view_person
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'

@@ -1,22 +1,31 @@
 class TestController < ActionController::Base
 
   def create
-    # Create a new person
-    person = Person.new(:name => "Teun van Vegchel")
+    # Create a new people
+    person = Person.new
+    person.name= "Teun van Vegchel"
+    person.email= "teun@vanvegchel.net"
+    person.password= "test password 123"
     person.save
 
-    # Create a new status update, and add it to the person
+    # Create a new status update, and add it to the people
     update = StatusSharable.new(:description => "DOET HEUL STOER")
-    update.save
     person.sharables << update
+    person.save
+
+    vid = VideoSharable.new(:description => "Harde Purno")
+    person.sharables << vid
+    person.save
+
+
 
     # Add a comment to the previously created status update
     comment = Comment.new(:text => "Dikke shit man!")
     update.comments << comment
-    comment.save
+    update.save
 
     respond_to do |format|
-      format.all { render :json => [person, person.sharables] }
+      format.all { render :json => person }
     end
   end
 
@@ -26,8 +35,8 @@ class TestController < ActionController::Base
     #persons = Person.find_all_by_name "Teun van Vegchel"
     #
     #data = []
-    #for person in persons
-    #  data << person.sharables
+    #for people in persons
+    #  data << people.sharables
     #end
 
     respond_to do |format|

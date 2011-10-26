@@ -1,0 +1,17 @@
+<h1><%= person.name %></h1>
+
+<h2>About <%= person.name %></h2>
+<dl>
+  <dt>ID</dt>
+    <dd><%= person.id %></dd>
+  <dt>Name</dt>
+    <dd><%= person.name %></dd>
+  <dt>Email</dt>
+    <dd><%= person.email %></dd>
+  <dt>Password</dt>
+    <dd><%= person.password %></dd>
+</dl>
+
+<h2>Sharables</h2>
+
+<%= render :partial => person.sharables, :as => :sharable %>

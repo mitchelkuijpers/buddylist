@@ -2,7 +2,7 @@ class Comment
 
   include MongoMapper::Document
 
-  belongs_to :commentable, :polymorphic => true
+  belongs_to :sharable
 
   key :text, String
 
