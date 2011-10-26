@@ -7,4 +7,6 @@ class Comment
 
   key :text, String
 
+  timestamps!
+
 end

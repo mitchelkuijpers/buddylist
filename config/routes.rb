@@ -5,6 +5,8 @@ Buddylist::Application.routes.draw do
 
   match 'person/:person_id(.:format)' => 'people#view', :as => :view_person
   match 'status/:sharable_id(.:format)' => 'statusSharables#view', :as => :view_status
+  get 'comment/new' => 'comments#new', :as => :new_comment
+  post 'comment/add' => 'comments#add', :as => :add_comment
 
 
   # Test routes

@@ -15,6 +15,8 @@ class Person
   key :email,     String
   key :password,  String
 
+  timestamps!
+
 
   # Hash the password when setting it.
   def password= password

@@ -7,4 +7,6 @@ class Relation
 
   key :status
 
+  timestamps!
+
 end

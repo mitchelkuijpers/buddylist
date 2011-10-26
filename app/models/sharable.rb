@@ -7,4 +7,6 @@ class Sharable
 
   key :description
 
+  timestamps!
+
 end
