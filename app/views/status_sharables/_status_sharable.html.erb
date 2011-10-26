@@ -1,4 +1,7 @@
-<h3>Status</h3>
+<p>
+    <%= link_to sharable.person.name, view_person_url(sharable.person) %>
+</p>
 <p>
     <%= sharable.description %>
+    <%= link_to 'view', view_status_url(sharable) %>
 </p>

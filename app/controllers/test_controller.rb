@@ -21,6 +21,7 @@ class TestController < ActionController::Base
 
     # Add a comment to the previously created status update
     comment = Comment.new(:text => "Dikke shit man!")
+    comment.person= person
     update.comments << comment
     update.save
 

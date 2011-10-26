@@ -2,10 +2,15 @@ Buddylist::Application.routes.draw do
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
+
+  match 'person/:person_id(.:format)' => 'people#view', :as => :view_person
+  match 'status/:sharable_id(.:format)' => 'statusSharables#view', :as => :view_status
+
+
+  # Test routes
   match 'test/:action' => 'test#:action'
   match 'relations/:action' => 'relations#:action'
 
-  match 'person/:person_id(.:format)' => 'people#view', :as => :view_person
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'

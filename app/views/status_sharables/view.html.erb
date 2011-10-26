@@ -1,0 +1,9 @@
+<h1>Status</h1>
+
+<p>
+  <%= link_to sharable.person.name, view_person_url(sharable.person) %>: <%= sharable.description %>
+</p>
+
+<h2>Comments</h2>
+
+<%= render :partial => sharable.comments, :as => :comment %>

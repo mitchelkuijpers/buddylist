@@ -1,0 +1,2 @@
+module StatusSharableHelper
+end
