@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
 
   end
 
-  def add
+  def create
     sharable = Sharable.find params[:commentable_id]
     person = Person.all.first # TODO: Get user from session
 
@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
     sharable.comments << comment
     comment.save
 
-    redirect_to view_status_path sharable # TODO: Make dynamic (commentable)
+    redirect_to polymorphic_path sharable
   end
 
 end

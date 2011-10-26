@@ -3,10 +3,10 @@ Buddylist::Application.routes.draw do
   # first created -> highest priority.
 
 
-  match 'person/:person_id(.:format)' => 'people#view', :as => :view_person
-  match 'status/:sharable_id(.:format)' => 'statusSharables#view', :as => :view_status
+  match 'person/:person_id(.:format)' => 'people#view', :as => :person
+  match 'status/:sharable_id(.:format)' => 'statusSharables#view', :as => :status_sharable
   get 'comment/new' => 'comments#new', :as => :new_comment
-  post 'comment/add' => 'comments#add', :as => :add_comment
+  post 'comment/create' => 'comments#create', :as => :create_comment
 
 
   # Test routes

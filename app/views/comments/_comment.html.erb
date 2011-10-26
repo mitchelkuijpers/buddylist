@@ -1,4 +1,4 @@
 <p>
-  <%= link_to comment.person.name, view_person_url(comment.person) %> said: <%= comment.text %>
+  <%= link_to comment.person.name, person_url(comment.person) %> said: <%= comment.text %>
   <br /><small><%= comment.created_at.strftime 'On %d-%m-%Y at %H:%M' %></small>
 </p>
