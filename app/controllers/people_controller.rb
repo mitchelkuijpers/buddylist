@@ -1,5 +1,9 @@
 class PeopleController < ApplicationController
 
+  def index
+    render nothing: true
+  end
+
   def view
     person = Person.find(params[:person_id])
 

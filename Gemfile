@@ -30,6 +30,12 @@ gem 'jquery-rails'
 # MongoMapper
 gem 'mongo_mapper'
 gem 'bson_ext'
+gem 'jnunemaker-validatable'
+
+gem 'cancan'
+
+gem 'devise'
+gem 'mm-devise'
 
 group :test do
   # Pretty printed test output

@@ -2,6 +2,9 @@ Buddylist::Application.routes.draw do
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
+  root to: "people#index"
+
+  devise_for :users
 
   get 'person/:person_id(.:format)' => 'people#view', :as => :person
   post 'status/create' => 'statusSharables#create', as: :create_status_sharable
