@@ -1,0 +1,9 @@
+<%= render 'people/search' %>
+
+<h1>Found people:</h1>
+
+<% for person in people %>
+
+    <%= link_to person.name, person_url(person) %>
+
+<% end %>
