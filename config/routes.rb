@@ -3,15 +3,16 @@ Buddylist::Application.routes.draw do
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
-  root to: "people#index"
+  root to: "people#search"
 
   devise_for :users
 
-  get 'person/:person_id(.:format)' => 'people#view', :as => :person
+  get 'person/search(.format)' => 'people#search', as: :search_person
+  get 'person/:person_id(.:format)' => 'people#view', as: :person
   post 'status/create' => 'statusSharables#create', as: :create_status_sharable
-  get 'status/:sharable_id(.:format)' => 'statusSharables#view', :as => :status_sharable
-  get 'comment/new' => 'comments#new', :as => :new_comment
-  post 'comment/create' => 'comments#create', :as => :create_comment
+  get 'status/:sharable_id(.:format)' => 'statusSharables#view', as: :status_sharable
+  get 'comment/new' => 'comments#new', as: :new_comment
+  post 'comment/create' => 'comments#create', as: :create_comment
 
 
   # Test routes
