@@ -13,7 +13,7 @@ Devise.setup do |config|
   # Load and configure the ORM. Supports :active_record (default) and
   # :mongoid (bson_ext recommended) by default. Other ORMs may be
   # available as additional gems.
-  require 'devise/orm/mongo_mapper'
+  require 'devise/orm/'
 
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating a user. The default is
@@ -87,7 +87,7 @@ Devise.setup do |config|
   # config.remember_for = 2.weeks
 
   # If true, a valid remember token can be re-used between multiple browsers.
-  config.remember_across_browsers = false
+  # config.remember_across_browsers = true
 
   # If true, extends the user's remember period when remembered via cookie.
   # config.extend_remember_period = false
