@@ -32,8 +32,10 @@ gem 'mongo_mapper'
 gem 'bson_ext'
 gem 'jnunemaker-validatable'
 
+# CanCan
 gem 'cancan'
 
+# Devise
 gem 'devise'
 gem 'mm-devise'
 

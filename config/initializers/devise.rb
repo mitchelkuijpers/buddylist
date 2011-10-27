@@ -69,7 +69,11 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 10
 
   # Setup a pepper to generate the encrypted password.
+<<<<<<< HEAD
   # config.pepper = "e7c8145af0c1b0d04caf3e161f991835c4fe02a7d0d8bf6dba9408082c448788f6f187731e94c8936361a6b31966d1d82b1611cbdc828595c0e246a518ff4784"
+=======
+  # config.pepper = "7b09633a95c812167add44e167a7772c0c2ca9d84e738f734cdc8e5d6f48b27f9982010f524492e2c2b5998949426c1f83bae8f4c9932ec6eab21bc9ed3d3ba2"
+>>>>>>> 6f0cf6b5bb2f1e1e0f60530cc030c9f83c24f35b
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
@@ -87,7 +91,11 @@ Devise.setup do |config|
   # config.remember_for = 2.weeks
 
   # If true, a valid remember token can be re-used between multiple browsers.
+<<<<<<< HEAD
   # config.remember_across_browsers = true
+=======
+  config.remember_across_browsers = false
+>>>>>>> 6f0cf6b5bb2f1e1e0f60530cc030c9f83c24f35b
 
   # If true, extends the user's remember period when remembered via cookie.
   # config.extend_remember_period = false
