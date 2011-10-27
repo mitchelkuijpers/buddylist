@@ -30,7 +30,7 @@ gem 'jquery-rails'
 # MongoMapper
 gem 'mongo_mapper'
 gem 'bson_ext'
-gem ''
+gem 'jnunemaker-validatable'
 
 # Devise
 gem 'devise'
