@@ -5,6 +5,9 @@ class Person
   include MongoMapper::Document
 
   attr_accessor :name, :email
+
+  belongs_to :user
+
   many :sharables
   many :comments
 
@@ -16,18 +19,5 @@ class Person
   key :password,  String
 
   timestamps!
-
-
-  # Hash the password when setting it.
-  def password= password
-    @password = Person.hash_password password
-  end
-
-  # Hash a password.
-  # TODO: Move to more appropriate location
-  def self.hash_password password
-    salt = "@#1gh3a9#"
-    Digest::SHA512.hexdigest("#{salt}:#{password}:#{salt}")
-  end
 
 end

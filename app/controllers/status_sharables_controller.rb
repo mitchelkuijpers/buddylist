@@ -1,11 +1,12 @@
 class StatusSharablesController < ApplicationController
+  before_filter :authenticate_user!
 
   def view
     sharable = StatusSharable.find params[:sharable_id]
 
     respond_to do |format|
       format.html { render :locals => { :sharable => sharable } }
-      format.json { render :json => person }
+      format.json { render :json => sharable }
     end
   end
 
@@ -14,8 +15,8 @@ class StatusSharablesController < ApplicationController
   end
 
   def create
-    person = Person.first
-
+    person = current_user.person
+    return render json: person.methods
     sharable = StatusSharable.new
     sharable.description = params[:sharable_description]
     person.sharables << sharable
