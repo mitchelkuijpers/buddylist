@@ -5,3 +5,22 @@
  *= require_self
  *= require_tree . 
 */
+
+.wrapper {
+    margin: 0 auto;
+    max-width: 940px;
+    padding: 0 10px;
+}
+
+.header {
+    height: 65px;
+}
+
+.cols-12 ul.site-nav{
+  width:100%;
+  background:#eee;
+  margin-left: 0;
+}
+.site-nav a{
+  padding:5px 10px;
+}

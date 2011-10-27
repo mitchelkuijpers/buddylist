@@ -18,4 +18,8 @@ describe Person do
       person[:password].should_not == "test"
     end
 
+    it "should not save users with the same email or/and the same name" do
+
+    end
+
 end
