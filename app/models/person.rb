@@ -15,7 +15,6 @@ class Person
   many :relations, :in => :relation_ids
 
   key :name,      String, :required => true
-  key :email,     String, :required => true
 
   timestamps!
 
