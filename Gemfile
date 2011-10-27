@@ -31,6 +31,12 @@ gem 'jquery-rails'
 gem 'mongo_mapper'
 gem 'bson_ext'
 
+# Devise
+gem 'devise'
+
+# CanCan
+gem 'cancan'
+
 group :test do
   # Pretty printed test output
   gem 'turn'
