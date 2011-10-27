@@ -5,10 +5,10 @@
   <br />
   <%= sharable.description %>
   <br />
-  <small><%= sharable.created_at.strftime 'On %d-%m-%Y at %H:%M' %></small>
+  <small><%= sharable.created_at.strftime "On %d-%m-%Y at %H:%M" %></small>
 </p>
 
 <h2>Comments</h2>
 
 <%= render partial: sharable.comments, as: :comment %>
-<%= render partial: 'comments/new', locals: { :commentable => sharable } %>
+<%= render partial: "comments/new", locals: { commentable: sharable } %>

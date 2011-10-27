@@ -1,4 +1,4 @@
-class PeopleController < ActionController::Base
+class PeopleController < ApplicationController
 
   def view
     person = Person.find(params[:person_id])

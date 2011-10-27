@@ -1,9 +1,6 @@
-class Sharable
-
-  include MongoMapper::Document
+class Sharable < Commentable
 
   belongs_to :person
-  many :comments
 
   key :description
 

@@ -1,4 +1,4 @@
-class TestController < ActionController::Base
+class TestController < ApplicationController
 
   def create
     # Create a new people
