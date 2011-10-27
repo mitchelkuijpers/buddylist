@@ -30,9 +30,11 @@ gem 'jquery-rails'
 # MongoMapper
 gem 'mongo_mapper'
 gem 'bson_ext'
+gem 'jnunemaker-validatable', '>= 1.8.4'
 
 # Devise
-gem 'devise'
+gem 'devise',                 '>= 1.2'
+gem 'mm-devise',              '>= 1.2'
 
 # CanCan
 gem 'cancan'
