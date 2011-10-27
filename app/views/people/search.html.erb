@@ -4,9 +4,9 @@
 
 <% unless people.blank?  %>
 
-    <p>
-      We found <%= pluralize(people.length, 'person') %>:
-    </p>
+    <h2>
+      We found <%= pluralize(people.length, 'person') %>!
+    </h2>
     <ul>
 
     <% for person in people %>
@@ -20,13 +20,13 @@
 <% else %>
     <% unless searchterm.blank? %>
 
-    <p>
+    <p class="message warning">
       Sorry, we didn't find anybody named '<%= searchterm %>'…
     </p>
 
     <% else %>
 
-    <p>
+    <p class="message info">
       Please enter a name in the search field…
     </p>
 

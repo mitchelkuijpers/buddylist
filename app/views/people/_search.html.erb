@@ -1,4 +1,7 @@
+<fieldset>
+    <legend>Search:</legend>
 <%= form_tag search_person_url, method: :get do %>
-    <%= text_field_tag :person_name %>
-    <%= submit_tag "Search person" %>
+    <%= text_field_tag :person_name, nil, {:class => "text-input", :placeholder => "zoeken.."}%>
+    <%= submit_tag "Search person", :class => 'btn'%>
 <% end %>
+</fieldset>

@@ -5,7 +5,6 @@ class TestController < ApplicationController
     person = Person.new
     person.name= "Teun van Vegchel"
     person.email= "teun@vanvegchel.net"
-    person.password= "test password 123"
     person.save
 
     # Create a new status update, and add it to the people
