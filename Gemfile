@@ -1,6 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.1.0'
+gem 'rails3-generators'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
@@ -39,15 +40,21 @@ gem 'mm-devise'
 # CanCan
 gem 'cancan'
 
-group :test do
-  # Pretty printed test output
-  gem 'turn'
-  gem 'cucumber-rails'
-  gem 'database_cleaner'
-  gem 'minitest'
+# for rspec
+gem 'ZenTest'
+
+gem 'i18n'
+
+# browser simulation
+gem "capybara"
+
+group :test, :cucumber do
+  gem "nokogiri"
+  gem "cucumber"
+  gem "database_cleaner"
+  gem "cucumber-rails"
 end
 
-group :development, :test do
-  gem 'rspec-rails'
-  gem 'capybara'
+group :test, :development do
+  gem "rspec-rails", "~> 2.6"
 end
