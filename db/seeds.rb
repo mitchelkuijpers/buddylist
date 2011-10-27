@@ -5,3 +5,21 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+User.delete_all
+Person.delete_all
+Commentable.delete_all
+Comment.delete_all
+
+users = {}
+users[:teun] = User.create!(email: 'teun@facebook.com', password: 'password')
+users[:mitchel] = User.create!(email: 'mitchel@facebook.com', password: 'password')
+users[:danny] = User.create!(email: 'danny@facebook.com', password: 'password')
+
+persons = {}
+persons[:teun] = Person.create!(name: 'Teun van Vegchel', user: users[:teun])
+persons[:mitchel] = Person.create!(name: 'Mitchel Kuijpers', user: users[:mitchel])
+persons[:danny] = Person.create!(name: 'Danny Cobussen', user: users[:danny])
+
+
+
