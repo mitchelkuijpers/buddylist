@@ -5,10 +5,17 @@ class PeopleController < ApplicationController
   end
 
   def search
-    people = Person.find_all_by_name /#{params[:person_name]}/i
+    # TODO: Make security less strict
+    searchterm = params[:person_name] || ''
+    searchterm.sub! /[^a-z]/i, ''
+
+    people = []
+    unless searchterm.blank?
+      people = Person.find_all_by_name /#{searchterm}/i
+    end
 
     respond_to do |format|
-      format.html { render locals: { people: people } }
+      format.html { render locals: { people: people, searchterm: searchterm } }
       format.json { render json: people }
     end
   end

@@ -11,9 +11,9 @@ class Person
   key :relation_ids, Array
   many :relations, :in => :relation_ids
 
-  key :name,      String, :required => true
-  key :email,     String, :required => true
-  key :password,  String, :required => true
+  key :name,      String
+  key :email,     String
+  key :password,  String
 
   timestamps!
 

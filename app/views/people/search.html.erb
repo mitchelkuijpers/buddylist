@@ -1,9 +1,34 @@
 <%= render 'people/search' %>
 
-<h1>Found people:</h1>
+<h1>Find a person</h1>
 
-<% for person in people %>
+<% unless people.blank?  %>
 
-    <%= link_to person.name, person_url(person) %>
+    <p>
+      We found <%= pluralize(people.length, 'person') %>:
+    </p>
+    <ul>
 
+    <% for person in people %>
+
+        <li><%= link_to person.name, person_url(person) %></li>
+
+    <% end %>
+
+    </ul>
+
+<% else %>
+    <% unless searchterm.blank? %>
+
+    <p>
+      Sorry, we didn't find anybody named '<%= searchterm %>'…
+    </p>
+
+    <% else %>
+
+    <p>
+      Please enter a name in the search field…
+    </p>
+
+    <% end %>
 <% end %>
