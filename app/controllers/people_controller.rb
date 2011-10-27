@@ -7,7 +7,7 @@ class PeopleController < ApplicationController
   def search
     # TODO: Make security less strict
     searchterm = params[:person_name] || ''
-    searchterm.sub /[^a-z]/i, ''
+    searchterm.sub! /[^a-z]/i, ''
 
     people = []
     unless searchterm.blank?
