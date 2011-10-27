@@ -30,9 +30,11 @@ gem 'jquery-rails'
 # MongoMapper
 gem 'mongo_mapper'
 gem 'bson_ext'
+gem ''
 
 # Devise
 gem 'devise'
+gem 'mm-devise'
 
 # CanCan
 gem 'cancan'
