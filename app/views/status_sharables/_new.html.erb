@@ -1,4 +1,5 @@
 <%= form_tag create_status_sharable_url do %>
     <%= text_field_tag :sharable_description %>
+    <%= hidden_field_tag :wall_id, wall.id %>
     <%= submit_tag "Add Status update" %>
 <% end %>

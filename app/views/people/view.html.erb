@@ -10,7 +10,4 @@
     <dd><%= person.name %></dd>
 </dl>
 
-<h2>Sharables</h2>
-
-<%= render 'status_sharables/new' %>
-<%= render partial: person.sharables, as: :sharable %>
+<%= render partial: 'walls/wall', locals: { wall: person.wall } %>

@@ -5,11 +5,14 @@ class ApplicationController < ActionController::Base
   private
 
   # Teun: Fix for MongoMapper SCI
-  # Models need to be used before ActiveSupport::DescendantTracker can detect them...
+  # Models need to be 'used' before ActiveSupport::DescendantTracker can detect them...
   def init_models
+    Wall
     Sharable
     StatusSharable
     VideoSharable
+    Like
+    Comment
   end
 
 end

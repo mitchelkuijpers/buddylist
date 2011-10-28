@@ -16,7 +16,8 @@ class StatusSharablesController < ApplicationController
 
   def create
     person = current_user.person
-    sharable = StatusSharable.create description: params[:sharable_description], person: person
+    wall = Wall.find params[:wall_id]
+    sharable = StatusSharable.create description: params[:sharable_description], person: person, wall: wall
 
     redirect_to status_sharable_url sharable
   end

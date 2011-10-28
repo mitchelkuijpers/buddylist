@@ -1,0 +1,4 @@
+<h2>Sharables</h2>
+
+<%= render partial: 'status_sharables/new', locals: { wall: wall } %>
+<%= render partial: wall.sharables, as: :sharable, locals: { wall: wall } %>

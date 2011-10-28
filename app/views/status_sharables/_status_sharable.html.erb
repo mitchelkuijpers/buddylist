@@ -1,5 +1,12 @@
 <p>
-  <%= link_to sharable.person.name, person_url(sharable.person) %>
+
+  <% if wall.person != sharable.person %>
+
+       <%= link_to sharable.person.name, person_url(sharable.person) %> »
+
+  <% end %>
+
+  <%= link_to wall.person.name, person_url(wall.person) %>
   <br />
   <%= sharable.description %>
   <%= link_to 'view', status_sharable_url(sharable) %>
