@@ -2,11 +2,13 @@ class Comment
 
   include MongoMapper::Document
 
-  belongs_to :commentable
+  # Associations
+  include Likable
+  belongs_to :commentable, polymorphic: true
   belongs_to :person
 
+  # Properties
   key :text, String
-
   timestamps!
 
 end
