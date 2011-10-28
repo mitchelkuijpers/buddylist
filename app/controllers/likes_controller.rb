@@ -11,7 +11,12 @@ class LikesController < ApplicationController
   def destroy
     likable = likable_collection.find params[:likable_id]
 
-    Like.destroy
+    #like = Like.where person_id: current_user.person.id, likable_id: likable.id
+
+    likes = Like.find_all_by_person_id_and_likable_id current_user.person.id, likable.id
+    likes.each do |like|
+      like.destroy
+    end
 
     redirect_to polymorphic_path likable
   end
