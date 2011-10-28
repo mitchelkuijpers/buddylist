@@ -5,7 +5,8 @@ class Relation
   belongs_to :person_1, :class_name => 'Person'
   belongs_to :person_2, :class_name => 'Person'
 
-  key :status
+  # Status of the relation
+  key :status,  Integer
 
   timestamps!
 
