@@ -1,4 +1,4 @@
-class Profile
+class Wall
 
   include MongoMapper::Document
 
