@@ -12,4 +12,6 @@ class Sharable
   key :description
   timestamps!
 
+  # Validations
+  validates_presence_of :description
 end
