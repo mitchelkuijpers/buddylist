@@ -1,1 +1,5 @@
 rvm ruby-1.9.2@reviews
+
+if ! command -v bundle ; then
+  gem install bundler
+fi
