@@ -11,9 +11,10 @@ Buddylist::Application.routes.draw do
   get 'person/:person_id(.:format)' => 'people#view', as: :person
   post 'status/create' => 'statusSharables#create', as: :create_status_sharable
   get 'status/:sharable_id(.:format)' => 'statusSharables#view', as: :status_sharable
-  get 'comment/new' => 'comments#new', as: :new_comment
+  get 'comment/view/:comment_id(.:format)' => 'comments#view', as: :comment
   post 'comment/create' => 'comments#create', as: :create_comment
-
+  post 'like/create' => 'likes#create', as: :create_like
+  delete 'like/destroy/:likable_id' => 'likes#destroy', as: :destroy_like
 
   # Test routes
   match 'test/:action' => 'test#:action'

@@ -1,21 +1,15 @@
-require 'digest/sha2'
-
 class Person
 
   include MongoMapper::Document
 
-  attr_accessor :name, :email
-
+  # Associations
   belongs_to :user
-
+  one :profile
   many :sharables
   many :comments
 
-  key :relation_ids, Array
-  many :relations, :in => :relation_ids
-
+  # Properties
   key :name,      String, :required => true
-
   timestamps!
 
 end

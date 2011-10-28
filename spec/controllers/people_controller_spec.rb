@@ -1,10 +1,7 @@
-require "rspec_helper"
+require "spec_helper"
 
 describe PeopleController do
 
-  it "should render the search page" do
+  pending "need to wait for validation before i can test anything use this for testing: http://www.dixis.com/?p=332&lang=nl"
 
-    #To change this template use File | Settings | File Templates.
-    true.should == false
-  end
 end

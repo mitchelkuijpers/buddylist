@@ -16,13 +16,9 @@ class StatusSharablesController < ApplicationController
 
   def create
     person = current_user.person
-    return render json: person.methods
-    sharable = StatusSharable.new
-    sharable.description = params[:sharable_description]
-    person.sharables << sharable
-    sharable.save
+    sharable = StatusSharable.create description: params[:sharable_description], person: person
 
-    redirect_to person_url person
+    redirect_to status_sharable_url sharable
   end
 
 end

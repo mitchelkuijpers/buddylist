@@ -1,7 +1,10 @@
-class Commentable
+module Commentable
 
-  include MongoMapper::Document
+  def self.included model
 
-  many :comments
+    # Associations
+    model.many :comments, as: :commentable
+
+  end
 
 end

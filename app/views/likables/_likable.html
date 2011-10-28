@@ -1,0 +1,15 @@
+<p>
+    <small>
+        <%= render partial: 'likables/liking_persons', locals: { likable: likable } %>
+
+        <% unless likable.liked_by? current_user.person %>
+
+            <%= render partial: 'likes/new', locals: { likable: likable } %>
+
+        <% else %>
+
+            <%= render partial: 'likes/destroy', locals: { likable: likable } %>
+
+        <% end %>
+    </small>
+</p>
