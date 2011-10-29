@@ -15,5 +15,6 @@ Buddylist::Application.routes.draw do
   post    'comment/create' => 'comments#create',                        as: :create_comment
   post    'like/create' => 'likes#create',                              as: :create_like
   delete  'like/destroy/:likable_id' => 'likes#destroy',                as: :destroy_like
+  get     'relation' => 'relations#test'
 
 end

@@ -1,55 +1,57 @@
-class RelationsController < ActionController::Base
+class RelationsController < ApplicationController
 
   def test
-    p1 = Person.new :name => "Teun"
-    p2 = Person.new :name => "Henk"
+    p1 = Person.all.first
 
-    r = Relation.new(:status => 123)
-    r.person_1= p1
-    r.person_2= p2
+    f = p1.friends
 
-    p1.save
-    p2.save
-    r.save
-
-    respond_to do |format|
-      format.all { render :json => r }
-    end
+    render json: [p1.name, f.collect(&:name)]
   end
 
-  def index
-    persons = Person.all
-    data = []
+  def test2
+    p1 = Person.create name: "Hans"
+    p2 = Person.create name: "Jan"
 
-    for person in persons
-      rs = person.relations
-      for r in rs
-        if r.instance_of? Relation
-          data << [r.person_1, r.person_2]
-        end
-      end
-    end
 
-    respond_to do |format|
-      format.all { render :json => [data] }
-    end
+    r = Relationship.create persons: [p1, p2]
+    r.relationship_roles << RelationshipRole.new(role: RelationshipRole::ROLE_FRIEND, status_1: RelationshipRole::STATUS_DENIED, status_2: RelationshipRole::STATUS_DENIED)
+    r.relationship_roles << RelationshipRole.new(role: 10, status_1: RelationshipRole::STATUS_ACCEPTED, status_2: RelationshipRole::STATUS_ACCEPTED)
+    render json: r
   end
 
-  def propose person
-    person = Person.find person
-
-    relation = Relation.new me, person
-    relation.save
-  end
-
-  def accept relation
-    relation = Relation.find relation
-    relation.accept # TODO check if the user is allowed to accept the relation
-  end
-
-  def deny relation
-    relation = Relation.find relation
-    relation.deny # TODO check if the user is allowed to deny the relation
-  end
+  #def index
+  #  persons = Person.all
+  #  data = []
+  #
+  #  for person in persons
+  #    rs = person.relations
+  #    for r in rs
+  #      if r.instance_of? Relationship
+  #        data << [r.person_1, r.person_2]
+  #      end
+  #    end
+  #  end
+  #
+  #  respond_to do |format|
+  #    format.all { render :json => [data] }
+  #  end
+  #end
+  #
+  #def propose person
+  #  person = Person.find person
+  #
+  #  relation = Relationship.new me, person
+  #  relation.save
+  #end
+  #
+  #def accept relation
+  #  relation = Relationship.find relation
+  #  relation.accept # TODO check if the user is allowed to accept the relation
+  #end
+  #
+  #def deny relation
+  #  relation = Relationship.find relation
+  #  relation.deny # TODO check if the user is allowed to deny the relation
+  #end
 
 end
