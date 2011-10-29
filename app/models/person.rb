@@ -1,18 +1,18 @@
 class Person
 
-  include MongoMapper::Document
+  include Mongoid::Document
+  include Mongoid::Timestamps
 
   after_create :create_wall
 
   # Associations
   belongs_to :user
-  one :wall
-  many :sharables
-  many :comments
+  has_one :wall
+  has_many :posts
+  has_many :comments
 
   # Properties
-  key :name,      String, :required => true
-  timestamps!
+  field :name, type: String, :required => true
 
   private
 

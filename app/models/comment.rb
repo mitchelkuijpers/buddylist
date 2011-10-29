@@ -1,6 +1,7 @@
 class Comment
 
-  include MongoMapper::Document
+  include Mongoid::Document
+  include Mongoid::Timestamps
 
   # Associations
   include Likable
@@ -8,7 +9,6 @@ class Comment
   belongs_to :person
 
   # Properties
-  key :text, String
-  timestamps!
+  field :text, type: String
 
 end

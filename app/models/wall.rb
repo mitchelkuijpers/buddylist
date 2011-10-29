@@ -1,9 +1,9 @@
 class Wall
 
-  include MongoMapper::Document
+  include Mongoid::Document
 
   # Associations
   belongs_to :person
-  many :sharables
+  has_many :posts
 
 end

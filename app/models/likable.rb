@@ -3,7 +3,7 @@ module Likable
   def self.included model
 
     # Associations
-    model.many :likes, as: :likable
+    model.has_many :likes, as: :likable
 
   end
 

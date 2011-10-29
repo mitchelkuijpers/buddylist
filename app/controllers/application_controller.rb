@@ -8,9 +8,9 @@ class ApplicationController < ActionController::Base
   # Models need to be 'used' before ActiveSupport::DescendantTracker can detect them...
   def init_models
     Wall
-    Sharable
-    StatusSharable
-    VideoSharable
+    Post
+    StatusPost
+    VideoPost
     Like
     Comment
   end

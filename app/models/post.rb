@@ -1,6 +1,7 @@
-class Sharable
+class Post
 
-  include MongoMapper::Document
+  include Mongoid::Document
+  include Mongoid::Timestamps
 
   # Associations
   include Commentable
@@ -9,7 +10,6 @@ class Sharable
   belongs_to :wall
 
   # Properties
-  key :description
-  timestamps!
+  field :description
 
 end

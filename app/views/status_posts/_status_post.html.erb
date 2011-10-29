@@ -1,0 +1,15 @@
+<p>
+
+  <% if wall.person != post.person %>
+
+       <%= link_to post.person.name, person_url(post.person) %> »
+
+  <% end %>
+
+  <%= link_to wall.person.name, person_url(wall.person) %>
+  <br />
+  <%= post.description %>
+  <%= link_to 'view', status_post_url(post) %>
+  <br />
+  <small><%= post.created_at.strftime 'On %d-%m-%Y at %H:%M' %></small>
+</p>

@@ -26,13 +26,11 @@ gem 'jquery-rails'
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
 # MongoMapper
-gem 'mongo_mapper'
-gem 'bson_ext'
-gem 'jnunemaker-validatable'
+gem "mongoid", "~> 2.3"
+gem "bson_ext", "~> 1.4"
 
 # Devise
 gem 'devise'
-gem 'mm-devise'
 
 # CanCan
 gem 'cancan'

@@ -8,7 +8,7 @@
 
 User.delete_all
 Person.delete_all
-Sharable.delete_all
+Post.delete_all
 Comment.delete_all
 Like.delete_all
 
