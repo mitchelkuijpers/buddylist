@@ -12,4 +12,6 @@ class Post
   # Properties
   field :description
 
+  # Validations
+  validates_presence_of :description
 end
