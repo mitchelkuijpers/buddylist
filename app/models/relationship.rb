@@ -3,17 +3,20 @@ class Relationship
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  has_and_belongs_to_many :persons
+  field :tid, type: String
   embeds_many :relationship_roles
-
-  field :role, type: Integer
-  field :status, type: Hash
+  has_and_belongs_to_many :persons
 
   class << self
 
+    def find_or_create_for_persons person_1, person_2
+      find_or_create_by person_ids: [person_1, person_2].sort.collect(&:id)
+    end
+
+
     # Get relations with an accepted role
-    def by_role role
-      where relationship_roles: { "$elemMatch" => { role: role, status_1: RelationshipRole::STATUS_ACCEPTED, status_2: RelationshipRole::STATUS_ACCEPTED }}
+    def by_accepted_role role
+      where relationship_roles: { "$elemMatch" => { role: role, status: true }}
     end
 
   end

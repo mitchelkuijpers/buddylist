@@ -2,6 +2,8 @@
 
 <h1><%= person.name %></h1>
 
+<%= render partial: 'people/manage_friend', locals: { person: person } %>
+
 <h2>About <%= person.name %></h2>
 <dl>
   <dt>ID</dt>
@@ -10,4 +12,5 @@
     <dd><%= person.name %></dd>
 </dl>
 
+<%= render partial: 'people/friends_list', locals: { person: person } %>
 <%= render partial: 'walls/wall', locals: { wall: person.wall } %>

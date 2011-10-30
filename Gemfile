@@ -26,7 +26,7 @@ gem 'jquery-rails'
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
 # MongoMapper
-gem "mongoid", "~> 2.3"
+gem "mongoid"
 gem "bson_ext", "~> 1.4"
 
 # Devise

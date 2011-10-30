@@ -1,18 +1,11 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  before_filter :init_models
+  before_filter :console_line
 
   private
 
-  # Teun: Fix for MongoMapper SCI
-  # Models need to be 'used' before ActiveSupport::DescendantTracker can detect them...
-  def init_models
-    Wall
-    Post
-    StatusPost
-    VideoPost
-    Like
-    Comment
+  def console_line
+    puts "\n\n\n\n!!! ======================================================== !!!\n\n\n\n" # TODO Remove - Used for visibility in console due to asset errors
   end
 
 end

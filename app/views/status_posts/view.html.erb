@@ -1,14 +1,4 @@
 <h1>Status</h1>
 
-<p>
-  <%= link_to post.person.name, person_url(post.person) %>
-  <br />
-  <%= post.description %>
-  <br />
-  <small><%= post.created_at.strftime "On %d-%m-%Y at %H:%M" %></small>
-</p>
+<%= render partial: "status_posts/status_post", locals: { post: post, wall: post.wall } %>
 
-<h2>Comments</h2>
-
-<%= render partial: post.comments, as: :comment %>
-<%= render partial: "comments/new", locals: { commentable: post } %>
