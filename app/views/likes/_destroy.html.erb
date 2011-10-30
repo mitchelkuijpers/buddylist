@@ -1,5 +1,0 @@
-<%= form_tag destroy_like_url(likable), method: :delete do %>
-    <%= hidden_field_tag :likable_id, likable.id %>
-    <%= hidden_field_tag :likable_type, likable.class.name %>
-    <%= submit_tag "Don't like this" %>
-<% end %>

@@ -1,0 +1,9 @@
+%h2= "Friends of #{person.name}"
+
+%ul
+  - for friend in person.friends
+    %li
+      = link_to friend.name, person_url(friend)
+
+      - unless friend.friend_of?(current_user.person) || friend == current_user.person
+        = link_to "Add friend »", create_friend_url(friend), method: :post

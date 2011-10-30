@@ -1,4 +1,5 @@
 class PeopleController < ApplicationController
+  before_filter :authenticate_user!
 
   def index
     redirect_to person_url Person.all.first #TODO: Replace with actual homepage

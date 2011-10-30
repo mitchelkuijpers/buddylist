@@ -8,7 +8,8 @@ module Likable
   end
 
   def liked_by? person
-    Like.by_person(person).first.instance_of? Like
+    likes = Like.where person_id: person.id, likable_id: self.id
+    likes.first.instance_of? Like
   end
 
 end

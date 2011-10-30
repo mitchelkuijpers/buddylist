@@ -1,0 +1,7 @@
+%fieldset
+  %p
+    #{link_to comment.person.name, person_url(comment.person)} said: #{comment.text}
+    %br
+    = comment.created_at.strftime 'On %d-%m-%Y at %H:%M'
+
+  = render partial: 'likables/likable', locals: { likable: comment }
