@@ -13,6 +13,8 @@ class RelationshipsController < ApplicationController
     role.status_user[person.id.to_s] = RelationshipRole::STATUS_ACCEPTED
     role.save
 
+    post = FriendshipPost.create description: "FRIENDSHIP", person_ids: [person.id, friend.id]
+
     redirect_to person_url friend
   end
 

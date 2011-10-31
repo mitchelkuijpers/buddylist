@@ -1,9 +1,8 @@
 .post.status-post
   %p
-    - unless wall.person == post.person
+    - unless post.wall.person == post.person
       #{link_to_author post.person} »
-
-    #{link_to_author wall.person}
+    #{link_to_author post.person}
   %p
     = post.description
 

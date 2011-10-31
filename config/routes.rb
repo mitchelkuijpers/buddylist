@@ -1,9 +1,8 @@
 Buddylist::Application.routes.draw do
 
-  root to: "people#search"
+  root to: "newsfeeds#index"
 
   devise_for :users
-
 
   # Persons
   get     'person/search(.format)' => 'people#search',                as: :search_person
