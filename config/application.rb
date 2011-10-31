@@ -18,9 +18,9 @@ module Buddylist
   class Application < Rails::Application
 
     config.generators do |g|
-      g.orm             :mongo_mapper
-      g.template_engine :erb
       g.test_framework  :rspec
+      g.fixture_replacement :factory_girl, :dir => "spec/factories"
+      g.template_engine :haml
     end
 
     # Settings in config/environments/* take precedence over those specified here.

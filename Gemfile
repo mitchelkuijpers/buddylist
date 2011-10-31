@@ -50,6 +50,7 @@ group :test, :cucumber do
   gem "cucumber"
   gem "database_cleaner"
   gem "cucumber-rails"
+  gem 'factory_girl_rails'
 end
 
 group :test, :development do

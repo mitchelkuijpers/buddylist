@@ -8,6 +8,9 @@ class Comment
   belongs_to :commentable, polymorphic: true
   belongs_to :person
 
+  # Validation
+  validates_presence_of :text
+
   # Properties
   field :text, type: String
 

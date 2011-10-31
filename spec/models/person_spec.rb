@@ -2,24 +2,14 @@ require 'spec_helper'
 
 describe Person do
 
-    it "should not save when there is not an email, password and a name provided" do
-      person = Person.new;
+    it "should not save when there is no name specified" do
+      person = Person.new
       person.save.should == false
     end
 
-    it "should save when there is an email, password and a name provided" do
-      person = Person.new(name: "testName", password: "password", email: "test@gmail.com");
+    it "should save when there is a name specified" do
+      person = Person.new(name: "testName", password: "password", email: "test@gmail.com")
       person.save.should == true
-    end
-
-    it "should hash the password" do
-      person = Person.new
-      person.password= "test"
-      person[:password].should_not == "test"
-    end
-
-    it "should not save users with the same email or/and the same name" do
-
     end
 
 end
