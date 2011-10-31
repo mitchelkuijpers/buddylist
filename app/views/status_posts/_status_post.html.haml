@@ -2,7 +2,7 @@
   %p
     - unless post.wall.person == post.person
       #{link_to_author post.person} »
-    #{link_to_author post.person}
+    #{link_to_author post.wall.person}
   %p
     = post.description
 
