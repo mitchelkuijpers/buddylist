@@ -16,8 +16,8 @@ class StatusPostsController < ApplicationController
 
   def create
     person = current_user.person
-    wall = Wall.find params[:wall_id]
-    post = StatusPost.create description: params[:post_description], person: person, wall: wall
+    friend = Person.find params[:friend_id]
+    post = StatusPost.create description: params[:post_description], persons: [person, friend]
 
     redirect_to status_post_url post
   end

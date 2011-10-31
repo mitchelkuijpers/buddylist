@@ -6,8 +6,7 @@ class Post
   # Associations
   include Commentable
   include Likable
-  belongs_to :person
-  belongs_to :wall
+  has_and_belongs_to_many :persons
 
   # Properties
   field :description
