@@ -3,6 +3,7 @@ class Person
   include Mongoid::Document
   include Mongoid::Timestamps
 
+
   after_create :create_wall
 
   # Associations
@@ -12,8 +13,11 @@ class Person
   has_many :comments
   has_and_belongs_to_many :relationships
 
+  # Validation
+  validates_presence_of :name
+
   # Properties
-  field :name, type: String, :required => true
+  field :name, type: String
 
   def friends
     persons = []
