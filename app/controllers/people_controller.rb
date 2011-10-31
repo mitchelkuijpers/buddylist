@@ -1,4 +1,5 @@
 class PeopleController < ApplicationController
+  before_filter :authenticate_user!
 
   def index
     redirect_to person_url Person.all.first #TODO: Replace with actual homepage
@@ -11,7 +12,7 @@ class PeopleController < ApplicationController
 
     people = []
     unless searchterm.blank?
-      people = Person.find_all_by_name /#{searchterm}/i
+      people = Person.where name: /#{searchterm}/i
     end
 
     respond_to do |format|
@@ -21,7 +22,9 @@ class PeopleController < ApplicationController
   end
 
   def view
-    person = Person.find(params[:person_id])
+    person = Person.find params[:person_id]
+
+#    authorize! :view, person
 
     respond_to do |format|
       format.html { render locals: { person: person } }

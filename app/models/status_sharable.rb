@@ -1,3 +1,0 @@
-class StatusSharable < Sharable
-
-end

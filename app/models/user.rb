@@ -1,6 +1,6 @@
 class User
 
-  include MongoMapper::Document
+  include Mongoid::Document
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
@@ -8,6 +8,6 @@ class User
          :recoverable, :rememberable, :trackable, :validatable
 
   # Associations
-  one :person
+  has_one :person
 
 end

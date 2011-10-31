@@ -3,7 +3,7 @@ module Commentable
   def self.included model
 
     # Associations
-    model.many :comments, as: :commentable
+    model.has_many :comments, as: :commentable
 
   end
 

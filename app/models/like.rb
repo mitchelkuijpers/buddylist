@@ -1,6 +1,6 @@
 class Like
 
-  include MongoMapper::Document
+  include Mongoid::Document
 
   # Associations
   belongs_to :likable, polymorphic: true

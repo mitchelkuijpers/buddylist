@@ -1,0 +1,37 @@
+!!! 5
+%html
+
+  %head
+
+    %meta{ charset: "UTF-8" }
+    %title Fauxbook
+    = stylesheet_link_tag "application"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+
+  %body
+
+    %header#header
+      .container
+        %a#logo{ href: root_url }
+          = image_tag "fauxbook-logo.png"
+        = render partial: "people/search" if user_signed_in?
+        = render partial: "users/menu"
+
+    #content.container
+      .notifications
+        - unless alert.nil?
+          .message.warning= alert
+        - unless notice.nil?
+          .message.info= notice
+      = yield
+
+    %footer#footer
+      .container
+        %p
+          © 2011 - Awesomeness by
+          #{link_to "Danny Cobussen", "http://www.facebook.com/dannycobussen"},
+          #{link_to "Mitchel Kuijpers", "http://www.facebook.com/mitchel.kuijpers"}
+          and
+          #{link_to "Teun van Vegchel", "http://www.facebook.com/teunvanvegchel"}.
+

@@ -25,14 +25,14 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
+gem "haml"
+
 # MongoMapper
-gem 'mongo_mapper'
-gem 'bson_ext'
-gem 'jnunemaker-validatable'
+gem "mongoid"
+gem "bson_ext", "~> 1.4"
 
 # Devise
 gem 'devise'
-gem 'mm-devise'
 
 # CanCan
 gem 'cancan'

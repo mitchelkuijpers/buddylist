@@ -1,5 +1,0 @@
-<%= form_tag create_like_url do %>
-    <%= hidden_field_tag :likable_id, likable.id %>
-    <%= hidden_field_tag :likable_type, likable.class.name %>
-    <%= submit_tag "Like!" %>
-<% end %>
