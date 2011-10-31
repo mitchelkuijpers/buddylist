@@ -87,7 +87,7 @@ table{
 	border-collapse:collapse;
 	border-spacing:0;
 }
-img{ 
+img{
 	border:0;
 }
 address,caption,dfn,th,var{
@@ -602,7 +602,7 @@ Unfortunately feedback messages don’t fit the baseline all too well. Perhaps i
 	padding:10px 10px 10px 36px;
 	border:1px solid #ccc;
 	margin-left:0;
-	
+
 	-moz-border-radius:2px;
 	-webkit-border-radius:2px;
 	border-radius:2px;
@@ -862,7 +862,7 @@ body{
 	margin:0 auto;
 }
 /*
-A list of things you don’t want printing. Add to/subtract from as necessary. 
+A list of things you don’t want printing. Add to/subtract from as necessary.
 */
 .nav,
 .footer{

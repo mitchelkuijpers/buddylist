@@ -1,5 +1,5 @@
-%nav#user-menu.menu
-  %ul
+%nav#user-menu
+  %ul.menu
     -if user_signed_in?
       %li
         = link_to current_user.person.name, person_url(current_user.person), class: :user

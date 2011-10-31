@@ -1,7 +1,13 @@
-%fieldset
+.comment
   %p
-    #{link_to comment.person.name, person_url(comment.person)} said: #{comment.text}
-    %br
-    = comment.created_at.strftime 'On %d-%m-%Y at %H:%M'
+    %span.author  #{link_to_author comment.person}
+    %span.description #{comment.text}
+  %ul.menu
+    %li.date-created
+      = comment.created_at.strftime 'On %d-%m-%Y at %H:%M'
+    %li
+      = render partial: 'likables/likable', locals: { likable: comment }
+    %li.liking-persons
+      - unless (liking_persons = format_liking_persons(comment)).blank?
+        = liking_persons
 
-  = render partial: 'likables/likable', locals: { likable: comment }

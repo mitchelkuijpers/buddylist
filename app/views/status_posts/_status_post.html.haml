@@ -1,14 +1,20 @@
-%fieldset
+.post.status-post
   %p
     - unless wall.person == post.person
-      #{link_to post.person.name, person_url(post.person)} »
+      #{link_to_author post.person} »
 
-    #{link_to wall.person.name, person_url(wall.person)}
+    #{link_to_author wall.person}
   %p
     = post.description
-    = link_to 'view »', status_post_url(post)
-    %br
-    = post.created_at.strftime 'On %d-%m-%Y at %H:%M'
 
-  = render partial: "likables/likable", locals: { likable: post }
-  = render partial: "commentable/commentable", locals: { commentable: post }
+  %ul.menu
+    %li.date-created
+      = post.created_at.strftime 'On %d-%m-%Y at %H:%M'
+    %li
+      = render partial: "likables/likable", locals: { likable: post }
+
+  .reactions
+    - unless (liking_persons = format_liking_persons(post)).blank?
+      .liking-persons= liking_persons
+
+    = render partial: "commentable/commentable", locals: { commentable: post }

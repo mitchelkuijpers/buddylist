@@ -1,8 +1,4 @@
-%fieldset
-  - unless (liking_persons = format_liking_persons(likable)).blank?
-    %p= liking_persons
-
-  - unless likable.liked_by? current_user.person
-    = render partial: 'likes/new', locals: { likable: likable }
-  - else
-    = render partial: 'likes/destroy', locals: { likable: likable }
+- unless likable.liked_by? current_user.person
+  = render partial: 'likes/new', locals: { likable: likable }
+- else
+  = render partial: 'likes/destroy', locals: { likable: likable }

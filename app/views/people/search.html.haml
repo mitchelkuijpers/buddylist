@@ -1,12 +1,15 @@
 .island
+
   %h1 Find a person
+
   - unless people.blank?
-    %p We found #{pluralize(people.length, 'person')}
+    %p We found #{pluralize(people.length, 'person')}:
     %ul
       - for person in people
         %li= link_to person.name, person_url(person)
   - else
-    - unless searchterm.blank?
-      %p.no-results Sorry, we didn't find anybody named #{searchterm}…
-    - else
-      %p.no-results Please enter a name in the search field…
+    %p.no-results
+      - unless searchterm.blank?
+        Sorry, we didn't find anybody named #{searchterm}…
+      - else
+        Please enter a name in the search field…

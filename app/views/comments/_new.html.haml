@@ -1,5 +1,7 @@
-= form_tag create_comment_url do
-  = text_field_tag :comment_text
+= form_tag create_comment_url, class: 'create-comment' do
   = hidden_field_tag :commentable_id, commentable.id
   = hidden_field_tag :commentable_type, commentable.class.name
-  = submit_tag "Add Comment"
+
+  .uiTextInputWrapper
+    = text_field_tag :comment_text
+    = submit_tag "Add Comment", class: [:uiButton, :uiButtonConfirm]

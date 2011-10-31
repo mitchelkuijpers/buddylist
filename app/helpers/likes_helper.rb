@@ -8,7 +8,7 @@ module LikesHelper
       formatted.unshift link_to 'You', person_url(person) if likable.liked_by? person
 
       unless formatted.blank?
-        formatted.to_sentence.html_safe + " liked this."
+        formatted.to_sentence.html_safe + " like this."
       end
     end
   end
