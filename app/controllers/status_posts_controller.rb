@@ -19,10 +19,9 @@ class StatusPostsController < ApplicationController
     @status_post = StatusPost.new params[:status_post]
     @status_post.persons = [person, receiver]
 
-    begin
-      @status_post.save!
+    if @status_post.valid? && @status_post.save
       redirect_to status_post_path @status_post
-    rescue
+    else
       render action: :new, locals: { receiver: receiver }
     end
   end
