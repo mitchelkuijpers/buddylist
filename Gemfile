@@ -27,7 +27,7 @@ gem 'jquery-rails'
 
 gem "haml"
 
-# MongoMapper
+# Mongoid
 gem "mongoid"
 gem "bson_ext", "~> 1.4"
 

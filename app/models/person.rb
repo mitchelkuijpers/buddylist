@@ -5,7 +5,6 @@ class Person
 
   # Associations
   belongs_to :user
-  has_one :wall
   has_many :comments
   has_and_belongs_to_many :relationships
   has_and_belongs_to_many :posts

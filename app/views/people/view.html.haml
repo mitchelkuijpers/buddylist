@@ -14,5 +14,5 @@
   -#= render partial: 'walls/wall', locals: { wall: person.wall }
 
 
-  = render partial: 'status_posts/new', locals: { person: person }
-  = render partial: person.posts, as: :post
+  = render partial: 'status_posts/new', locals: { receiver: person }
+  = render partial: person.posts.reverse, as: :post

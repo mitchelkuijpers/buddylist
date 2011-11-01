@@ -26,7 +26,7 @@
     width: 420px;
   }
 
-  & > .reactions > .comments > .create-comment,
+  & > .reactions > .comments > .new_comment,
   & > .reactions > .liking-persons {
     background: #EDEFF4;
     border-bottom: 1px solid #D2D9E7;
@@ -35,16 +35,20 @@
     width: 400px;
   }
 
-  & > .reactions > .comments > .create-comment {
+  & > .reactions > .comments > .new_comment {
     display: inline-block;
     vertical-align: top;
     position: relative;
+    padding: {
+      top: 3px;
+      bottom: 3px;
+    }
 
     .uiTextInputWrapper {
-      width: 390px;
+      width: 398px;
 
       input[type=text] {
-        width: 282px;
+        width: 290px;
         left: 3px;
         position: relative;
       }
@@ -68,10 +72,17 @@
       display: inline-block;
 
       form {
-        margin: -4px 10px 0;
+        margin: -4px 0 0;
         display: inline-block;
         vertical-align: top;
       }
+    }
+
+    li + li:before {
+      margin: 0 3px;
+      content: "·";
+      font-weight: bold;
+      color: #888;
     }
   }
 
@@ -101,10 +112,17 @@
       display: inline-block;
 
       form {
-        margin: -4px 10px 0;
+        margin: -4px 0px 0;
         display: inline-block;
         vertical-align: top;
       }
+    }
+
+    li + li:before {
+      margin: 0 3px;
+      content: "·";
+      color: #888;
+      font-weight: bold;
     }
   }
 }

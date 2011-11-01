@@ -1,13 +1,13 @@
 .comment
   %p
     %span.author  #{link_to_author comment.person}
-    %span.description #{comment.text}
+    %span.description #{comment.message}
   %ul.menu
     %li.date-created
       = comment.created_at.strftime 'On %d-%m-%Y at %H:%M'
     %li
       = render partial: 'likables/likable', locals: { likable: comment }
-    %li.liking-persons
-      - unless (liking_persons = format_liking_persons(comment)).blank?
+    - unless (liking_persons = format_liking_persons(comment)).blank?
+      %li.liking-persons
         = liking_persons
 

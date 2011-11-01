@@ -13,9 +13,9 @@ Comment.delete_all
 Like.delete_all
 
 users = {}
-users[:teun] = User.create!(email: 'teun@facebook.com', password: 'password')
-users[:mitchel] = User.create!(email: 'mitchel@facebook.com', password: 'password')
-users[:danny] = User.create!(email: 'danny@facebook.com', password: 'password')
+users[:teun] = User.create!(email: 'teun@fauxbook.com', password: 'password')
+users[:mitchel] = User.create!(email: 'mitchel@fauxbook.com', password: 'password')
+users[:danny] = User.create!(email: 'danny@fauxbook.com', password: 'password')
 
 persons = {}
 persons[:teun] = Person.create!(name: 'Teun van Vegchel', user: users[:teun])

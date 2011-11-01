@@ -1,0 +1,7 @@
+.post
+  %p
+    #{link_to_author post.author}
+    is now friends with
+    #{link_to_person  post.receiver}.
+  %p.date-created
+    = post.created_at.strftime 'On %d-%m-%Y at %H:%M'

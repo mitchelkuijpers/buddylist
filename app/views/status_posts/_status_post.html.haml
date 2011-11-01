@@ -1,8 +1,8 @@
 .post.status-post
-  %p
-    - unless post.persons.first == post.persons.last
-      #{link_to_author post.persons.first } »
-    #{link_to_author post.persons.last }
+  %p.author
+    - unless post.author == post.receiver
+      #{link_to_author post.author } »
+    #{link_to_author post.receiver }
   %p
     = post.description
 
