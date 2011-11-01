@@ -18,4 +18,11 @@ class ApplicationController < ActionController::Base
     render "common/document_not_found"
   end
 
+
+  def redirect_to_back default = root_url
+    return redirect_to :back if !request.env["HTTP_REFERER"].blank? and request.env["HTTP_REFERER"] != request.env["REQUEST_URI"]
+    return redirect_to default
+  end
+
+
 end

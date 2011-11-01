@@ -18,7 +18,7 @@ class CommentsController < ApplicationController
 
     begin
       @comment.save!
-      redirect_to polymorphic_path commentable
+      redirect_to_back polymorphic_path(commentable)
     rescue
       render action: :new, locals: { commentable: commentable }
     end
@@ -29,14 +29,15 @@ class CommentsController < ApplicationController
 
 
   def new
+
   end
 
 
   def retrieve_commentable
-    collection = Object::const_get(params[:commentable_type])
+    collection = Object::const_get params[:commentable_type]
 
     unless collection.include? Commentable
-      raise "Invalid Collection"
+      raise "Can't comment on this type of post."
     end
 
     collection.find params[:commentable_id]
