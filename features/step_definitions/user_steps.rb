@@ -24,11 +24,14 @@ Given /^I am a new, authenticated user$/ do
 
   Given %{I have one user "#{email}" with password "#{password}" and name "#{name}"}
   Given %{I am logged in as user "#{email}" with password "#{password}"}
-
 end
 
 When /^I am the profile page of "([^"]*)"$/ do |person_name|
   person = Person.where name: person_name
-  visit("person/#{person[0]._id}")
+  visit("/person/#{person[0]._id}")
   page.should have_content(person_name)
+end
+
+When /^I am the profile page of myself$/ do
+  Given %{I am on the profile page of "testing"}
 end

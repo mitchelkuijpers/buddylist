@@ -4,3 +4,6 @@ end
 Then /^I should see a warning/ do
   page.should have_selector(".message.warning"), "No warning message found in the page"
 end
+Then /^I should not see "([^"]*)"$/ do |text|
+  page.should_not have_content(text), "have found the text: #{text}"
+end
