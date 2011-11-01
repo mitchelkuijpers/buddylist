@@ -15,20 +15,36 @@ class Person
   # Properties
   field :name, type: String
 
+
   def friends
     persons = []
     relationships.by_accepted_role(RelationshipRole::ROLE_FRIEND).each do |r|
       persons += r.persons
     end
-    persons.delete_if {|person| person == self}
+    persons.delete_if { |person| person == self }
   end
+
 
   def friend_requests
     # TODO Implement
   end
 
+
   def friend_of? person
     friends.include? person
+  end
+
+
+  class << self
+
+
+    def search_by_name name
+      name.sub! /[^a-z]/i, ''
+      []
+      where name: /#{name}/i unless name.blank?
+    end
+
+
   end
 
 end
