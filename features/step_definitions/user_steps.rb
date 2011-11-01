@@ -7,7 +7,7 @@ Given /^I have one user "([^\"]*)" with password "([^\"]*)" and name "([^\"]*)"$
   user.person = Person.create! name: name
 end
 
-Given /^ I am logged in as user "([^\"]*)" with password "([^\"]*)" $/ do |email, password|
+Given /^I am logged in as user "([^\"]*)" with password "([^\"]*)"$/ do |email, password|
   visit('/users/sign_in')
   within("#user_new") do
     fill_in 'user[email]', :with => email
@@ -25,4 +25,10 @@ Given /^I am a new, authenticated user$/ do
   Given %{I have one user "#{email}" with password "#{password}" and name "#{name}"}
   Given %{I am logged in as user "#{email}" with password "#{password}"}
 
+end
+
+When /^I am the profile page of "([^"]*)"$/ do |person_name|
+  person = Person.where name: person_name
+  visit("person/#{person[0]._id}")
+  page.should have_content(person_name)
 end
