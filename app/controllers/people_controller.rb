@@ -7,16 +7,12 @@ class PeopleController < ApplicationController
 
   def search
     # TODO: Make security less strict
-    searchterm = params[:person_name] || ''
-    searchterm.sub! /[^a-z]/i, ''
+    person_name = params[:person_name] || ''
 
-    people = []
-    unless searchterm.blank?
-      people = Person.where name: /#{searchterm}/i
-    end
+    people = Person.search_by_name person_name
 
     respond_to do |format|
-      format.html { render locals: { people: people, searchterm: searchterm } }
+      format.html { render locals: { people: people, searchterm: person_name } }
       format.json { render json: people }
     end
   end

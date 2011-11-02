@@ -9,9 +9,9 @@ class Comment
   belongs_to :person
 
   # Validation
-  validates_presence_of :text
+  validates_presence_of :message
 
   # Properties
-  field :text, type: String
+  field :message, type: String
 
 end

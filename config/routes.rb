@@ -5,24 +5,24 @@ Buddylist::Application.routes.draw do
   devise_for :users
 
   # Persons
-  get     'person/search(.format)' => 'people#search',                as: :search_person
-  get     'person/:person_id(.:format)' => 'people#view',             as: :person
+  get     'persons/search(.format)' => 'people#search',                as: :search_person
+  get     'persons/:person_id(.:format)' => 'people#view',             as: :person
 
-  # Status posts
-  post    'status/create' => 'statusPosts#create',                    as: :create_status_post
-  get     'status/:post_id(.:format)' => 'statusPosts#view',          as: :status_post
+  # Posts
+  post    'status/create' => 'statusPosts#create',               as: :create_status_post
+  get     'status/:post_id(.:format)' => 'statusPosts#view',     as: :status_post
 
   # Comments
-  get     'comment/view/:comment_id(.:format)' => 'comments#view',    as: :comment
-  post    'comment/create' => 'comments#create',                      as: :create_comment
+  get     'comments/view/:comment_id(.:format)' => 'comments#view',    as: :comment
+  post    'comments/create' => 'comments#create',                      as: :create_comment
 
   # Likes
-  post    'like/create' => 'likes#create',                            as: :create_like
-  delete  'like/destroy/:likable_id' => 'likes#destroy',              as: :destroy_like
+  post    'likes/create' => 'likes#create',                            as: :create_like
+  delete  'likes/destroy/:likable_id' => 'likes#destroy',              as: :destroy_like
 
   # Relationships
-  post    'relationship/create_friend/:person_id' => 'relationships#create_friend',     as: :create_friend
-  delete  'relationship/destroy_friend/:person_id' => 'relationships#destroy_friend',   as: :destroy_friend
+  post    'relationships/create_friend/:person_id' => 'relationships#create_friend',     as: :create_friend
+  delete  'relationships/destroy_friend/:person_id' => 'relationships#destroy_friend',   as: :destroy_friend
 
   # Notifications
   get     'notifications/' => 'notifications#index',                  as: :notification

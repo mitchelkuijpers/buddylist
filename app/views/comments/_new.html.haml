@@ -1,7 +1,10 @@
-= form_tag create_comment_url, class: 'create-comment' do
+= form_for (@comment ||= Comment.new), url: create_comment_url do |form|
+
   = hidden_field_tag :commentable_id, commentable.id
   = hidden_field_tag :commentable_type, commentable.class.name
 
+  = render partial: "layouts/common/validation_errors", locals: { model: @comment }
+
   .uiTextInputWrapper
-    = text_field_tag :comment_text
-    = submit_tag "Add Comment", class: [:uiButton, :uiButtonConfirm]
+    = form.text_field :message, { placeholder: "Write comment…" }
+    = form.submit "Add Comment", class: [:uiButton, :uiButtonConfirm]

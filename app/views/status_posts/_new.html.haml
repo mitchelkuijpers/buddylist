@@ -1,5 +1,8 @@
-= form_tag create_status_post_url do
-  = text_field_tag :post_description
-  = hidden_field_tag :wall_id, wall.id
-  = submit_tag "Add Status update", class: [:uiButton, :uiButtonConfirm]
+= form_for (@status_post ||= StatusPost.new), url: create_status_post_url do |form|
+
+  = render partial: "layouts/common/validation_errors", locals: { model: @status_post }
+
+  = form.text_field :description
+  = hidden_field_tag :receiver_id, receiver.id
+  = form.submit "Add Status update", class: [:uiButton, :uiButtonConfirm]
 %br

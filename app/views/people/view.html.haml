@@ -11,4 +11,8 @@
     %dd= person.name
 
   = render partial: 'people/friends_list', locals: { person: person }
-  = render partial: 'walls/wall', locals: { wall: person.wall }
+  -#= render partial: 'walls/wall', locals: { wall: person.wall }
+
+
+  = render partial: 'status_posts/new', locals: { receiver: person }
+  = render partial: person.posts.reverse, as: :post

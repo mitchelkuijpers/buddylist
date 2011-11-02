@@ -1,6 +1,7 @@
 class StatusPostsController < ApplicationController
   before_filter :authenticate_user!
 
+
   def view
     post = StatusPost.find params[:post_id]
 
@@ -10,16 +11,29 @@ class StatusPostsController < ApplicationController
     end
   end
 
+
+  def create
+    person = current_user.person
+    receiver = Person.find params[:receiver_id]
+
+    @status_post = StatusPost.new params[:status_post]
+    @status_post.persons = [person, receiver]
+
+    begin
+      @status_post.save!
+      redirect_to status_post_path @status_post
+    rescue
+      render action: :new, locals: { receiver: receiver }
+    end
+  end
+
+
+  protected
+
+
   def new
 
   end
 
-  def create
-    person = current_user.person
-    wall = Wall.find params[:wall_id]
-    post = StatusPost.create description: params[:post_description], person: person, wall: wall
-
-    redirect_to status_post_url post
-  end
 
 end
