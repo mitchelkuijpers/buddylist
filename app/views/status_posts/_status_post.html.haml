@@ -1,8 +1,8 @@
 .post.status-post
   %p.author
     - unless post.author == post.receiver
-      #{link_to_author post.author } »
-    #{link_to_author post.receiver }
+      #{link_to_author post.author} »
+    #{link_to_author post.receiver}
   %p
     = post.description
 

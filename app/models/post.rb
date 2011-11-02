@@ -12,19 +12,11 @@ class Post
   field :description
 
   def author
-    return self.persons.first
-  end
-
-  def author= person
-    self.persons[0] = person
+    self.persons.keep_if{|person| person.id == person_ids[0]}.first
   end
 
   def receiver
-    return self.persons.last
-  end
-
-  def receiver= person
-    self.persons[1] = person
+    self.persons.keep_if{|person| person.id == person_ids[-1]}.first
   end
 
   # Validations
