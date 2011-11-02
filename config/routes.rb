@@ -1,6 +1,6 @@
 Buddylist::Application.routes.draw do
 
-  root to: "newsfeeds#index"
+  root to: "newsfeeds#view"
 
   devise_for :users
 
@@ -24,6 +24,9 @@ Buddylist::Application.routes.draw do
   post    'relationships/create_friend/:person_id' => 'relationships#create_friend',     as: :create_friend
   delete  'relationships/destroy_friend/:person_id' => 'relationships#destroy_friend',   as: :destroy_friend
 
+  # Notifications
+  get     'notifications/' => 'notifications#index',                  as: :notification
+  get     'notifications/create' => 'notifications#create'
 
   # Misc. tests
   get 'test/:action' => 'test#'

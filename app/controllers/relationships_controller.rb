@@ -52,7 +52,7 @@ class RelationshipsController < ApplicationController
   #  render json: { relationship: relationship, roles: relationship.relationship_roles }
   #end
 
-  #def index
+  #def view
   #  persons = Person.all
   #  data = []
   #

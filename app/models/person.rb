@@ -6,6 +6,7 @@ class Person
   # Associations
   belongs_to :user
   has_many :comments
+  has_many :notifications
   has_and_belongs_to_many :relationships
   has_and_belongs_to_many :posts
 
