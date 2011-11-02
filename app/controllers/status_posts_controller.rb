@@ -17,8 +17,7 @@ class StatusPostsController < ApplicationController
     receiver = Person.find params[:receiver_id]
 
     @status_post = StatusPost.new params[:status_post]
-    @status_post.author = person
-    @status_post.receiver = receiver
+    @status_post.persons = [person, receiver]
 
     if @status_post.valid? && @status_post.save
       redirect_to status_post_path @status_post

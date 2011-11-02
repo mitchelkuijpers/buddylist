@@ -3,4 +3,5 @@
   %h1
     Newsfeed
 
+  = render partial: "status_posts/new", locals: { receiver: current_user.person }
   = render partial: posts, as: :post
