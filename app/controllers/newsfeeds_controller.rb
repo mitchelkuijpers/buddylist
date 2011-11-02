@@ -1,7 +1,7 @@
 class NewsfeedsController < ApplicationController
   before_filter :authenticate_user!
 
-  def index
+  def view
     posts = Newsfeed.find_posts current_user.person
 
     #friends = current_user.person.friends

@@ -11,6 +11,7 @@ class Person
   has_one :wall
   has_many :posts
   has_many :comments
+  has_many :notifications
   has_and_belongs_to_many :relationships
 
   # Validation
