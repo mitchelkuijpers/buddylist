@@ -104,13 +104,26 @@
 .menu {
   display: block;
   list-style: none;
+  margin: 0;
+  padding: 0;
 
   li {
     display: block;
+    margin: 0;
+    padding: 0;
     float:left;
 
     a {
       display: inline-block;
+    }
+  }
+
+  &.dotted {
+    li + li:before {
+      content: "·";
+      margin: 0 3px;
+      color: #888;
+      font-weight: bold;
     }
   }
 }
@@ -149,6 +162,7 @@
 }
 .uiButtonLarge {
   line-height: 16px;
+  padding: 3px 16px;
 }
 .uiButton + .uiButton {
   margin-left: 4px
@@ -212,4 +226,69 @@ ul.validation_errors {
 .friendship-controls {
   float: right;
   margin-top: 4px;
+}
+
+.gray-area {
+  border-top: 1px solid #B3B3B3;
+  background: #F2F2F2;
+  margin: 0 0 10px;
+  overflow: auto;
+
+  .validation_errors {
+    margin: 0 0 12px;
+    position: relative;
+  }
+
+  & > form {
+    margin: 12px;
+    padding: 4px 0 0;
+    overflow: auto;
+
+    & > .label,
+    & > .field {
+      line-height: 22px;
+      vertical-align: middle;
+    }
+
+    & > .label {
+      display: block;
+      padding: 5px 0;
+      float: left;
+      clear: both;
+      width: 25%;
+      text-align: right;
+      color: #666;
+      font-weight: bold;
+    }
+    & > .field {
+      float: left;
+      width: 70%;
+      padding-left: 16px;
+
+      .text-input {
+        background: #fff;
+        border: 1px solid #BDC7D8;
+      }
+      .delete {
+        float: right;
+        color: #666;
+
+        p {
+          margin: 3px 0 0;
+        }
+      }
+    }
+
+    hr {
+      display: block;
+      clear: both;
+      padding: 12px 0 0;
+      margin: 0 0 12px;
+      height: 1px;
+      overflow: hidden;
+      border: none;
+      border-bottom: 1px solid #d9d9d9;
+      background: none;
+    }
+  }
 }

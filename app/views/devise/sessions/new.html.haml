@@ -1,0 +1,34 @@
+#side-content
+
+#main-content
+  .island
+
+    %h1 Login
+
+    .gray-area
+      = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |form|
+
+        .label
+          = form.label :email
+        .field
+          = form.email_field :email, {:class => "text-input"}
+
+        .label
+          = form.label :password
+        .field
+          = form.password_field :password, {:class => "text-input"}
+
+        - if devise_mapping.rememberable?
+
+          .label
+          .field
+            = form.check_box :remember_me
+            = form.label :remember_me, { :class => "check-label" }
+
+        %hr
+
+        .label
+        .field
+          = form.submit "Sign in", class: [:uiButton, :uiButtonLarge, :uiButtonConfirm]
+
+    = render :partial => "devise/shared/links"

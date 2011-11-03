@@ -32,6 +32,12 @@ class User
   end
 
 
+  def update_with_password params = { }
+    params.delete(:current_password)
+    update_without_password params
+  end
+
+
   def friend_requests
     # TODO Implement
   end

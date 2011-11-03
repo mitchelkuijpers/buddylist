@@ -1,0 +1,31 @@
+#side-content
+
+#main-content
+  .island
+
+    %h1 Change your password
+
+    .gray-area
+      = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |form|
+        = render partial: "layouts/common/validation_errors", locals: { model: resource }
+
+
+        = form.hidden_field :reset_password_token
+
+        .label
+          = form.label :password, "New password"
+        .field
+          = form.password_field :password, {:class => "text-input"}
+
+        .label
+          = form.label :password_confirmation, "Confirm new password"
+        .field
+          = form.password_field :password_confirmation, {:class => "text-input"}
+
+        %hr
+
+        .label
+        .field
+          = form.submit "Change my password", class: [:uiButton, :uiButtonLarge, :uiButtonConfirm]
+
+    = render :partial => "devise/shared/links"

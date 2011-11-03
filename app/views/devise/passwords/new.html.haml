@@ -1,0 +1,23 @@
+#side-content
+
+#main-content
+  .island
+
+    %h1 Forgot your password?
+
+    .gray-area
+      = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f|
+        =render partial: "layouts/common/validation_errors", locals: { model: resource }
+
+        .label
+          = f.label :email
+        .field
+          = f.email_field :email, {:class => "text-input"}
+
+        %hr
+
+        .label
+        .field
+          = f.submit "Send me reset password instructions", class: [:uiButton, :uiButtonLarge, :uiButtonConfirm]
+
+    = render :partial => "devise/shared/links"

@@ -1,42 +1,37 @@
-.island
+#side-content
 
-  %h1 Edit #{resource_name.to_s.humanize}
+#main-content
+  .island
 
-  = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
-    = devise_error_messages!
+    %h1 Edit profile
 
+    .gray-area
+      = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }, class: 'properties') do |f|
+        = render partial: "layouts/common/validation_errors", locals: { model: resource }
 
-    %div
-      = f.label :email
-      = f.email_field :email, {:class => "text-input"}
+        .label
+          = f.label :name
+        .field
+          = f.text_field :name, {:class => "text-input"}
 
-    %div
-      = f.label :password
-      = f.password_field :password, {:class => "text-input"}
-      %em (leave blank if you don't want to change it)
+        .label
+          = f.label :email
+        .field
+          = f.email_field :email, {:class => "text-input"}
 
-    %div
-      = f.label :password_confirmation
-      = f.password_field :password_confirmation, {:class => "text-input"}
+        -#%div
+        -#  = f.label :password
+        -#  = f.password_field :password, {:class => "text-input"}
+        -#  %em (leave blank if you don't want to change it)
+        -#
+        -#%div
+        -#  = f.label :password_confirmation
+        -#  = f.password_field :password_confirmation, {:class => "text-input"}
 
-    %div
-      = f.label :current_password
-      = f.password_field :current_password, {:class => "text-input"}
-      %em (we need your current password to confirm your changes)
+        %hr
 
-    = f.fields_for :person do |p|
-      = p.label :name
-      = p.text_field :name
-
-
-    %div
-      = f.submit "Update", class: [:uiButton, :uiButtonConfirm]
-
-.island
-
-  %h2 Cancel my account
-
-  %p
-    Unhappy? #{link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete }.
-  %p
-    = link_to "Back", :back
+        .label
+        .field
+          .delete
+            %p or: #{link_to "cancel my account", registration_path(resource_name), :confirm => "Are you sure? This action can't be undone.'", :method => :delete }
+          = f.submit "Update", class: [:uiButton, :uiButtonLarge, :uiButtonConfirm]

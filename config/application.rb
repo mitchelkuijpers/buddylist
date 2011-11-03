@@ -5,7 +5,7 @@ require "action_mailer/railtie"
 require "active_resource/railtie"
 require "rails/test_unit/railtie"
 # Uncomment for asset pipelining in Rails 3.1
-# require "sprockets/railtie"
+require "sprockets/railtie"
 
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
