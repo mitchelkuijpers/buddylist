@@ -1,11 +1,9 @@
 module LikesHelper
 
-  def format_liking_persons likable
-    person = current_user.person
-
+  def format_liking_users likable
     unless likable.likes.blank?
-      formatted = likable.likes.delete_if{ |like| like.person == person }.collect{ |like| link_to like.person.name, person_url(like.person) }
-      formatted.unshift link_to 'You', person_url(person) if likable.liked_by? person
+      formatted = likable.likes.delete_if{ |like| like.user == current_user }.collect{ |like| link_to like.user.name, user_url(like.user) }
+      formatted.unshift link_to 'You', user_url(current_user) if likable.liked_by? current_user
 
       unless formatted.blank?
         formatted.to_sentence.html_safe + " like this."

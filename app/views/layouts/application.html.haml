@@ -15,15 +15,17 @@
       .container
         %a#logo{ href: root_url }
           = image_tag "fauxbook-logo.png"
-        = render partial: "people/search" if user_signed_in?
+        = render partial: "users/search" if user_signed_in?
         = render partial: "users/menu"
 
     #content.container
-      .notifications
-        - unless alert.nil?
-          .message.warning= alert
-        - unless notice.nil?
-          .message.info= notice
+
+      - unless alert.nil? && notice.nil?
+        .notifications
+          - unless alert.nil?
+            .message.warning= alert
+          - unless notice.nil?
+            .message.info= notice
       = yield
 
     %footer#footer
@@ -34,4 +36,5 @@
           #{link_to "Mitchel Kuijpers", "http://www.facebook.com/mitchel.kuijpers"}
           and
           #{link_to "Teun van Vegchel", "http://www.facebook.com/teunvanvegchel"}.
+          Big thanks to #{link_to 'Facebook', "http://www.facebook.com"}.
 

@@ -4,8 +4,9 @@ class StatusPostObserver < Mongoid::Observer
 
     # Don't notify when the person post it on his own wall.
     unless status_post.author == status_post.receiver
-      StatusPostNotification.create({person: status_post.receiver, status_post: status_post})
+      StatusPostNotification.create user: status_post.author, status_post: status_post
     end
+
   end
 
 end

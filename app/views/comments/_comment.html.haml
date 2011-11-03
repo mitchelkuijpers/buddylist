@@ -1,13 +1,17 @@
 .comment
+
+  = user_picture comment.user, :small
+
   %p
-    %span.author  #{link_to_author comment.person}
+    %span.author  #{link_to_author comment.user}
     %span.description #{comment.message}
+
   %ul.menu
     %li.date-created
-      = comment.created_at.strftime 'On %d-%m-%Y at %H:%M'
+      #{time_ago_in_words comment.created_at} ago
     %li
       = render partial: 'likables/likable', locals: { likable: comment }
-    - unless (liking_persons = format_liking_persons(comment)).blank?
-      %li.liking-persons
-        = liking_persons
+    - unless (liking_users = format_liking_users(comment)).blank?
+      %li.liking-users
+        = liking_users
 

@@ -19,10 +19,14 @@ class RelationshipRole
   field :status_user, type: Hash, default: {}
   field :status, type: Boolean, default: false
 
+
   protected
+
+
   def calc_status
     self.status = (status_user.values.inject(:+) == status_user.length * STATUS_ACCEPTED)
     true # Callbacks returning false halt the operation
   end
+
 
 end

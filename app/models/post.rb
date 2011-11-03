@@ -6,23 +6,22 @@ class Post
   # Associations
   include Commentable
   include Likable
-  has_and_belongs_to_many :persons
+  has_and_belongs_to_many :users
 
   # Properties
   field :description
 
+
   def author
-    self.persons.keep_if{|person| person.id == person_ids[0]}.first
+    users.keep_if { |user| user.id == user_ids[0] }.first
   end
+
 
   def receiver
-    self.persons.keep_if{|person| person.id == person_ids[-1]}.first
-  end
-
-  def original_author
-
+    users.keep_if { |user| user.id == user_ids[-1] }.first
   end
 
   # Validations
   validates_presence_of :description
+
 end

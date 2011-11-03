@@ -7,22 +7,6 @@
 */
 
 
-/* Typography */
-
-
-body {
-  font-family: 'lucida grande', tahoma, verdana, arial, sans-serif;
-  font-size: 11px;
-}
-
-a {
-  color: #3B5998;
-}
-
-p {
-}
-
-
 /* Main layout */
 
 
@@ -83,7 +67,21 @@ p {
 }
 
 #content {
-  padding-top: 50px;
+  padding-top: 37px;
+  overflow: auto;
+
+  #side-content {
+    float: left;
+    width: 180px;
+    margin-top: 27px;
+  }
+  #main-content {
+    float: left;
+    width: 639px;
+    min-height: 300px;
+    padding-top: 5px;
+    border-left: 1px solid #ccc;
+  }
 }
 
 #footer .container {
@@ -147,9 +145,10 @@ p {
   text-decoration: none;
   vertical-align: middle;
   white-space: nowrap;
+  color: #1C2A47;
 }
 .uiButtonLarge {
-  line-height: 16px
+  line-height: 16px;
 }
 .uiButton + .uiButton {
   margin-left: 4px
@@ -158,23 +157,33 @@ p {
 .uiButton:active,.uiButtonDepressed{background:#ddd;border-bottom-color:#999;-webkit-box-shadow:0 1px 0 rgba(0, 0, 0, .05)}
 .uiButton .img{margin-top:2px;vertical-align:middle}
 .uiButtonLarge .img{margin-top:4px}
-/*.uiButton .customimg{margin-top:0}*/
-/*.uiButton .uiButtonText,.uiButton input{background:none;border:0;color:#333;cursor:pointer;display:inline-block;font-family:'Lucida Grande', Tahoma, Verdana, Arial, sans-serif;font-size: 11px;font-weight:bold;margin:0;outline:none;padding:1px 0 2px;white-space:nowrap}*/
-/*.uiButtonOverlay,.uiButtonOverlay:hover{-webkit-background-clip:padding-box;background-color:#fff;background-color:rgba(255, 255, 255, .8);background-image:none;border-color:#a5a5a5;border-color:rgba(0, 0, 0, .35);-webkit-border-radius:2px}*/
-/*.uiButtonOverlay:focus,.uiButtonOverlay:active{background-color:#f9fafc;background-color:rgba(249, 250, 252, .9);border-color:#3b5998;border-color:rgba(59, 89, 152, .5)}*/
-.uiButtonConfirm{background-image:url(https://s-static.ak.facebook.com/rsrc.php/v1/yA/r/N8T_oGDfkMw.png);background-repeat:no-repeat;background-position:0 -98px;background-color:#5b74a8;border-color:#29447e #29447e #1a356e; color:#fff}
+.uiButton .customimg{margin-top:0}
+.uiButton .uiButtonText,.uiButton input{background:none;border:0;color:#333;cursor:pointer;display:inline-block;font-family:'Lucida Grande', Tahoma, Verdana, Arial, sans-serif;font-size: 11px;font-weight:bold;margin:0;outline:none;padding:1px 0 2px;white-space:nowrap}
+.uiButtonOverlay,.uiButtonOverlay:hover{-webkit-background-clip:padding-box;background-color:#fff;background-color:rgba(255, 255, 255, .8);background-image:none;border-color:#a5a5a5;border-color:rgba(0, 0, 0, .35);-webkit-border-radius:2px}
+.uiButtonOverlay:focus,.uiButtonOverlay:active{background-color:#f9fafc;background-color:rgba(249, 250, 252, .9);border-color:#3b5998;border-color:rgba(59, 89, 152, .5)}
+.uiButtonConfirm{background-image:url(fb_sprite_1.png);background-repeat:no-repeat;background-position:0 -98px;background-color:#5b74a8;border-color:#29447e #29447e #1a356e; color:#fff}
 .uiButtonConfirm:active{background:#4f6aa3;border-bottom-color:#29447e}
 
-button, input[type=submit], input[type=reset] {
-
+.uiLink {
+  border: 0;
+  background: none;
+  display: inline;
+  padding: 0;
+  margin: 0;
 }
-
 
 
 .uiTextInputWrapper {
   overflow: auto;
   background: #fff;
   border: 1px solid #BDC7D8;
+
+  input[type=text],
+  input[type=submit] {
+    margin: 2px 0;
+    display: block;
+    height: 19px;
+  }
 
   input[type=text] {
     margin: 2px 0 2px 4px;
@@ -192,17 +201,15 @@ button, input[type=submit], input[type=reset] {
     margin-right: 2px;
     float: right;
   }
-
-  input[type=text],
-  input[type=submit] {
-    margin: 2px 0;
-    display: block;
-    height: 19px;
-  }
-
 }
-
 
 ul.validation_errors {
   margin: 5px 0;
+}
+
+
+
+.friendship-controls {
+  float: right;
+  margin-top: 4px;
 }

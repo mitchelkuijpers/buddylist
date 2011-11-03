@@ -1,4 +1,4 @@
-- unless likable.liked_by? current_user.person
+- unless likable.liked_by? current_user
   = render partial: 'likes/new', locals: { likable: likable }
 - else
   = render partial: 'likes/destroy', locals: { likable: likable }
