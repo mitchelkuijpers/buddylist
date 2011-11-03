@@ -19,6 +19,10 @@ class Post
     self.persons.keep_if{|person| person.id == person_ids[-1]}.first
   end
 
+  def original_author
+
+  end
+
   # Validations
   validates_presence_of :description
 end
