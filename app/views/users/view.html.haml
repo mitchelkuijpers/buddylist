@@ -1,0 +1,19 @@
+#side-content
+
+  = render partial: "users/sidebar", locals: { user: user }
+
+#main-content
+  .island
+
+    = render partial: 'users/manage_friend', locals: { user: user }
+
+    %h1= user.name
+
+    %dl
+      %dt ID
+      %dd= user.id
+      %dt Name
+      %dd= user.name
+
+    = render partial: 'status_posts/new', locals: { receiver: user }
+    = render partial: user.posts.reverse, as: :post

@@ -1,8 +1,8 @@
 (function( $ ) {
-    jQuery.fn.personsAutocomplete = function(options) {
+    jQuery.fn.usersAutocomplete = function(options) {
 
         var settings = {
-            'url':        '/persons/',
+            'url':        '/users/',
             'loader_class': '.loader',
         };
 
@@ -15,7 +15,7 @@
 
             // put jquery ui autocompletion on given element
             $(this).autocomplete({
-                source: searchPerson,
+                source: searchUsers,
                 autoFocus: true,
                 delay: 300,
                 select: function(event, ui) {
@@ -25,10 +25,10 @@
             })
 
             // make an ajax call to search for the person
-            function searchPerson( request, response) {
+            function searchUsers( request, response) {
                 request = $.ajax({
-                    url: '/persons/search.json',
-                    data: { person_name : request.term},
+                    url: settings.url + 'search.json',
+                    data: { user_name : request.term},
                     beforeSend: showLoader,
                     success: function (data) {
                         response( $.map( data, createItem));

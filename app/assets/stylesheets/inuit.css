@@ -354,8 +354,8 @@ a:hover{
 a:active,
 a:focus{
 	/* Give clicked links a depressed effect. */
-	position:relative;
-	top:1px;
+	/*position:relative;*/
+	/*top:1px;*/
 }
 
 /*--- LISTS ---*/

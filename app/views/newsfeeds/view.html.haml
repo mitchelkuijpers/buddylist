@@ -1,7 +1,8 @@
-.island
+%aside#side-content
+  = render partial: "users/sidebar", locals: { user: current_user }
 
-  %h1
-    Newsfeed
+#main-content
+  .island
 
-  = render partial: "status_posts/new", locals: { receiver: current_user.person }
-  = render partial: posts, as: :post
+    = render partial: "status_posts/new", locals: { receiver: current_user }
+    = render partial: posts, as: :post

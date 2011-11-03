@@ -1,8 +1,0 @@
-- unless current_user.person == person
-  %p
-    - if current_user.person.friend_of? person
-      #{person.name} is a friend of yours.
-      = link_to "Unfriend", destroy_friend_url(person), method: :delete
-    - else
-      = link_to "Add #{person.name} as a friend »", create_friend_url(person), method: :post
-

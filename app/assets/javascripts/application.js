@@ -9,6 +9,6 @@
 
 
  $(document).ready(function(){
-    $("#person_name").personsAutocomplete()
+    $("#user_name").usersAutocomplete()
  });
 

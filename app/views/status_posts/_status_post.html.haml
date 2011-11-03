@@ -1,19 +1,23 @@
 .post.status-post
+
+  = user_picture post.author, :medium
+
   %p.author
     - unless post.author == post.receiver
-      #{link_to_author post.author} »
+      #{link_to_author post.author}
+      %span.to ►
     #{link_to_author post.receiver}
   %p
     = post.description
 
   %ul.menu
     %li.date-created
-      = post.created_at.strftime 'On %d-%m-%Y at %H:%M'
+      #{time_ago_in_words post.created_at} ago
     %li
       = render partial: "likables/likable", locals: { likable: post }
 
   .reactions
-    - unless (liking_persons = format_liking_persons(post)).blank?
-      .liking-persons= liking_persons
+    - unless (liking_users = format_liking_users(post)).blank?
+      .liking-users= liking_users
 
     = render partial: "commentable/commentable", locals: { commentable: post }
