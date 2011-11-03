@@ -2,11 +2,11 @@
 
   %h1 Find a person
 
-  - unless people.blank?
-    %p We found #{pluralize(people.length, 'person')}:
+  - unless users.blank?
+    %p We found #{pluralize(users.length, 'user')}:
     %ul
-      - for person in people
-        %li= link_to person.name, person_url(person)
+      - for user in users
+        %li= link_to user.name, user_url(user)
   - else
     %p.no-results
       - unless searchterm.blank?

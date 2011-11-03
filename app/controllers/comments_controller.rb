@@ -13,11 +13,11 @@ class CommentsController < ApplicationController
     commentable = retrieve_commentable
 
     @comment             = Comment.new params[:comment]
-    @comment.person      = current_user.person
+    @comment.user        = current_user
     @comment.commentable = commentable
 
     if @comment.valid? && @comment.save
-      redirect_to_back polymorphic_path(commentable)
+      redirect_to_back polymorphic_path commentable
     else
       render action: :new, locals: { commentable: commentable }
     end

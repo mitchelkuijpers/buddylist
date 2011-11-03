@@ -4,11 +4,11 @@ class Like
 
   # Associations
   belongs_to :likable, polymorphic: true
-  belongs_to :person
+  belongs_to :user
 
 
-  def self.by_person person
-    where person_id: person.id
+  def self.by_user user
+    where user_id: user.id
   end
 
 end

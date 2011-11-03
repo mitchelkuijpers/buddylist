@@ -1,0 +1,21 @@
+body {
+  font-family: 'lucida grande', tahoma, verdana, arial, sans-serif;
+  font-size: 11px;
+}
+
+h1 {
+  color: #1C2A47;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+a,
+.uiLink {
+  color: #3B5998;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+

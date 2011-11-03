@@ -6,7 +6,7 @@ class Comment
   # Associations
   include Likable
   belongs_to :commentable, polymorphic: true
-  belongs_to :person
+  belongs_to :user
 
   # Validation
   validates_presence_of :message
