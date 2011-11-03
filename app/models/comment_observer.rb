@@ -5,11 +5,11 @@ class CommentObserver < Mongoid::Observer
     original_author   = comment.commentable.author.id
     original_receiver = comment.commentable.receiver.id
 
-    commenters = comment.commentable.comments.collect(&:person_id)
+    commenters = comment.commentable.comments.collect(&:user_id)
     commenters << original_receiver << original_author
 
     # remove current_commenter
-    current_commenter = comment.person.id
+    current_commenter = comment.user.id
     commenters.delete(current_commenter)
 
     # remove duplicates
