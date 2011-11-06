@@ -28,8 +28,8 @@ relations = [
         Relationship.create!(users: [users[1], users[2]])
 ]
 roles     = [
-        relations[0].relationship_roles.create!(status: true, role: RelationshipRole::ROLE_FRIEND, status_user: { users[0].id.to_s => RelationshipRole::STATUS_ACCEPTED, users[1].id.to_s => RelationshipRole::STATUS_ACCEPTED }),
-        relations[1].relationship_roles.create!(status: true, role: RelationshipRole::ROLE_FRIEND, status_user: { users[1].id.to_s => RelationshipRole::STATUS_ACCEPTED, users[2].id.to_s => RelationshipRole::STATUS_ACCEPTED })
+        relations[0].roles << FriendsRelationshipRole.new(status: [RelationshipRole::STATUS_ACCEPTED, RelationshipRole::STATUS_ACCEPTED]),
+        relations[1].roles << FriendsRelationshipRole.new(status: [RelationshipRole::STATUS_ACCEPTED, RelationshipRole::STATUS_ACCEPTED])
 ]
 
 # Posts

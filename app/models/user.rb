@@ -41,7 +41,7 @@ class User
   # @return [Array] List of friended Users
   #
   def friends
-    friends = relationships.by_accepted_role(RelationshipRole::ROLE_FRIEND).collect(&:users).flatten.uniq
+    friends = relationships.by_accepted_role(:friends).collect(&:users).flatten.uniq
     friends.delete(self)
     friends
   end
