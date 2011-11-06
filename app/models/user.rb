@@ -48,6 +48,11 @@ class User
   end
 
 
+  def search_friends_by_name name
+
+  end
+
+
   class << self
 
 

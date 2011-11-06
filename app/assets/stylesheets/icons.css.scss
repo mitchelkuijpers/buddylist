@@ -1,0 +1,20 @@
+
+.icon {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  background: url("icons.png");
+  vertical-align: top;
+  margin: 0 2px;
+
+  &.small {
+    width: 16px;
+    height: 16px;
+    line-height: 18px;
+
+    &.tag-user {              background-position: -278px -26px   }
+    &.like {                  background-position: -312px -38px   }
+    &.destroy-post {          background-position: -503px -2px    }
+    &.destroy-post:hover {    background-position: -503px -34px   }
+  }
+}

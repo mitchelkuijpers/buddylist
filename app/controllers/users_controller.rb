@@ -6,7 +6,6 @@ class UsersController < ApplicationController
   end
 
   def search
-    # TODO: Make security less strict
     user_name = params[:user_name] || ''
 
     users = User.search_by_name user_name
@@ -14,6 +13,19 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html { render locals: { users: users, searchterm: user_name } }
       format.json { render json: users }
+    end
+  end
+
+  def view_friends
+    user = User.find params[:user_id]
+    user_name = params[:q]
+
+    friends = user.friends.keep_if { |user| user.name =~ /#{user_name}/i }
+    friends.map! { |user| { id: user.id, name: user.name } }
+
+    respond_to do |format|
+      # TODO: HTML version
+      format.json { render json: friends }
     end
   end
 

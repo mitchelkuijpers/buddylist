@@ -7,14 +7,17 @@ Buddylist::Application.routes.draw do
   # Users
   get     'users/search(.format)' => 'users#search',                    as: :search_user
   get     'users/:user_id(.:format)' => 'users#view',                   as: :user
+  get     'users/:user_id/friends(.:format)' => 'users#view_friends',   as: :user_friends
 
   # Posts
   post    'status/create' => 'statusPosts#create',                      as: :create_status_post
   get     'status/:post_id(.:format)' => 'statusPosts#view',            as: :status_post
+  delete  'status/:post_id/destroy' => 'statusPosts#destroy',           as: :destroy_status_post
 
   # Comments
-  get     'comments/view/:comment_id(.:format)' => 'comments#view',     as: :comment
   post    'comments/create' => 'comments#create',                       as: :create_comment
+  get     'comments/:comment_id(.:format)' => 'comments#view',          as: :comment
+  delete  'comments/:comment_id/destroy' => 'comments#destroy',         as: :destroy_comment
 
   # Likes
   post    'likes/create' => 'likes#create',                             as: :create_like

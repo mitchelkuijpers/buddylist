@@ -1,6 +1,5 @@
-
 .post {
-  padding: 12px 0 14px 60px;
+  padding: 12px 0 12px 60px;
   border-width: 1px 0;
   border-style: solid;
   border-color: #E9E9E9;
@@ -19,73 +18,42 @@
 
   p {
     margin: 2px 0;
+  }
+  p.author {
+    margin-top: 0px;
 
-    &.author {
-      margin-top: 0px;
+    .to {
+      color: #999;
+      font-size: 9px;
+      padding: 0 3px;
+    }
+  }
+  p.description {
+    word-wrap: break-word;
 
-      .to {
-        color: #999;
-        font-size: 9px;
-        padding: 0 3px;
+    .with {
+      color: #888;
+      &:before {
+        content: ' — ';
+        padding: 0 2px;
+        font-weight: bold;
       }
     }
-    &.description {
-      word-wrap: break-word;
-    }
   }
 
-  .date-created {
-    color: #888;
+  & > a.destroy {
+    position: absolute;
+    top: 11px;
+    right: 3px;
+    display: none;
   }
-
-  & > .reactions {
-    border-top: 1px solid #D2D9E7;
-    padding: 1px 0 0;
-    width: 420px;
-  }
-
-
-  & > .reactions > .comments > .new_comment,
-  & > .reactions > .liking-users {
-    background: #EDEFF4;
-    border-bottom: 1px solid #D2D9E7;
-    margin-bottom: 1px;
-    padding: 5px 10px;
-    width: 400px;
-    color: #777;
-  }
-
-  & > .reactions > .comments > .new_comment {
-    display: inline-block;
-    vertical-align: top;
-    position: relative;
-    padding: {
-      top: 3px;
-      bottom: 3px;
-    }
-
-    .uiTextInputWrapper {
-      width: 398px;
-
-      input[type=text] {
-        width: 290px;
-        left: 3px;
-        position: relative;
-      }
-
-      .uiButton {
-        width: 100px;
-        margin-right: 2px;
-      }
-    }
+  &:hover > a.destroy {
+    display: block;
   }
 
   & > ul {
-    /*background: #f5f5f5;*/
-    /*border: solid #e9e9e9;*/
-    /*border-width: 1px 0;*/
-    /*padding: 6px 9px 3px;*/
-    margin: 2px 0 5px;
+    margin: 2px 0 0px;
+    color: #888;
 
     li {
       float: none;
@@ -96,7 +64,6 @@
         vertical-align: top;
       }
     }
-
     li + li:before {
       margin: 0;
       content: "·";
@@ -104,26 +71,45 @@
       color: #888;
     }
   }
-}
 
-.new_status_post {
-  .uiTextInputWrapper {
-    input[type=submit] {
-      width: 70px;
+  .reactions {
+    width: 420px;
+
+    & > *:first-child {
+      margin-top: 6px;
     }
-    input[type=text] {
-      width: 527px;
+  }
+  .reactions > .new_comment,
+  .reactions > .liking-users {
+    background: #EDEFF4;
+    border-bottom: 1px solid #D2D9E7;
+    margin-bottom: 1px;
+    padding: 5px 10px;
+    color: #777;
+  }
+  .reactions > .liking-users > .icon.like {
+    margin-left: 0;
+  }
+  .reactions .new_comment {
+    display: block;
+    display: none;
+    vertical-align: top;
+    position: relative;
+    padding: 7px 7px 7px 52px;
+
+    & > .user-picture {
+      position: absolute;
+      left: 10px;
+      top: 7px;
     }
   }
 }
-
 
 .comment {
   background: #EDEFF4;
   border-bottom: 1px solid #D2D9E7;
   margin-bottom: 1px;
-  padding: 5px 10px 5px 52px;
-  width: 358px;
+  padding: 5px 20px 5px 52px;
   position: relative;
 
   .date-created {
@@ -137,6 +123,16 @@
     position: absolute;
     left: 10px;
     top: 7px;
+  }
+
+  & > a.destroy {
+    display: none;
+    position: absolute;
+    right: 2px;
+    top: 5px;
+  }
+  &:hover > a.destroy {
+    display: block;
   }
 
   & > ul {

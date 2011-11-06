@@ -5,6 +5,7 @@ class Comment
 
   # Associations
   include Likable
+  include UserTaggable
   belongs_to :commentable, polymorphic: true
   belongs_to :user
 

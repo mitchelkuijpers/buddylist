@@ -6,10 +6,8 @@ class Post
   # Associations
   include Commentable
   include Likable
+  include UserTaggable
   has_and_belongs_to_many :users
-
-  # Properties
-  field :description
 
 
   def author
@@ -20,8 +18,5 @@ class Post
   def receiver
     users.keep_if { |user| user.id == user_ids[-1] }.first
   end
-
-  # Validations
-  validates_presence_of :description
 
 end

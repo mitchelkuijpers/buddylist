@@ -78,8 +78,7 @@
   #main-content {
     float: left;
     width: 639px;
-    min-height: 300px;
-    padding-top: 5px;
+    padding-top: 1px;
     border-left: 1px solid #ccc;
   }
 }
@@ -136,12 +135,11 @@
 }
 
 
-
 .uiButton,
 .uiButtonSuppressed:active,
 .uiButtonSuppressed:focus,
 .uiButtonSuppressed:hover {
-  background-image: url(https://s-static.ak.facebook.com/rsrc.php/v1/yA/r/N8T_oGDfkMw.png);
+  background-image: url(fb_sprite_1.png);
   background-repeat: no-repeat;
   background-position: 0 -49px;
   background-color: #eee;
@@ -190,43 +188,124 @@
 .uiTextInputWrapper {
   overflow: auto;
   background: #fff;
-  border: 1px solid #BDC7D8;
+  border: 1px solid #b7becd;
+  padding: 0;
 
-  input[type=text],
-  input[type=submit] {
-    margin: 2px 0;
-    display: block;
-    height: 19px;
+  .input {
+    position: relative;
+    overflow: auto;
+    padding: 3px;
+
+
+    textarea {
+      display: block;
+      padding: 0;
+      background: none;
+      outline: none;
+      border: none;
+      width: 100%;
+      resize: none;
+      height: 26px;
+      min-height: 13px;
+      line-height: 13px;
+      font-size: 11px;
+    }
+
+    &.with-label {
+      padding-left: 70px;
+
+      & > label {
+        position: absolute;
+        width: 55px;
+        left: 0;
+        top: 0;
+        padding: 3px 5px;
+        border-right: 1px dashed #ddd;
+        text-align: right;
+        color: #777;
+      }
+    }
+  }
+  .input + .input {
+    border-top: 1px dashed #ddd;
   }
 
-  input[type=text] {
-    margin: 2px 0 2px 4px;
-    padding: 0;
-    background: none;
-    outline: none;
-    border: none;
-    height: auto;
-    min-height: 19px;
-    line-height: 19px;
-    float: left;
+  .input.large textarea {
+    height: 28px;
+    min-height: 14px;
+    line-height: 14px;
+    font-size: 12px;
   }
 
-  input[type=submit] {
-    margin-right: 2px;
-    float: right;
+  .controls.large {
+    height: 28px;
+    ul.menu li {
+      line-height: 28px;
+    }
+  }
+
+  .controls {
+    background: #f5f5f5;
+    padding: 1px;
+    border-top: 1px solid #ddd;
+    overflow: auto;
+    height: 23px;
+
+    input[type=submit] {
+      float: right;
+      display: block;
+    }
+    ul.menu {
+      display: block;
+      float: left;
+      height: inherit;
+      margin: -1px;
+      padding: 0;
+
+      li {
+        height: inherit;
+        display: block;
+        float: left;
+        padding: 1px 8px;
+        margin: 0;
+        border-right: 1px solid #ddd;
+        cursor: pointer;
+        color: #999;
+        line-height: 23px;
+
+        .icon.small {
+          margin-top: 3px;
+        }
+
+        &:hover {
+          background: #f6f6f6;
+        }
+
+        &.active,
+        &.active:hover {
+          background: #fafafa;
+        }
+      }
+    }
   }
 }
+
+.uiTextInputWrapper .input.tag_users {
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
 
 ul.validation_errors {
   margin: 5px 0;
 }
 
 
-
 .friendship-controls {
   float: right;
-  margin-top: 4px;
+  margin-top: 10px;
 }
+
 
 .gray-area {
   border-top: 1px solid #B3B3B3;
@@ -292,3 +371,4 @@ ul.validation_errors {
     }
   }
 }
+

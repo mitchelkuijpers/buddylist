@@ -4,7 +4,15 @@
 
   = hidden_field_tag :receiver_id, receiver.id
 
-  .uiTextInputWrapper
-    = form.text_field :description, placeholder: "What's keeping you busy?"
-    = form.submit "Share", class: [:uiButton, :uiButtonConfirm]
+  .uiTextInputWrapper.small
+    .input.large.post-description
+      = form.text_area :description, placeholder: "What's keeping you busy?", class: :autogrow
+    .input.tag_users.with-label.hidden
+      %label With
+      = text_area_tag :tagged_users, nil, placeholder: "With…", class: "token-input", "data-source" => user_friends_url(current_user)
+    .controls.show-on-focus
+      %ul.menu
+        %li{ "data-toggle" => ".input.tag_users"}
+          %span.icon.small.tag-user
+      = form.submit "Share", class: [:uiButton, :uiButtonConfirm]
 %br

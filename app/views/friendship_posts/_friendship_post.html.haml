@@ -6,5 +6,6 @@
     #{link_to_author post.author}
     is now friends with
     #{link_to_user post.receiver}.
-  %p.date-created
-    #{time_ago_in_words post.created_at} ago
+  %ul
+    %li.date-created
+      #{time_ago_in_words post.created_at} ago
