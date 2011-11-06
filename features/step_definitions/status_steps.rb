@@ -1,6 +1,6 @@
-When /^"([^"]*)" has a status update "([^"]*)"$/ do |person_name, description|
-  person = Person.where name: person_name
-  StatusPost.create description: description, persons: [person, person]
+When /^"([^"]*)" has a status update "([^"]*)"$/ do |user_name, description|
+  user = User.where(name: user_name).first
+  StatusPost.create description: description, users: [user, user]
 end
 
 When /^I have a status update$/ do

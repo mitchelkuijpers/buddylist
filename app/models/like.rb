@@ -4,12 +4,7 @@ class Like
   include Mongoid::Timestamps
 
   # Associations
-  embedded_in :likable
-  belongs_to :user
-
-
-  #def self.by_user user
-  #  where user_id: user.id
-  #end
+  embedded_in :likable, polymorphic: true
+  belongs_to :created_by, class_name: "User"
 
 end

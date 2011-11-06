@@ -10,7 +10,7 @@ class RelationshipRole
   ROLE_FAMILY         = 3
 
   include Mongoid::Document
-  embedded_in :relationship
+  embedded_in :relation
 
   before_save :calc_status
   before_update :calc_status

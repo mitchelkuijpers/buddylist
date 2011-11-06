@@ -3,13 +3,13 @@
   %a{ href: destroy_status_post_url(post), class: :destroy, "data-method" => "delete", "data-confirm" => "Are you sure you want to delete this post?"}
     %span.icon.small.destroy-post
 
-  = user_picture post.author, :medium
+  = user_picture post.created_by, :medium
 
   %p.author
-    - unless post.author == post.receiver
-      #{link_to_author post.author}
+    - unless post.created_by == post.created_for
+      #{link_to_author post.created_by}
       %span.to ►
-    #{link_to_author post.receiver}
+    #{link_to_author post.created_for}
 
     - unless (tagged_users = format_tagged_users(post)).blank?
       = simple_format post.description + tagged_users, class: :description, sanitize: false

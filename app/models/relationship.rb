@@ -3,7 +3,6 @@ class Relationship
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  field :tid, type: String
   embeds_many :relationship_roles
   has_and_belongs_to_many :users
 

@@ -1,4 +1,5 @@
 class RelationshipObserver < Mongoid::Observer
+
   observe :relationship_role
 
   def after_save relationship

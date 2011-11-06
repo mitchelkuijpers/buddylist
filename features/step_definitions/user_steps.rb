@@ -3,8 +3,7 @@ Given /^I am not authenticated$/ do
 end
 
 Given /^I have one user "([^\"]*)" with password "([^\"]*)" and name "([^\"]*)"$/ do |email, password, name|
-  user = User.create! email: email, password: password, password_confirmation: password
-  user.person = Person.create! name: name
+  user = User.create! name: name, email: email, password: password, password_confirmation: password
 end
 
 Given /^I am logged in as user "([^\"]*)" with password "([^\"]*)"$/ do |email, password|
@@ -26,10 +25,10 @@ Given /^I am a new, authenticated user$/ do
   Given %{I am logged in as user "#{email}" with password "#{password}"}
 end
 
-When /^I am the profile page of "([^"]*)"$/ do |person_name|
-  person = Person.where name: person_name
-  visit("/person/#{person[0]._id}")
-  page.should have_content(person_name)
+When /^I am the profile page of "([^"]*)"$/ do |user_name|
+  user = User.where(name: user_name).first
+  visit(user_url user)
+  page.should have_content(user_name)
 end
 
 When /^I am the profile page of myself$/ do

@@ -8,10 +8,10 @@ module LikesHelper
   def format_liking_users likable
     unless likable.likes.blank?
       # Remove the current user because we want him to be on front and with 'You' instead of his name.
-      format = likable.likes.reject { |like| like.user == current_user }
+      format = likable.likes.reject { |like| like.created_by == current_user }
 
       # Create links to the liking users (still without current_user).
-      format.collect! { |like| link_to like.user.name, user_url(like.user) }
+      format.collect! { |like| link_to like.created_by.name, user_url(like.created_by) }
 
       if likable.liked_by? current_user
         # Add current_user to the front of the list.

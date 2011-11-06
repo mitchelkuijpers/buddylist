@@ -1,29 +1,53 @@
+
+# Comment Controller
+#
+# Creates, displays and destroys Comments (on Commentables).
+#
+# @see Comment
+# @see Commentable
+#
 class CommentsController < ApplicationController
 
+  # Require an authenticated user
+  before_filter :authenticate_user!
+
+
+  # View a comment
+  #
+  # Redirects to the commentable's path, so the comment can be viewed in proper context.
+  #
   def view
     comment = Comment.find params[:comment_id]
 
     redirect_to polymorphic_path comment.commentable
   end
 
-  def create
-    commentable = retrieve_commentable
 
+  # Create a Comment on a Commentable
+  #
+  def create
+    # Create the comment
     @comment             = Comment.new params[:comment]
-    @comment.user        = current_user
-    @comment.commentable = commentable
+    @comment.created_by  = current_user
+    @comment.commentable = retrieve_commentable
 
     if @comment.valid? && @comment.save
+      # Create user tags (if provided)
       params[:tagged_users].split(",").each do |user_id|
-        @comment.user_tags.create!(user_id: user_id)
+        @comment.user_tags.create! user_id: user_id
       end
 
-      redirect_to_back polymorphic_path commentable
+      # Redirect back, or to the commentable's url
+      redirect_to_back polymorphic_path @comment.commentable
     else
-      render action: :new, locals: { commentable: commentable }
+      # Display the create comment form
+      render action: :new, locals: { commentable: @comment.commentable }
     end
   end
 
+
+  # Destroy a comment
+  #
   def destroy
     comment = Comment.find params[:comment_id]
     comment.delete
@@ -31,12 +55,21 @@ class CommentsController < ApplicationController
     redirect_to_back polymorphic_path comment.commentable
   end
 
+
   private
 
+
+  # Display the form for creating new comments.
+  #
   def new
 
   end
 
+
+  # Retrieve the commentable based on the provided type and id.
+  #
+  # @return [Commentable] The commentable the comment is related with.
+  #
   def retrieve_commentable
     collection = Object::const_get params[:commentable_type]
 

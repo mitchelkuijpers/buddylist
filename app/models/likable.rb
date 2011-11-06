@@ -5,7 +5,7 @@ module Likable
     def included model
 
       # Relations
-      model.embeds_many :likes
+      model.embeds_many :likes, as: :likable
 
     end
 
@@ -14,7 +14,7 @@ module Likable
   # Check whether a user likes this Likable.
   #
   def liked_by? user
-    not likes.reject { |like| like.user != user }.blank?
+    not likes.reject { |like| like.created_by != user }.blank?
   end
 
 end

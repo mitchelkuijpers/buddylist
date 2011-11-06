@@ -1,25 +1,22 @@
 class CommentObserver < Mongoid::Observer
 
-  # When a comment is saved, create a notification
-  def after_save comment
-    original_author   = comment.commentable.author.id
-    original_receiver = comment.commentable.receiver.id
+  # After a comment is created, create a notification.
+  #
+  def after_create comment
+    # Collect all users that commented on the commentable
+    commenters = comment.commentable.comments.collect &:created_by
 
-    commenters = comment.commentable.comments.collect(&:user_id)
-    commenters << original_receiver << original_author
+    # Add the creator and recipient of the commentable
+    commenters << comment.commentable.created_by
+    commenters << comment.commentable.created_for
 
-    # remove current_commenter
-    current_commenter = comment.user.id
-    commenters.delete(current_commenter)
+    # Remove the user that created this comment
+    commenters.delete comment.created_by
 
-    # remove duplicates
-    commenters = commenters.uniq
-
-    # notify persons
-    for person in commenters
-      CommentNotification.create( { person: person, comment: comment } )
+    # Notify all users (only one notification per user)
+    for user in commenters.uniq
+      CommentNotification.create user: user, comment: comment
     end
-
   end
 
 end

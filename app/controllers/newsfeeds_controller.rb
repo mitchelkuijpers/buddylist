@@ -1,13 +1,24 @@
+
+# Newsfeeds Controller
+#
+# Displays the logged-in user's newsfeed.
+#
+# @see Newsfeed
+#
 class NewsfeedsController < ApplicationController
+
+  # Require an authenticated user
   before_filter :authenticate_user!
 
 
+  # View the current user's newsfeed.
+  #
   def view
-    posts = Post.where "user_ids.0" => { "$in" => (current_user.friends.collect(&:id) << current_user.id) }
+    newsfeed = Newsfeed.new current_user
 
     respond_to do |format|
-      format.html { render locals: { posts: posts.reverse } }
-      format.json { render json: posts.reverse }
+      format.html { render locals: { newsfeed: newsfeed } }
+      format.json { render json: newsfeed.posts }
     end
   end
 

@@ -1,11 +1,9 @@
 class LikeObserver < Mongoid::Observer
 
-  def after_save like
-
-    unless like.likable.user == like.user
-      LikeNotification.create like: like, user: like.likable.user.id
+  def after_create like
+    unless like.likable.created_by == like.created_by
+      LikeNotification.create like: like, user: like.likable.created_by
     end
-
   end
 
   def before_destroy like

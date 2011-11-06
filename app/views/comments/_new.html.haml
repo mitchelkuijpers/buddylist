@@ -1,3 +1,6 @@
+
+-# TODO attempt Comment.new(commentable: commentable) with form.hidden_field instead of tags.
+
 = form_for (@comment ||= Comment.new), url: create_comment_url do |form|
 
   = hidden_field_tag :commentable_id, commentable.id
