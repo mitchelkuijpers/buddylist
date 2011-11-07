@@ -42,8 +42,7 @@ gem 'ZenTest'
 
 gem 'i18n'
 
-# browser simulation
-gem "capybara"
+
 
 group :test, :cucumber do
   gem "nokogiri"
@@ -51,6 +50,9 @@ group :test, :cucumber do
   gem "database_cleaner"
   gem "cucumber-rails"
   gem 'factory_girl_rails'
+  gem "capybara"
+  gem 'launchy'
+  gem 'capybara-webkit'
 end
 
 group :test, :development do

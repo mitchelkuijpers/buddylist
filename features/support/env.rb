@@ -14,7 +14,7 @@ Capybara.run_server = true #Whether start server when testing
 Capybara.default_selector = :css #Selector
 Capybara.default_wait_time = 2 #When we testing AJAX, we can set a default wait time
 Capybara.ignore_hidden_elements = true #Ignore hidden elements when testing, make helpful when you hide or show elements using javascript
-Capybara.javascript_driver = :culerity #default driver when you using @javascript tag
+Capybara.javascript_driver = :webkit
 
 # By default, any exception happening in your Rails application will bubble up
 # to Cucumber so that your scenario will fail. This is a different from how 

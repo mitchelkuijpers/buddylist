@@ -15,6 +15,6 @@ Feature: Post Comments
 
   Scenario: Get an error when trying to post en empty comment
     When I post a comment "" on the status update "I feel good today"
-    Then I should see a warning
+    Then I should see an error
 
 

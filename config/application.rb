@@ -61,5 +61,6 @@ module Buddylist
 
     # Instantiation of the Observers
     config.mongoid.observers = :comment_observer, :status_post_observer, :relationship_observer
+
   end
 end
