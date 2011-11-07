@@ -1,23 +1,26 @@
-.comment
+- if can? :view, comment
+  .comment
 
-  %a{ href: destroy_comment_url(comment), class: :destroy, "data-method" => "delete", "data-confirm" => "Are you sure you want to delete this comment?"}
-    %span.icon.small.destroy-post
+    - if can? :destroy, comment
+      %a{ href: destroy_comment_url(comment), class: :destroy, "data-method" => "delete", "data-confirm" => "Are you sure you want to delete this comment?"}
+        %span.icon.small.destroy-post
 
-  = user_picture comment.created_by, :small
+    = user_picture comment.created_by, :small
 
-  %p.author
-    = link_to_author comment.created_by
+    %p.author
+      = link_to_author comment.created_by
 
-  - unless (tagged_users = format_tagged_users(comment)).blank?
-    = simple_format comment.message + tagged_users, class: :description, sanitize: false
-  - else
-    = simple_format comment.message, class: :description, sanitize: false
+    - unless (tagged_users = format_tagged_users(comment)).blank?
+      = simple_format comment.message + tagged_users, class: :description, sanitize: false
+    - else
+      = simple_format comment.message, class: :description, sanitize: false
 
-  %ul.menu
-    %li.date-created
-      #{time_ago_in_words comment.created_at} ago
-    %li
-      = render partial: 'likables/likable', locals: { likable: comment }
-    - unless (liking_users = format_liking_users(comment)).blank?
-      %li.liking-users
-        = liking_users
+    %ul.menu
+      %li.date-created
+        #{time_ago_in_words comment.created_at} ago
+      - if can? :create_like, comment
+        %li
+          = render partial: 'likables/likable', locals: { likable: comment }
+      - unless (liking_users = format_liking_users(comment)).blank?
+        %li.liking-users
+          = liking_users

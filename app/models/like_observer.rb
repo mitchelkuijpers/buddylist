@@ -7,7 +7,7 @@ class LikeObserver < Mongoid::Observer
   end
 
   def before_destroy like
-    LikeNotification.where(like_id: like.id, user_id: like.likable.user.id).delete_all
+    LikeNotification.where(like_id: like.id, user_id: like.likable.created_by.id).delete_all
   end
 
 end

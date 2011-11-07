@@ -1,3 +1,4 @@
+
 # User
 #
 # Represents a user, a person that is registered to the application. Contains personal and authentication information.
@@ -56,6 +57,11 @@ class User
   end
 
 
+  # Checks whether the user accepted a friendship role for a certain user.
+  #
+  # @param user [User] The user to check for a friendship role
+  # @param [Boolean] Whether the user accepted the friendship role
+  #
   def requested_friend? user
     relation = Relationship.find_or_create_for_users self, user
     role     = relation.find_or_create_role :friends
@@ -63,8 +69,15 @@ class User
   end
 
 
+  # Lists all users who have issued a friend request to the user.
+  #
+  # @return [Array] List of users
+  #
   def friend_requests
-    relations = relationships.by_unaccepted_role(:friends).keep_if { |role| role.get_status(self) == RelationshipRole::STATUS_ACCEPTED }
+    relations = relationships.by_unaccepted_role(:friends).reject do |relationship|
+      role = relationship.find_or_create_role :friends
+      role.get_status(self) == RelationshipRole::STATUS_ACCEPTED
+    end
     friends = relations.collect(&:users).flatten.uniq
     friends.delete(self)
     friends
@@ -86,6 +99,32 @@ class User
   def update_with_password params = { }
     params.delete(:current_password)
     update_without_password params
+  end
+
+
+  def owns? item
+    if item.respond_to? :created_by
+      if item.respond_to? :created_for
+        item.created_by == self or item.created_for == self
+      else
+        item.created_by == self
+      end
+    else
+      false
+    end
+  end
+
+
+  def friend_of_owner? item
+    if item.respond_to? :created_by
+      if item.respond_to? :created_for
+        self.friend_of? item.created_by or self.friend_of? item.created_for
+      else
+        self.friend_of? item.created_by
+      end
+    else
+      false
+    end
   end
 
 

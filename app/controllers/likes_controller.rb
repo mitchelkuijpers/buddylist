@@ -16,6 +16,9 @@ class LikesController < ApplicationController
   #
   def create
     likable = retrieve_likable
+
+    authorize! :create_like, likable
+
     likable.likes.create! created_by: current_user
 
     redirect_to_back polymorphic_path likable
@@ -26,7 +29,11 @@ class LikesController < ApplicationController
   #
   def destroy
     likable = retrieve_likable
-    likable.likes.where(created_by_id: current_user.id).delete_all
+
+    likable.likes.where(created_by_id: current_user.id).each do |like|
+      authorize! :destroy, like
+      like.destroy
+    end
 
     redirect_to_back polymorphic_path likable
   end
@@ -44,7 +51,12 @@ class LikesController < ApplicationController
     unless collection.include? Likable
       raise "Can't like this type of post."
     end
-    collection.find params[:likable_id]
+
+    likable = collection.find params[:likable_id]
+
+    authorize! :view, likable
+
+    likable
   end
 
 

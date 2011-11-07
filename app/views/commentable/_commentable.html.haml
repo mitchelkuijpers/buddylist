@@ -1,2 +1,2 @@
 = render partial: commentable.comments, as: :comment
-= render partial: "comments/new", locals: { commentable: commentable }
+= render partial: "comments/new", locals: { commentable: commentable } if can? :create_comment, commentable
