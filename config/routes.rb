@@ -12,7 +12,7 @@ Buddylist::Application.routes.draw do
   # Posts
   post    'status/create' => 'statusPosts#create',                        as: :create_status_post
   get     'status/:post_id(.:format)' => 'statusPosts#view',              as: :status_post
-  delete  'status/:post_id/destroy' => 'statusPosts#destroy',             as: :destroy_status_post
+  delete  'status/:post_id/destroy(.:format)' => 'statusPosts#destroy',   as: :destroy_status_post
 
   # Comments
   post    'comments/create' => 'comments#create',                         as: :create_comment

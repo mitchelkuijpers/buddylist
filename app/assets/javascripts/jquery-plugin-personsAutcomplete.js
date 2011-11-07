@@ -3,7 +3,7 @@
 
         var settings = {
             'url':        '/users/',
-            'loader_class': '.loader',
+            'loader_class': '.loader'
         };
 
         return this.each(function() {
