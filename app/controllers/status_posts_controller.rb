@@ -13,7 +13,6 @@ class StatusPostsController < ApplicationController
 
 
   # View a StatusPost
-  #
   def view
     post = StatusPost.find params[:post_id]
 
@@ -48,12 +47,14 @@ class StatusPostsController < ApplicationController
 
 
   # Destroy a StatusPost
-  #
   def destroy
     status_post = StatusPost.find params[:post_id]
     status_post.delete
 
-    redirect_to_back user_url status_post.created_by
+    respond_to do |format|
+      format.html {redirect_to_back user_url status_post.created_by}
+      format.json { render :json => 'success' }
+    end
   end
 
 

@@ -46,12 +46,14 @@ $(document).ready(function() {
       minChars: 2,
       hintText: false,
       placeholder: $(this).attr('placeholder'),
-      preventDuplicates: true,
+      preventDuplicates: true
     });
   });
 
   $('.hidden, .show-on-focus').hide();
 
+    $(".post.status-post").setDeletableStatusPosts({delete_button_selector: '.destroy-post-wrapper'})
+    $(".comment").setDeletableStatusPosts()
 });
 
 
