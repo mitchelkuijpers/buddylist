@@ -14,7 +14,7 @@ class NotificationsController < ApplicationController
   def sort_by
     type = params[:type_notification]
 
-    return render json: type
+    render json: type
   end
 
 end

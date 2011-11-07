@@ -1,3 +1,3 @@
 class LikeNotification < Notification
-  belongs_to :like
+  belongs_to :likable, polymorphic: true
 end
