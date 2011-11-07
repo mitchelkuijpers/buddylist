@@ -1,20 +1,20 @@
 class NotificationsController < ApplicationController
-
   before_filter :authenticate_user!
 
 
+  # Show list of notifications
   def index
-    notifications = Notification.where person_id: current_user.id
+    notifications = current_user.notifications
 
-    render json: notifications
+    respond_to do |format|
+      format.html { render locals: { notifications: notifications }}
+    end
   end
 
+  def sort_by
+    type = params[:type_notification]
 
-  def create
-    notification = Notification.create! message: "Testing notification", user: current_user
-
-    render json: notification
+    return render json: type
   end
-
 
 end

@@ -1,0 +1,11 @@
+#side-content
+  = render partial: "notifications/sidebar", locals: {notifications: notifications}
+
+#main-content
+  .island
+
+    %h1 Your Notifications
+
+    %ul
+      = for notify in notifications do
+        = render partial: notify, locals: {notification: notify}

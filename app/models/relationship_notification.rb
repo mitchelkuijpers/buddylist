@@ -1,5 +1,5 @@
 class RelationshipNotification < Notification
 
-  belongs_to :relation
+  belongs_to :relationship
 
 end
