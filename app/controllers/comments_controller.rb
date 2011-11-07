@@ -5,6 +5,8 @@
 #
 # @see Comment
 # @see Commentable
+# @see UserTag
+# @see UserTaggable
 #
 class CommentsController < ApplicationController
 

@@ -4,7 +4,12 @@
 # Creates, displays and destroys StatusPosts (status updates).
 #
 # @see StatusPost
+# @see Likable
+# @see Like
+# @see Commentable
+# @see Comment
 # @see UserTaggable
+# @see UserTag
 #
 class StatusPostsController < ApplicationController
 
@@ -13,6 +18,7 @@ class StatusPostsController < ApplicationController
 
 
   # View a StatusPost
+  #
   def view
     post = StatusPost.find params[:post_id]
 
@@ -57,6 +63,7 @@ class StatusPostsController < ApplicationController
 
 
   # Destroy a StatusPost
+  #
   def destroy
     post = StatusPost.find params[:post_id]
 
