@@ -7,13 +7,16 @@
       = link_to "Wall", user_url(user)
       -#= link_to albums_url person
 
-  %p
-    = link_to "Friends (#{user.friends.count})", ""
 
-  %ul.user-friends
-    - user.friends.each do |friend|
-      %li
-        = user_picture friend, :medium
-        = link_to_author friend
+  - if can? :view_friends, user
+
+    %p
+      = link_to "Friends (#{user.friends.count})", ""
+
+    %ul.user-friends
+      - user.friends.each do |friend|
+        %li
+          = user_picture friend, :medium
+          = link_to_author friend
 
   %ul.user-options

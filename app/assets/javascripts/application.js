@@ -8,9 +8,12 @@
 
 
 $(document).ready(function() {
+
   $("#user_name").usersAutocomplete();
 
+
   $('textarea.autogrow').autogrow();
+
 
   $('.post button.add-comment').click(function() {
     post = $(this).parents('.post');
@@ -18,14 +21,16 @@ $(document).ready(function() {
     $('.input.comment-message textarea', form).focus();
   });
 
+
   $('.uiTextInputWrapper textarea').focus(function() {
     wrapper = $(this).parents('.uiTextInputWrapper');
     $('.show-on-focus', wrapper).show();
   });
 
+
   $('.uiTextInputWrapper .controls ul.menu li').click(function() {
     wrapper = $(this).parents('.uiTextInputWrapper');
-    input = $($(this).attr('data-toggle'), wrapper)
+    input = $($(this).attr('data-toggle'), wrapper);
 
     if ($(input).css('display') == 'none') {
       $(input).show();
@@ -50,10 +55,12 @@ $(document).ready(function() {
     });
   });
 
+
   $('.hidden, .show-on-focus').hide();
 
-    $(".post.status-post").setDeletableStatusPosts({delete_button_selector: '.destroy-post-wrapper'})
-    $(".comment").setDeletableStatusPosts()
+
+  $(".post.status-post").setDeletableStatusPosts({delete_button_selector: '.destroy-post-wrapper'})
+  $(".comment").setDeletableStatusPosts()
 });
 
 

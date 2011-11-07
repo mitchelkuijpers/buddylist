@@ -19,11 +19,12 @@
   %ul.menu
     %li.date-created
       #{time_ago_in_words post.created_at} ago
-    %li
-      = render partial: "likables/likable", locals: { likable: post }
-    %li
-      %button.uiLink.add-comment
-        Comment
+    - if can? :create_like, post
+      %li
+        = render partial: "likables/likable", locals: { likable: post }
+    - if can? :create_comment, post
+      %li
+        %button.uiLink.add-comment Comment
 
   .reactions
     - unless (liking_users = format_liking_users(post)).blank?

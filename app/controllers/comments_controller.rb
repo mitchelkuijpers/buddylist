@@ -5,6 +5,8 @@
 #
 # @see Comment
 # @see Commentable
+# @see UserTag
+# @see UserTaggable
 #
 class CommentsController < ApplicationController
 
@@ -19,6 +21,8 @@ class CommentsController < ApplicationController
   def view
     comment = Comment.find params[:comment_id]
 
+    authorize! :view, comment
+
     redirect_to polymorphic_path comment.commentable
   end
 
@@ -26,10 +30,15 @@ class CommentsController < ApplicationController
   # Create a Comment on a Commentable
   #
   def create
+    commentable = retrieve_commentable
+
+    authorize! :create_comment, commentable
+
     # Create the comment
     @comment             = Comment.new params[:comment]
     @comment.created_by  = current_user
-    @comment.commentable = retrieve_commentable
+    @comment.commentable = commentable
+
 
     if @comment.valid? && @comment.save
       # Create user tags (if provided)
@@ -50,6 +59,9 @@ class CommentsController < ApplicationController
   #
   def destroy
     comment = Comment.find params[:comment_id]
+
+    authorize! :destroy, comment
+
     comment.delete
 
     redirect_to_back polymorphic_path comment.commentable
@@ -77,7 +89,11 @@ class CommentsController < ApplicationController
       raise "Can't comment on this type of post."
     end
 
-    collection.find params[:commentable_id]
+    commentable = collection.find params[:commentable_id]
+
+    authorize! :view, commentable
+
+    commentable
   end
 
 end

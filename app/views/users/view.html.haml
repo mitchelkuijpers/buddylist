@@ -5,7 +5,7 @@
 #main-content
   .island
 
-    = render partial: 'users/manage_friend', locals: { user: user }
+    = render partial: 'users/manage_friend', locals: { user: user } if user_signed_in?
 
     %h1= user.name
 
@@ -15,5 +15,5 @@
       %dt Name
       %dd= user.name
 
-    = render partial: 'status_posts/new', locals: { receiver: user }
-    = render partial: user.posts, as: :post
+    = render partial: 'status_posts/new', locals: { receiver: user } if can? :create_posts, user
+    = render partial: user.posts, as: :post if can? :view_posts, user
