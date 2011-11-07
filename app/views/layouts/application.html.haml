@@ -26,15 +26,11 @@
                   - unless (request_count = current_user.friend_requests.length) == 0
                     %span.badge= request_count
                   %span.icon.small.friend-requests
-<<<<<<< HEAD
-=======
               %li
                 %a.notifications{ href: notifications_url }
                   - unless true # @todo Calc unread notifications
                     %span.badge= # @todo Number of unread notificatios
                   %span.icon.small.notifications
-
->>>>>>> 274f30e33952937256bf9f7c0c618da1dd25d865
         .main
           = render partial: "users/search" #if user_signed_in?
           = render partial: "users/menu"
