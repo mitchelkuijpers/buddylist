@@ -11,35 +11,57 @@ Relationship.delete_all
 Notification.delete_all
 Post.delete_all
 Comment.delete_all
-Like.delete_all
+
 
 # Users
-users = {}
-users[:teun] = User.create! name: 'Teun van Vegchel', email: 'teun@fauxbook.com', password: 'password'
-users[:mitchel] = User.create!name: 'Mitchel Kuijpers', email: 'mitchel@fauxbook.com', password: 'password'
-users[:danny] = User.create! name: 'Danny Cobussen', email: 'danny@fauxbook.com', password: 'password'
+
+users     = [
+        User.create!(name: 'Teun van Vegchel', email: 'teun@fauxbook.com', password: 'password'),
+        User.create!(name: 'Mitchel Kuijpers', email: 'mitchel@fauxbook.com', password: 'password'),
+        User.create!(name: 'Danny Cobussen', email: 'danny@fauxbook.com', password: 'password')
+]
 
 # Relationships
-relation_teun_danny = Relationship.new users: [ users[:teun], users[:danny] ]
-relation_teun_danny.relationship_roles << (RelationshipRole.new status: true, role: RelationshipRole::ROLE_FRIEND, status_user: { users[:teun].id.to_s => RelationshipRole::STATUS_ACCEPTED, users[:danny].id.to_s => RelationshipRole::STATUS_ACCEPTED })
-relation_teun_danny.save!
 
-FriendshipPost.create! description: "FRIENDSHIP", user_ids: [users[:teun].id, users[:danny].id]
-
-relation_teun_mitchel = Relationship.new users: [ users[:teun], users[:mitchel] ]
-relation_teun_mitchel.relationship_roles[0] = RelationshipRole.new status: true, role: RelationshipRole::ROLE_FRIEND, status_user: { users[:teun].id.to_s => RelationshipRole::STATUS_ACCEPTED, users[:mitchel].id.to_s => RelationshipRole::STATUS_ACCEPTED }
-relation_teun_mitchel.save!
-
-FriendshipPost.create! description: "FRIENDSHIP", user_ids: [users[:teun].id, users[:mitchel].id]
+relations = [
+        Relationship.create!(users: [users[0], users[1]]),
+        Relationship.create!(users: [users[1], users[2]])
+]
+roles     = [
+        relations[0].roles << FriendsRelationshipRole.new(status: [RelationshipRole::STATUS_ACCEPTED, RelationshipRole::STATUS_ACCEPTED]),
+        relations[1].roles << FriendsRelationshipRole.new(status: [RelationshipRole::STATUS_ACCEPTED, RelationshipRole::STATUS_ACCEPTED])
+]
 
 # Posts
-post = StatusPost.create! description: "Geile shit ouwe..", user_ids: [users[:teun].id, users[:mitchel].id]
+
+posts     = [
+        FriendshipPost.create!(created_by: users[0], created_for: users[1]),
+        FriendshipPost.create!(created_by: users[1], created_for: users[2]),
+        StatusPost.create!(description: "Coole shit ouwe..", created_by: users[0], created_for: users[1]),
+        StatusPost.create!(description: "He drankorgel! Gaan we zo naar het lokaal?!", created_by: users[0], created_for: users[2]),
+        StatusPost.create!(description: "Fauxbook aan het ontdekken!", created_by: users[0], created_for: users[0]),
+        StatusPost.create!(description: "Even Fauxbook aan het uitproberen..", created_by: users[1], created_for: users[1]),
+        StatusPost.create!(description: "Even kijken hoe cool Fauxbook is :)", created_by: users[2], created_for: users[2])
+]
 
 # Comments
-comments = {}
-comments[:first_comment] = Comment.create! message: "Dit ziet er inderdaad gelikt uit.", user_id: users[:danny].id, commentable: post
-comments[:sec_comment]   = Comment.create! message: "I agree!", user_id: users[:mitchel].id, commentable: post
 
-# like
-Like.create! likable: comments[:sec_comment], user: users[:danny].id
-Like.create! likable: comments[:sec_comment], user: users[:teun].id
+comments  = [
+        posts[2].comments.create!(message: "Dit ziet er inderdaad gelikt uit.", created_by: users[2]),
+        posts[2].comments.create!(message: "I agree!", created_by: users[1]),
+        posts[4].comments.create!(message: "Tof allemaal man!", created_by: users[1]),
+        posts[5].comments.create!(message: "Coole shit man!", created_by: users[2]),
+        posts[6].comments.create!(message: "Ik gebruik gewoon nog hyves hoor!", created_by: users[0])
+]
+
+# Likes
+
+likes     = [
+        comments[1].likes.create!(created_by: users[2]),
+        comments[1].likes.create!(created_by: users[0]),
+        posts[0].likes.create!(created_by: users[0]),
+        posts[0].likes.create!(created_by: users[1]),
+        posts[0].likes.create!(created_by: users[2]),
+        posts[3].likes.create!(created_by: users[2]),
+        posts[6].likes.create!(created_by: users[1])
+]

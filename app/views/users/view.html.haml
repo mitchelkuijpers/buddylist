@@ -16,4 +16,4 @@
       %dd= user.name
 
     = render partial: 'status_posts/new', locals: { receiver: user }
-    = render partial: user.posts.reverse, as: :post
+    = render partial: user.posts, as: :post

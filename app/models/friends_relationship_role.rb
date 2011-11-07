@@ -1,0 +1,3 @@
+class FriendsRelationshipRole < RelationshipRole
+
+end

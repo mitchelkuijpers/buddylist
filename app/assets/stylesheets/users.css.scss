@@ -26,7 +26,7 @@
 
 .user-picture {
   display: block;
-  margin: 0 12px 12px 0;
+  margin: 0 12px 0 0;
   background: #ddd;
 
   &.small {
@@ -52,5 +52,6 @@
 
   .user-picture {
     float: left;
+    margin-bottom: 12px;
   }
 }

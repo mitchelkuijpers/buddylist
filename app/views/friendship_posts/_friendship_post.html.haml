@@ -1,10 +1,11 @@
 .post
 
-  = user_picture post.author, :medium
+  = user_picture post.created_by, :medium
 
   %p
-    #{link_to_author post.author}
+    #{link_to_author post.created_by}
     is now friends with
-    #{link_to_user post.receiver}.
-  %p.date-created
-    #{time_ago_in_words post.created_at} ago
+    #{link_to_user post.created_for}.
+  %ul
+    %li.date-created
+      #{time_ago_in_words post.created_at} ago

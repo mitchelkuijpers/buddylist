@@ -12,20 +12,24 @@ class RelationshipRole
   include Mongoid::Document
   embedded_in :relationship
 
-  before_save :calc_status
-  before_update :calc_status
+  field :status, type: Array, default: []
 
-  field :role, type: Integer
-  field :status_user, type: Hash, default: {}
-  field :status, type: Boolean, default: false
+
+  def set_status user, status
+    self.status[user_index(user)] = status
+  end
+
+
+  def get_status user
+    self.status[user_index(user)]
+  end
 
 
   protected
 
 
-  def calc_status
-    self.status = (status_user.values.inject(:+) == status_user.length * STATUS_ACCEPTED)
-    true # Callbacks returning false halt the operation
+  def user_index user
+    relationship.user_ids.index(user.id)
   end
 
 

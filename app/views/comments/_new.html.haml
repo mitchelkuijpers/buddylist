@@ -1,3 +1,6 @@
+
+-# TODO attempt Comment.new(commentable: commentable) with form.hidden_field instead of tags.
+
 = form_for (@comment ||= Comment.new), url: create_comment_url do |form|
 
   = hidden_field_tag :commentable_id, commentable.id
@@ -5,6 +8,16 @@
 
   = render partial: "layouts/common/validation_errors", locals: { model: @comment }
 
-  .uiTextInputWrapper
-    = form.text_field :message, { placeholder: "Write comment…" }
-    = form.submit "Add Comment", class: [:uiButton, :uiButtonConfirm]
+  = user_picture current_user, :small
+
+  .uiTextInputWrapper.small
+    .input.comment-message
+      = form.text_area :message, { placeholder: "Write comment…", class: :autogrow }
+    .input.tag_users.with-label.hidden
+      %label With
+      = text_area_tag :tagged_users, nil, placeholder: "With…", class: "token-input", "data-source" => user_friends_url(current_user)
+    .controls.show-on-focus
+      %ul.menu
+        %li{ "data-toggle" => ".input.tag_users"}
+          %span.icon.small.tag-user
+      = form.submit "Add Comment", class: [:uiButton, :uiButtonConfirm]

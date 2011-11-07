@@ -1,14 +1,10 @@
 class Like
 
   include Mongoid::Document
+  include Mongoid::Timestamps
 
   # Associations
-  belongs_to :likable, polymorphic: true
-  belongs_to :user
-
-
-  def self.by_user user
-    where user_id: user.id
-  end
+  embedded_in :likable, polymorphic: true
+  belongs_to :created_by, class_name: "User"
 
 end

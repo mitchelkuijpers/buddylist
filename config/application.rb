@@ -11,7 +11,7 @@ if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
   Bundler.require *Rails.groups(:assets => %w(development test))
   # If you want your assets lazily compiled in production, use this line
-  # Bundler.require(:default, :assets, Rails.env)
+  #Bundler.require(:default, :assets, Rails.env)
 end
 
 module Buddylist
@@ -60,7 +60,6 @@ module Buddylist
     config.assets.version = '1.0'
 
     # Instantiation of the Observers
-    config.mongoid.observers = :comment_observer, :status_post_observer, :relationship_observer
-
+    config.mongoid.observers = :comment_observer, :status_post_observer, :relationship_observer, :like_observer
   end
 end

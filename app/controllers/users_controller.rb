@@ -1,13 +1,17 @@
+
+# Users Controller
+#
+# Displays user profiles, facilitates user search and user friends search.
+#
+# @see User
+#
 class UsersController < ApplicationController
-  before_filter :authenticate_user!
 
-  def index
-    redirect_to user_url User.all.first #TODO: Replace with actual homepage
-  end
 
+  # Search for users based on their name.
+  #
   def search
-    # TODO: Make security less strict
-    user_name = params[:user_name] || ''
+    user_name = params[:user_name] ||= ''
 
     users = User.search_by_name user_name
 
@@ -17,10 +21,27 @@ class UsersController < ApplicationController
     end
   end
 
+
+  # Search for users based on their name that are friends of a certain user.
+  #
+  # @todo Make sure the current_user has access to the user used for the search.
+  #
+  def search_friends
+    authenticate_user!
+
+    user    = User.find params[:user_id]
+    friends = user.search_friends_by_name params[:q]
+
+    respond_to do |format|
+      format.json { render json: friends.map! { |user| { id: user.id, name: user.name } } }
+    end
+  end
+
+
+  # View a user's profile page.
+  #
   def view
     user = User.find params[:user_id]
-
-#    authorize! :view, person
 
     respond_to do |format|
       format.html { render locals: { user: user } }
@@ -28,8 +49,5 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit
-    # TODO: Edit logged in user's own profile
-  end
 
 end
