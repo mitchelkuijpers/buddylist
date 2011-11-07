@@ -1,4 +1,3 @@
-
 # User
 #
 # Represents a user, a person that is registered to the application. Contains personal and authentication information.
@@ -57,8 +56,18 @@ class User
   end
 
 
+  def requested_friend? user
+    relation = Relationship.find_or_create_for_users self, user
+    role     = relation.find_or_create_role :friends
+    role.get_status(self) == RelationshipRole::STATUS_ACCEPTED
+  end
+
+
   def friend_requests
-    # @todo Implement
+    relations = relationships.by_unaccepted_role(:friends).keep_if { |role| role.get_status(self) == RelationshipRole::STATUS_ACCEPTED }
+    friends = relations.collect(&:users).flatten.uniq
+    friends.delete(self)
+    friends
   end
 
 

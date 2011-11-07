@@ -12,7 +12,7 @@ class RelationshipRole
   include Mongoid::Document
   embedded_in :relationship
 
-  field :status, type: Array, default: []
+  field :status, type: Array, default: [STATUS_UNDEFINED, STATUS_UNDEFINED]
 
 
   def set_status user, status

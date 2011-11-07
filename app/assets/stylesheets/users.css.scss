@@ -1,6 +1,6 @@
 #header .user-search {
   float: left;
-  margin: 8px 0 0 40px;
+  margin: 8px 0 0 0px;
   position: relative;
 
   .search-input {
@@ -54,4 +54,35 @@
     float: left;
     margin-bottom: 12px;
   }
+}
+
+
+.users.friend-requests {
+  width: 420px;
+
+  .user {
+    border: solid #ccc;
+    border-width: 1px;
+    padding: 10px 0 0;
+    margin: 10px 0;
+    overflow: auto;
+
+    .user-picture {
+      float: left;
+      margin: 0 10px 10px;
+    }
+
+    .controls {
+      clear: both;
+      background: #f5f5f5;
+      border-top: 1px solid #e5e5e5;
+      margin-top: 10px;
+      padding: 3px 10px;
+      text-align: right;
+      .uiButton {
+        min-width: 50px;
+      }
+    }
+  }
+
 }

@@ -24,8 +24,9 @@ Buddylist::Application.routes.draw do
   delete  'likes/destroy/:likable_id' => 'likes#destroy',                 as: :destroy_like
 
   # Relationships
-  post    'relationships/create_friend/:user_id' => 'relationships#create_friend',     as: :create_friend
-  delete  'relationships/destroy_friend/:user_id' => 'relationships#destroy_friend',   as: :destroy_friend
+  post    'relationships/create_friend/:user_id' => 'relationships#create_friend',      as: :create_friend
+  delete  'relationships/destroy_friend/:user_id' => 'relationships#destroy_friend',    as: :destroy_friend
+  get     'relationships/friend_requests' => 'relationships#friend_requests',           as: :friend_requests
 
   # Notifications
   get     'notifications/' => 'notifications#index',                      as: :notification

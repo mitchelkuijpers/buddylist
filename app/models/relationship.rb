@@ -32,7 +32,12 @@ class Relationship
     # Get relations with an accepted role
     def by_accepted_role role
       type = "#{role}RelationshipRole".classify
-      where roles: { "$elemMatch" => { _type: type, status: [1,1]} }
+      where roles: { "$elemMatch" => { _type: type, status: [1, 1] } }
+    end
+
+    def by_unaccepted_role role
+      type = "#{role}RelationshipRole".classify
+      where roles: { "$elemMatch" => { _type: type, "$or" => [{ status: [0, 1] }, { status: [1, 0] }] } }
     end
 
 

@@ -1,0 +1,25 @@
+#side-content
+
+
+#main-content
+  .island
+
+    %h1 Friend requests
+
+    - unless users.blank?
+
+      %p These guys want to add you as a friend:
+
+      .users.friend-requests
+        - users.each do |user|
+          .user
+            = user_picture user, :medium
+            = link_to_author user
+
+            .controls
+              = link_to 'Accept', create_friend_url(user), method: :post, class: [:uiButton, :uiButtonConfirm]
+              = link_to 'Deny', destroy_friend_url(user), method: :delete, class: :uiButton
+
+    - else
+
+      %p You don't have any pending friend requests right now.

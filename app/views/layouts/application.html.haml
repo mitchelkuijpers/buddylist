@@ -16,10 +16,19 @@
 
     %header#header
       .container
-        %a#logo{ href: root_url }
-          = image_tag "fauxbook-logo.png"
-        = render partial: "users/search" if user_signed_in?
-        = render partial: "users/menu"
+        .side
+          %a#logo{ href: root_url }
+            = image_tag "fauxbook-logo.png"
+          %ul#notification-center.menu
+            %li
+              %a.friend-requests{ href: friend_requests_url }
+                - unless (request_count = current_user.friend_requests.length) == 0
+                  %span.badge= request_count
+                %span.icon.small.friend-requests
+
+        .main
+          = render partial: "users/search" if user_signed_in?
+          = render partial: "users/menu"
 
     #content.container
 

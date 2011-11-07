@@ -1,7 +1,13 @@
 - unless current_user == user
+
   %ul.friendship-controls.menu
+
     - if current_user.friend_of? user
-      = link_to "Unfriend", destroy_friend_url(user), method: :delete, class: [:uiButton, :uiButtonLarge]
+      %li= link_to "Unfriend", destroy_friend_url(user), method: :delete, class: [:uiButton, :uiButtonLarge]
+    - elsif current_user.requested_friend? user
+      %li= link_to "Cancel friend request", destroy_friend_url(user), method: :delete, class: [:uiButton, :uiButtonLarge]
+    - elsif user.requested_friend? current_user
+      %li= link_to "Accept friend request", create_friend_url(user), method: :post, class: [:uiButton, :uiButtonLarge]
     - else
       %li= link_to "Add friend", create_friend_url(user), method: :post, class: [:uiButton, :uiButtonLarge]
 
