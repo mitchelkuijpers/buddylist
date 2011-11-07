@@ -6,6 +6,8 @@ class NotificationsController < ApplicationController
   def index
     notifications = current_user.notifications
 
+    update_red_status
+
     respond_to do |format|
       format.html { render locals: { notifications: notifications }}
     end
@@ -17,4 +19,12 @@ class NotificationsController < ApplicationController
     render json: type
   end
 
+
+  private
+
+  def update_red_status
+    current_user.notifications.update_all(
+            read_status: true
+    )
+  end
 end
