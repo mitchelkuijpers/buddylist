@@ -6,7 +6,7 @@ module Likable
 
       # Relations
       model.embeds_many :likes, as: :likable
-      model.has_many :like_notifications
+
     end
 
   end

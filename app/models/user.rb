@@ -47,7 +47,7 @@ class User
   end
 
 
-  def unred_notifications
+  def unread_notifications
     notifications.where(read_status: false)
   end
 

@@ -28,8 +28,8 @@
                   %span.icon.small.friend-requests
               %li
                 %a.notifications{ href: notifications_url }
-                  - unless (unred_notifications = current_user.unred_notifications.length) == 0
-                    %span.badge= unred_notifications
+                  - unless (unread_notifications = current_user.unread_notifications.size) == 0
+                    %span.badge= unread_notifications
                   %span.icon.small.notifications
         .main
           = render partial: "users/search" #if user_signed_in?

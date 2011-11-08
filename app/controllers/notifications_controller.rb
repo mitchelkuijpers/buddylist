@@ -6,7 +6,7 @@ class NotificationsController < ApplicationController
   def index
     notifications = current_user.notifications
 
-    update_red_status
+    update_read_status
 
     respond_to do |format|
       format.html { render locals: { notifications: notifications }}
@@ -22,7 +22,7 @@ class NotificationsController < ApplicationController
 
   private
 
-  def update_red_status
+  def update_read_status
     current_user.notifications.update_all(
             read_status: true
     )
