@@ -90,7 +90,7 @@ class LikesController < ApplicationController
     end
 
     for person in notify_persons.uniq do
-      LikeNotification.create like: likable, user: person
+      LikeNotification.create like: likable, user: person, author: current_user.id
     end
 
   end

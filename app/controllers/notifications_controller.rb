@@ -5,20 +5,14 @@ class NotificationsController < ApplicationController
   # Show list of notifications
   def index
     notifications = current_user.notifications
+    unread_notifications = current_user.unread_notifications.size
 
-    update_read_status
+    #update_read_status
 
     respond_to do |format|
-      format.html { render locals: { notifications: notifications }}
+      format.html { render locals: { notifications: notifications, unread_notifications: unread_notifications }}
     end
   end
-
-  def sort_by
-    type = params[:type_notification]
-
-    render json: type
-  end
-
 
   private
 

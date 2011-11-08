@@ -1,11 +1,11 @@
-#side-content
-  = render partial: "notifications/sidebar", locals: {notifications: notifications}
+.island
 
-#main-content
-  .island
+  %h1.border_bottom Your Notifications
 
-    %h1 Your Notifications
 
-    %ul
-      = for notify in notifications do
-        = render partial: notify, locals: {notification: notify}
+  - unless unread_notifications == 0
+    %ul.notifications
+      - for notify in notifications do
+        %li= render partial: notify, locals: {notification: notify}
+  - else
+    %p You don't have any notifications to read.

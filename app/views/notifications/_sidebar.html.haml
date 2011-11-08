@@ -1,17 +1,11 @@
-%h2 Information
+.person-sidebar
 
-%ul
-  %li
-    = "Total notifications: #{notifications.count}"
-  %li
-    = "Unread notifications: #{notifications.size}"
+  %h2 Sort by
 
-%h2 Sort by
-
-%ul
-  %li
-    = link_to "Comments", sort_notifications_by_url("comments")
-  %li
-    = link_to "Statusposts", sort_notifications_by_url("status_posts")
-  %li
-    = link_to "Likes", sort_notifications_by_url("likes")
+  %ul
+    %li
+      = link_to "Comments", sort_notifications_by_url("comments")
+    %li
+      = link_to "Statusposts", sort_notifications_by_url("status_posts")
+    %li
+      = link_to "Likes", sort_notifications_by_url("likes")
