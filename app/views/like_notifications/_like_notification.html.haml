@@ -1,6 +1,0 @@
-= link_to notification.author.name, user_url(notification.author)
-likes your status
-- if notification.like.kind_of? Post
-  = link_to notification.like.description, status_post_url(notification.like)
-- elsif notification.like.instance_of? Comment
-  = link_to notification.like.commentable.description, status_post_url(notification.like.commentable)
