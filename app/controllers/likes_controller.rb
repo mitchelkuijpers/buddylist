@@ -21,6 +21,9 @@ class LikesController < ApplicationController
 
     likable.likes.create! created_by: current_user
 
+    # Nasty way of notify the person(s)
+    create_like_notifications likable
+
     redirect_to_back polymorphic_path likable
   end
 
@@ -34,6 +37,9 @@ class LikesController < ApplicationController
       authorize! :destroy, like
       like.destroy
     end
+
+    # Also delete the notifications
+    delete_like_notifications likable
 
     redirect_to_back polymorphic_path likable
   end
@@ -59,5 +65,41 @@ class LikesController < ApplicationController
     likable
   end
 
+  # Create like notifications for the persons
+  #
+  # @param [likable] The likable that is liked by the current_user
+  #
+  def create_like_notifications likable
 
+    notify_persons = []
+
+    # if a post is liked, check author and receiver
+    if likable.kind_of? Post
+
+      # only notify someone when the user doesn't likes his own message
+      unless likable.created_for == current_user and likable.created_by == current_user
+
+        notify_persons << likable.created_for unless (likable.created_for == current_user)
+        notify_persons << likable.created_by unless (likable.created_by == current_user)
+
+      end
+    elsif likable.instance_of? Comment
+
+      notify_persons << likable.created_by unless (likable.created_by == current_user)
+
+    end
+
+    for person in notify_persons.uniq do
+      LikeNotification.create like: likable, user: person, author: current_user.id
+    end
+
+  end
+
+  # Delete like notifications when a likable is unliked
+  #
+  # @param [likable] The likable that is unliked by the current_user
+  #
+  def delete_like_notifications likable
+    LikeNotification.where(like_id: likable.id).delete_all
+  end
 end

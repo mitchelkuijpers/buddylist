@@ -1,11 +1,25 @@
-#side-content
-  = render partial: "notifications/sidebar", locals: {notifications: notifications}
+.island
 
-#main-content
-  .island
+  -#@TODO: Remove css
+  - unless notifications.size == 0
+    %ul.top-controls.menu{style:"float: right"}
+      %li= link_to "Delete all notifications", destroy_notification_path, class: :uiButton, method: :delete
 
-    %h1 Your Notifications
 
-    %ul
-      = for notify in notifications do
-        = render partial: notify, locals: {notification: notify}
+  %h1.border_bottom Your Notifications
+
+  - unless notifications.size == 0
+
+    %p
+      You have
+      =unread_notifications
+      unread notifications.
+
+    %ul.notifications
+      - for notify in notifications do
+        - if notify.read_status == true
+          %li= render partial: "notifications/" + notify.class.to_s.underscore, locals: {notification: notify}
+        - else
+          %li.unread= render partial: "notifications/" + notify.class.to_s.underscore, locals: {notification: notify}
+  - else
+    %p You don't have any notifications to read.

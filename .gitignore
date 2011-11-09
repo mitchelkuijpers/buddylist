@@ -7,3 +7,8 @@ Gemfile.lock
 .DS_Store
 tmp
 public/assets/*
+.sass-cache/*
+
+public/assets/manifest.yml
+
+public/assets/manifest.yml

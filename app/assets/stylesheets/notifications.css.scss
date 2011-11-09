@@ -1,0 +1,30 @@
+h1.border_bottom {
+  padding-bottom: 5px;
+  margin-bottom: 25px;
+  border-bottom: 1px solid #ccc;
+}
+
+ul.notifications {
+  list-style-type: disc;
+  padding: 2px 0 0 2px;
+}
+
+ul.notifications li.unread {
+  font-weight: bold;
+}
+
+/* Options */
+ul.options {
+  list-style-type: none;
+  float: right;
+}
+ul.options li {
+  float: left;
+  padding-right: 5px;
+  padding-left: 5px;
+  border-right: 1px solid #ccc;
+}
+
+ul.options li.last {
+  border-right: 0px;
+}

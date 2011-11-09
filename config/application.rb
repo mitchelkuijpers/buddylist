@@ -60,6 +60,6 @@ module Buddylist
     config.assets.version = '1.0'
 
     # Instantiation of the Observers
-    config.mongoid.observers = :comment_observer, :status_post_observer, :relationship_observer, :like_observer
+    config.mongoid.observers = :comment_observer, :status_post_observer, :relationship_observer
   end
 end

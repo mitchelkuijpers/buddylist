@@ -49,6 +49,10 @@ class User
   end
 
 
+  def unread_notifications
+    notifications.where(read_status: false)
+  end
+
   # Checks whether two users are friends of eachother.
   #
   # @param user [User] The user that might be a friend

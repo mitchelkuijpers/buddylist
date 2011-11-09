@@ -30,10 +30,9 @@
                   %span.icon.small.friend-requests
               %li
                 %a.notifications{ href: notifications_url }
-                  - unless true # @todo Calc unread notifications
-                    %span.badge= # @todo Number of unread notificatios
+                  - unless (unread_notifications = current_user.unread_notifications.size) == 0
+                    %span.badge= unread_notifications
                   %span.icon.small.notifications
-
         .main
           = render partial: "users/search"
           = render partial: "users/menu"
