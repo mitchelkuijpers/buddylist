@@ -30,8 +30,7 @@ Buddylist::Application.routes.draw do
 
   # Notifications
   get     'notifications/' => 'notifications#index',                              as: :notifications
-  get     'notifications/sort_by/:type_notification' => 'notifications#sort_by',  as: :sort_notifications_by
-  delete  'notifications/:notification_id' => 'notifications#destroy',            as: :destroy_notification
+  delete  'notifications/' => 'notifications#destroy',                            as: :destroy_notification
 
   # Misc. tests
   get 'test/:action' => 'test#'
