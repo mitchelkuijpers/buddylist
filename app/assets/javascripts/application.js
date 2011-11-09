@@ -15,8 +15,8 @@ $(document).ready(function() {
   $('textarea.autogrow').autogrow();
 
 
-  $('.post button.add-comment').click(function() {
-    post = $(this).parents('.post');
+  $('.commentable button.add-comment').click(function() {
+    post = $(this).parents('.commentable');
     form = $('form.new_comment', post).show();
     $('.input.comment-message textarea', form).focus();
   });

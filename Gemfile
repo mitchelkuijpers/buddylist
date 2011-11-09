@@ -25,17 +25,20 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
+# Views
 gem "haml"
 
 # Mongoid
 gem "mongoid"
 gem "bson_ext", "~> 1.4"
 
-# Devise
+# Authentication and authorisation
 gem 'devise'
-
-# CanCan
 gem 'cancan'
+
+# Attachment/image handling
+gem 'rack-cache', :require => 'rack/cache'
+gem 'dragonfly', '~>0.9.8'
 
 # for rspec
 gem 'ZenTest'

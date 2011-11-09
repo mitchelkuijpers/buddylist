@@ -1,14 +1,11 @@
-class Photo
-
-  include Mongoid::Document
-
-  belongs_to :album
-  belongs_to :user
+class Photo < Media
 
   include Commentable
   include Likable
 
-  field :description, type: String
-  field :image, type: String
+  field :title, type: String
+  field :image_uid
+
+  image_accessor :image
 
 end

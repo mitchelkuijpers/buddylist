@@ -1,6 +1,6 @@
 Buddylist::Application.routes.draw do
 
-  root to: "newsfeeds#view"
+  root to: "dashboard#index"
 
   devise_for :users
 
@@ -28,10 +28,27 @@ Buddylist::Application.routes.draw do
   delete  'relationships/destroy_friend/:user_id' => 'relationships#destroy_friend',    as: :destroy_friend
   get     'relationships/friend_requests' => 'relationships#friend_requests',           as: :friend_requests
 
+  # Newsfeeds
+  get     'newsfeed' => 'newsfeeds#view',                                 as: :newsfeed
+
   # Notifications
   get     'notifications/' => 'notifications#index',                              as: :notifications
   get     'notifications/sort_by/:type_notification' => 'notifications#sort_by',  as: :sort_notifications_by
   delete  'notifications/:notification_id' => 'notifications#destroy',            as: :destroy_notification
+
+  # Albums
+  get     'users/:user_id/albums' => 'albums#index',                      as: :albums
+  get     'users/:user_id/albums/new' => 'albums#new',                    as: :new_album
+  post    'albums/create' => 'albums#create',                             as: :create_album
+  get     'albums/:album_id' => 'albums#view',                            as: :album
+
+  # Photos
+  get     'photos/:photo_id' => 'photos#view',                            as: :photo
+  get     'albums/:album_id/photos/new' => 'photos#new',                  as: :new_photo
+  post    'photos/create' => 'photos#create',                             as: :create_photo
+  delete  'photos/:photo_id/destroy' => 'photos#destroy',                 as: :destroy_photo
+  get     'photos/:photo_id/set_profile' => 'photos#set_profile',         as: :set_profile_photo
+
 
   # Misc. tests
   get 'test/:action' => 'test#'

@@ -1,0 +1,29 @@
+#full-content
+  .island
+
+    %ul.top-controls.menu
+      %li
+        = link_to "Add photo", new_photo_url(album), class: [:uiButton, :uiButtonLarge]
+      %li
+        = link_to "Add video", new_photo_url(album), class: [:uiButton, :uiButtonLarge]
+      %li
+        = link_to "Add audio", new_photo_url(album), class: [:uiButton, :uiButtonLarge]
+
+    %h1= album.title
+
+    %p
+      = link_to "Photo's of #{album.user.name}", albums_url(album.user)
+      |
+      = link_to "Profile of #{album.user.name}", user_url(album.user)
+
+
+    - unless album.media.blank?
+
+      .photos
+        - for photo in album.media.desc(:_id)
+          %a.photo{ href: photo_url(photo) }
+            = image_tag photo.image.thumb('175x130#').url unless photo.image.nil?
+
+    - else
+
+      .no-results There aren't any photo's in this album yet. Go ahead and add one!

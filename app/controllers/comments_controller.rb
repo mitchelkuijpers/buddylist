@@ -32,7 +32,7 @@ class CommentsController < ApplicationController
   def create
     commentable = retrieve_commentable
 
-    authorize! :create_comment, commentable
+    #authorize! :create_comment, commentable
 
     # Create the comment
     @comment             = Comment.new params[:comment]
@@ -60,7 +60,7 @@ class CommentsController < ApplicationController
   def destroy
     comment = Comment.find params[:comment_id]
 
-    authorize! :destroy, comment
+    #authorize! :destroy, comment
 
     comment.delete
 
@@ -91,7 +91,7 @@ class CommentsController < ApplicationController
 
     commentable = collection.find params[:commentable_id]
 
-    authorize! :view, commentable
+    #authorize! :view, commentable
 
     commentable
   end

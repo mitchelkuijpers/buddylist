@@ -1,4 +1,5 @@
 #side-content
+  -#= render partial: "devise/shared/sidebar", locals: { side_nav: :profile }
 
 #main-content
   .island
@@ -19,14 +20,26 @@
         .field
           = f.email_field :email, {:class => "text-input"}
 
-        -#%div
-        -#  = f.label :password
-        -#  = f.password_field :password, {:class => "text-input"}
-        -#  %em (leave blank if you don't want to change it)
-        -#
-        -#%div
-        -#  = f.label :password_confirmation
-        -#  = f.password_field :password_confirmation, {:class => "text-input"}
+        %hr
+
+        .label
+          = f.label :password
+        .field
+          = f.password_field :password, {:class => "text-input"}
+          .hint
+            %em (leave blank if you don't want to change it)
+
+        .label
+          = f.label :password_confirmation
+        .field
+          = f.password_field :password_confirmation, {:class => "text-input"}
+
+        %hr
+
+        .label
+          = f.label :current_password
+        .field
+          = f.password_field :current_password, {:class => "text-input"}
 
         %hr
 

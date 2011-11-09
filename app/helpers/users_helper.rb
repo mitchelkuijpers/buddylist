@@ -9,7 +9,18 @@ module UsersHelper
   end
 
   def user_picture user, size = :medium
-    link_to image_tag("person-picture-medium.gif"), user_url(user), class: ["user-picture", size]
+    unless user.profile_photos.blank?
+      sizes = {
+        small: '32x32#',
+        medium: '50x50#',
+        sidebar: '180x'
+      }
+      url = user.profile_photos.media.last.image.thumb(sizes[size]).url
+    else
+      url = "person-picture-medium.gif"
+    end
+
+    link_to image_tag(url), user_url(user), class: ["user-picture", size]
   end
 
 end

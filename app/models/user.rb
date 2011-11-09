@@ -13,9 +13,11 @@ class User
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
 
   # Associations
-  has_one :photo
+  belongs_to :profile_photos, class_name: "Album"
   has_many :comments
   has_many :notifications
+  has_many :albums
+  has_many :photos
   has_and_belongs_to_many :relationships
   has_many :created_posts, class_name: "Post", inverse_of: :created_by
   has_many :received_posts, class_name: "Post", inverse_of: :created_for
@@ -60,7 +62,7 @@ class User
   # Checks whether the user accepted a friendship role for a certain user.
   #
   # @param user [User] The user to check for a friendship role
-  # @param [Boolean] Whether the user accepted the friendship role
+  # @return [Boolean] Whether the user accepted the friendship role
   #
   def requested_friend? user
     relation = Relationship.find_or_create_for_users self, user
@@ -95,11 +97,11 @@ class User
   end
 
 
-  # Enable updating the user profile without providing the current password
-  def update_with_password params = { }
-    params.delete(:current_password)
-    update_without_password params
-  end
+  ## Enable updating the user profile without providing the current password
+  #def update_with_password params = { }
+  #  params.delete(:current_password)
+  #  update_without_password params
+  #end
 
 
   def owns? item

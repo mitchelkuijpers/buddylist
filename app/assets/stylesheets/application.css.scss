@@ -72,10 +72,8 @@
   }
 
   #notification-center {
-    li {
-      .icon {
-        margin: 8px 4px;
-      }
+    li .icon {
+      margin: 8px 4px;
     }
   }
 
@@ -117,8 +115,9 @@
   #main-content {
     float: left;
     width: 639px;
-    padding-top: 1px;
     border-left: 1px solid #ccc;
+  }
+  #full-content {
   }
 }
 
@@ -173,6 +172,43 @@
   color: #555;
 }
 
+
+ul.side-nav {
+  margin: 0 0 10px;
+  padding: 10px 0;
+  border: solid #ddd;
+  border-width: 0 0 1px 0;
+
+  li {
+    margin: 1px 0 0;
+    padding: 0;
+
+    a {
+      padding: 3px;
+      display: block;
+      color: #333;
+
+      &:hover {
+        background: #eff2f7;
+        text-decoration: none;
+      }
+
+      .icon {
+        margin-right: 4px;
+      }
+    }
+  }
+
+  &.wall .wall a,
+  &.albums .albums a,
+  &.registration.profile .profile a,
+  &.registration.privacy .privacy a,
+  &.registration.password .password a {
+    background: #D8DFEA;
+    font-weight: bold;
+  }
+
+}
 
 .uiButton,
 .uiButtonSuppressed:active,
@@ -293,6 +329,7 @@
     input[type=submit] {
       float: right;
       display: block;
+      min-width: 100px;
     }
     ul.menu {
       display: block;
@@ -340,9 +377,13 @@ ul.validation_errors {
 }
 
 
-.friendship-controls {
+.top-controls {
   float: right;
   margin-top: 10px;
+
+  li {
+    margin-left: 10px;
+  }
 }
 
 

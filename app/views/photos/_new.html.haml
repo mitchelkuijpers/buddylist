@@ -1,3 +1,26 @@
-= form_for @photo do |form|
-  = form.hidden_field :album_id
-  = form.submit "Toevoegen", class: [:uiButton, :uiButtonConfirm]
+.gray-area
+  = form_for (@photo ||= Photo.new( album: album )), html: { multipart: true }, url: create_photo_url do |form|
+    = form.hidden_field :album_id
+
+    = render partial: "layouts/common/validation_errors", locals: { model: @photo }
+
+    .label
+      Album
+    .field
+      %p= link_to @photo.album.title, album_url(@photo.album)
+
+    .label
+      = form.label :image, "Photo"
+    .field
+      = form.file_field :image
+
+    .label
+      = form.label :title
+    .field
+      = form.text_field :title, { class: "text-input" }
+
+    %hr
+
+    .label
+    .field
+      = form.submit "Add Photo", class: [:uiButton, :uiButtonConfirm]

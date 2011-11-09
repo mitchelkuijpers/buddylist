@@ -29,6 +29,10 @@
   margin: 0 12px 0 0;
   background: #ddd;
 
+  img {
+    display: block;
+  }
+
   &.small {
     width: 32px;
     height: 32px;
@@ -36,6 +40,11 @@
   &.medium {
     width: 50px;
     height: 50px;
+  }
+  &.sidebar {
+    width: 180px;
+    margin: 0;
+    height: auto;
   }
 }
 

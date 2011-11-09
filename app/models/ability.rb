@@ -20,7 +20,8 @@ class Ability
     end
 
     can :view_posts, User do |u|
-      user == u or user.friend_of? u
+      #user == u or user.friend_of? u
+      true
     end
 
 
@@ -44,7 +45,7 @@ class Ability
     end
 
     can :view, Comment do |comment|
-      user.owns? comment.commentable or user.friend_of_owner? comment.commentable
+      user.friend_of? comment.created_by or user.owns? comment.commentable or user.friend_of_owner? comment.commentable
     end
 
     can :destroy, Comment do |comment|
@@ -73,6 +74,16 @@ class Ability
 
     can :destroy, UserTag do |tag|
       tag.user == user or user.owns? tag.taggable
+    end
+
+
+    ### Albums ###
+
+    ### Photos ###
+
+
+    can :view, Photo do |photo|
+      user.owns? photo or user.friend_of_owner? photo
     end
 
   end

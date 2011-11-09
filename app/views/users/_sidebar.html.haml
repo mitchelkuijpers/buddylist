@@ -1,11 +1,17 @@
 .person-sidebar
 
-  %h2= user.name
+  =user_picture user, :sidebar
 
-  %ul.person-menu
-    %li
-      = link_to "Wall", user_url(user)
-      -#= link_to albums_url person
+
+  %ul.side-nav{ class: side_nav ||= nil }
+    %li.wall
+      %a{ href: user_url(user) }
+        %span.icon.small.messages
+        Wall
+    %li.albums
+      %a{ href: albums_url(user) }
+        %span.icon.small.photos
+        Albums
 
 
   - if can? :view_friends, user

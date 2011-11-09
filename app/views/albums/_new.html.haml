@@ -1,0 +1,8 @@
+
+= form_for (@album ||= Album.new( user: user )), url: create_album_url do |form|
+  = form.hidden_field :user_id
+
+  = render partial: "layouts/common/validation_errors", locals: { model: @album }
+
+  = form.text_field :title, { placeholder: "Title…" }
+  = form.submit "Add Album", class: [:uiButton, :uiButtonConfirm]

@@ -1,0 +1,46 @@
+#full-content
+  .island
+
+    %ul.top-controls.menu
+      %li= link_to 'Delete Photo', destroy_photo_url(photo), method: :delete, class: [:uiButton, :uiButtonLarge]
+
+    %h1= photo.album.title
+
+    .commentable.likable.user-taggable
+      %p
+        = link_to "Back to album", album_url(photo.album)
+        |
+        = link_to "Photo's of #{photo.album.user.name}", albums_url(photo.album.user)
+        |
+        = link_to "Profile of #{photo.album.user.name}", user_url(photo.album.user)
+
+      .photo-canvas
+        = image_tag photo.image.url unless photo.image.nil?
+
+      %p
+        = link_to_author photo.created_by
+      %p
+        = photo.title
+
+
+      %ul.menu.reactions-menu
+        %li.date-created
+          #{time_ago_in_words photo.created_at} ago
+
+        -#- if can? :create_like, post
+        %li
+          = render partial: "likables/likable", locals: { likable: photo }
+
+        -#- if can? :create_comment, post
+        %li
+          %button.uiLink.add-comment Comment
+
+      %ul.media-controls
+        %li= link_to "Use as profile picture", set_profile_photo_url
+
+      .reactions
+        - unless (liking_users = format_liking_users(photo)).blank?
+          .liking-users
+            %span.icon.small.like
+            = liking_users
+        = render partial: "commentable/commentable", locals: { commentable: photo }

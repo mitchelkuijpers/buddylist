@@ -1,5 +1,8 @@
-.island
+#side-content
 
-  %h1 Foto toevoegen
+#main-content
+  .island
 
-  = render partial: "photos/new"
+    %h1 Add Photo
+
+    = render partial: "photos/new", locals: { album: album }

@@ -28,18 +28,6 @@
       padding: 0 3px;
     }
   }
-  p.description {
-    word-wrap: break-word;
-
-    .with {
-      color: #888;
-      &:before {
-        content: ' — ';
-        padding: 0 2px;
-        font-weight: bold;
-      }
-    }
-  }
 
   & > a.destroy {
     position: absolute;
@@ -50,60 +38,81 @@
   &:hover > a.destroy {
     display: block;
   }
+}
 
-  & > ul {
-    margin: 2px 0 0px;
-    color: #888;
+p.description {
+  word-wrap: break-word;
 
-    li {
-      float: none;
-      display: inline-block;
-
-      form {
-        display: inline-block;
-        vertical-align: top;
-      }
-    }
-    li + li:before {
-      margin: 0;
-      content: "·";
+  .with {
+    color: #666;
+    &:before {
+      content: ' — ';
+      padding: 0 2px;
       font-weight: bold;
-      color: #888;
-    }
-  }
-
-  .reactions {
-    width: 420px;
-
-    & > *:first-child {
-      margin-top: 6px;
-    }
-  }
-  .reactions > .new_comment,
-  .reactions > .liking-users {
-    background: #EDEFF4;
-    border-bottom: 1px solid #D2D9E7;
-    margin-bottom: 1px;
-    padding: 5px 10px;
-    color: #777;
-  }
-  .reactions > .liking-users > .icon.like {
-    margin-left: 0;
-  }
-  .reactions .new_comment {
-    display: block;
-    display: none;
-    vertical-align: top;
-    position: relative;
-    padding: 7px 7px 7px 52px;
-
-    & > .user-picture {
-      position: absolute;
-      left: 10px;
-      top: 7px;
     }
   }
 }
+
+
+/* REACTIONS */
+
+
+ul.reactions-menu {
+  margin: 2px 0 0px;
+  color: #666;
+
+  li {
+    float: none;
+    display: inline-block;
+
+    form {
+      display: inline-block;
+      vertical-align: top;
+    }
+  }
+  li + li:before {
+    margin: 0;
+    content: "·";
+    font-weight: bold;
+    color: #666;
+  }
+}
+
+.reactions {
+  width: 420px;
+
+  & > *:first-child {
+    margin-top: 6px;
+  }
+}
+.reactions > .new_comment,
+.reactions > .liking-users {
+  background: #EDEFF4;
+  border-bottom: 1px solid #D2D9E7;
+  margin-bottom: 1px;
+  padding: 5px 10px;
+  color: #666;
+}
+.reactions > .liking-users > .icon.like {
+  margin-left: 0;
+}
+.reactions .new_comment {
+  display: block;
+  display: none;
+  vertical-align: top;
+  position: relative;
+  padding: 7px 7px 7px 52px;
+
+  & > .user-picture {
+    position: absolute;
+    left: 10px;
+    top: 7px;
+  }
+}
+
+
+/* COMMENT */
+
 
 .comment {
   background: #EDEFF4;
@@ -112,9 +121,6 @@
   padding: 5px 20px 5px 52px;
   position: relative;
 
-  .date-created {
-    color: #888;
-  }
   .description {
     word-wrap: break-word;
   }
@@ -139,7 +145,7 @@
     margin: 2px 0 0;
     text-overflow: ellipsis;
     width: 100%;
-    color: #777;
+    color: #666;
 
     li {
       float: none;
@@ -155,7 +161,7 @@
     li + li:before {
       margin: 0 0px;
       content: "·";
-      color: #888;
+      color: #666;
       font-weight: bold;
     }
   }

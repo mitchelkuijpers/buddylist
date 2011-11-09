@@ -1,0 +1,30 @@
+#side-content
+  = render partial: "users/sidebar", locals: { user: current_user, side_nav: :albums }
+
+#main-content
+  .island
+
+    %ul.top-controls.menu
+      %li= link_to "Add album", new_album_url, class: [:uiButton, :uiButtonLarge]
+
+    %h1 Albums
+
+    - unless user.albums.blank?
+
+      %ul.albums
+        - for album in user.albums.desc(:_id)
+          %li.album
+            .thumbs
+              %a{ href: album_url(album) }
+                .placeholder
+                  .default
+                    = image_tag album.media.last.image.thumb('175x130#').url unless album.media.blank?
+            .title
+              = link_to album.title, album_url(album)
+            .nr-of-media
+              = "#{album.media.length} items"
+
+    - else
+
+      .no-results
+        Add an album!

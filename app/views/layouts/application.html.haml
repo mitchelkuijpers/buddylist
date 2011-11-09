@@ -19,7 +19,9 @@
         .side
           %a#logo{ href: root_url }
             = image_tag "fauxbook-logo.png"
+
           - if user_signed_in?
+
             %ul#notification-center.menu
               %li
                 %a.friend-requests{ href: friend_requests_url }
@@ -33,7 +35,7 @@
                   %span.icon.small.notifications
 
         .main
-          = render partial: "users/search" #if user_signed_in?
+          = render partial: "users/search"
           = render partial: "users/menu"
 
     #content.container
