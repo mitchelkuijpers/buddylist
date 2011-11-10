@@ -35,4 +35,15 @@ class AlbumsController < ApplicationController
     render locals: { album: album }
   end
 
+
+  # Delete an album and all its contents
+  #
+  def destroy
+    album = Album.find params[:album_id]
+    album.destroy
+
+    redirect_to user_url album.user
+  end
+
+
 end
