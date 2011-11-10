@@ -40,6 +40,7 @@ Buddylist::Application.routes.draw do
   get     'users/:user_id/albums/new' => 'albums#new',                    as: :new_album
   post    'albums/create' => 'albums#create',                             as: :create_album
   get     'albums/:album_id' => 'albums#view',                            as: :album
+  delete  'albums/:album_id/delete' => 'albums#destroy',                  as: :destroy_album
 
   # Photos
   get     'photos/:photo_id' => 'photos#view',                            as: :photo
@@ -47,6 +48,7 @@ Buddylist::Application.routes.draw do
   post    'photos/create' => 'photos#create',                             as: :create_photo
   delete  'photos/:photo_id/destroy' => 'photos#destroy',                 as: :destroy_photo
   get     'photos/:photo_id/set_profile' => 'photos#set_profile',         as: :set_profile_photo
+
 
 
   # Misc. tests

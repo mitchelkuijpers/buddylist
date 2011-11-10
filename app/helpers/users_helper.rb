@@ -17,7 +17,7 @@ module UsersHelper
       }
       url = user.profile_photos.media.last.image.thumb(sizes[size]).url
     else
-      url = "person-picture-medium.gif"
+      url = "person-picture-#{size}.gif"
     end
 
     link_to image_tag(url), user_url(user), class: ["user-picture", size]

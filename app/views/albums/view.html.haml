@@ -5,9 +5,7 @@
       %li
         = link_to "Add photo", new_photo_url(album), class: [:uiButton, :uiButtonLarge]
       %li
-        = link_to "Add video", new_photo_url(album), class: [:uiButton, :uiButtonLarge]
-      %li
-        = link_to "Add audio", new_photo_url(album), class: [:uiButton, :uiButtonLarge]
+        = link_to "Delete album", destroy_album_url(album), class: [:uiButton, :uiButtonLarge], method: :delete, confirm: "Are you sure you want to delete this album and all its contents?"
 
     %h1= album.title
 
@@ -26,4 +24,6 @@
 
     - else
 
-      .no-results There aren't any photo's in this album yet. Go ahead and add one!
+      .no-results
+        There aren't any photo's in this album yet. Go ahead and
+        = link_to "add one!", new_photo_url(album)
