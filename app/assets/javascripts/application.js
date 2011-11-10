@@ -59,8 +59,9 @@ $(document).ready(function() {
   $('.hidden, .show-on-focus').hide();
 
 
-  $(".post.status-post").setDeletableStatusPosts({delete_button_selector: '.destroy-post-wrapper'})
-  $(".comment").setDeletableStatusPosts()
+  $(".post.status-post").setDeletableStatusPosts({delete_button_selector: '.destroy-post-wrapper'});
+  $(".comment").setDeletableStatusPosts();
+
 });
 
 

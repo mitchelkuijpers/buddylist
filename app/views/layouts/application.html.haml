@@ -40,11 +40,18 @@
     #content.container
 
       - unless alert.nil? && notice.nil?
-        .notifications
-          - unless alert.nil?
-            .message.warning= alert
-          - unless notice.nil?
-            .message.info= notice
+        - unless alert.nil?
+          %div.alert-message.error
+            %a.close{ href: "#" }
+              x
+            %p
+              = alert
+        - unless notice.nil?
+          %div.alert-message.notice
+            %a.close{ href: "#" }
+              x
+            %p
+              = notice
       = yield
 
     %footer#footer

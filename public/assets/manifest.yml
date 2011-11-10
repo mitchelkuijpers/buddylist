@@ -1,9 +1,10 @@
 ---
 ajax-loader.gif: ajax-loader-c90a40bf81d754d8dcb66741b56a9ebc.gif
+album-default.png: album-default-76095560bbcfe14ab6185778b40be9a5.png
 destroy-post.png: destroy-post-7247cbb5c46420acd30fe4f080b66cbe.png
 fauxbook-logo.png: fauxbook-logo-c3c26d2b4080414f416f473bd9d507a2.png
 fb_sprite_1.png: fb_sprite_1-e1b076f6078b20a991533d9b1eae3869.png
-icons.png: icons-814324a4bc47852bd9feb19e86009dbc.png
+icons.png: icons-dab11dfdf2ed2bcbc5e2b3f1a35a4783.png
 icons/error.png: icons/error-1f87fac86c438386527b5e7d5ceecb0e.png
 icons/info.png: icons/info-c4c474067cc407e32a4acb74e0165e8e.png
 icons/success.png: icons/success-827150100e63c7b2f3c88f34d60d43a8.png
@@ -28,8 +29,8 @@ custom-theme/images/ui-icons_cd0a0a_256x240.png: custom-theme/images/ui-icons_cd
 custom-theme/images/ui-icons_ffffff_256x240.png: custom-theme/images/ui-icons_ffffff_256x240-47c682725bc49963b14b9afc06a9d4be.png
 jquery-ui.min.js: jquery-ui.min-2b432ef5545e6620f94e7638b7574058.js
 jquery.min.js: jquery.min-ac6382033c1c5e27ebbc5a5a0597ccb9.js
-application.js: application-e16d6e0adb5b547227ce03829c99cdbd.js
-application.css: application-f91c6498bf5df7175f9d92aed6259c90.css
+application.js: application-f39220611ff58e7a730c16ef4a8353fb.js
+application.css: application-93fc7f033616c19d6bf1caf4e1e5328e.css
 comments.js: comments-d6c03004c3644316b353c7381326118a.js
 delete-status-posts.js: delete-status-posts-ed7591f2752911da02139ed10cdab55d.js
 jquery-plugin-personsAutcomplete.js: jquery-plugin-personsAutcomplete-93f9d1d1c620d39cea6f4bedb7322bc2.js

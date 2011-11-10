@@ -15,7 +15,7 @@ class PhotosController < ApplicationController
     if @photo.valid? && @photo.save
       redirect_to album_url @photo.album
     else
-      render action: :new
+      render action: :new, locals: { album: @photo.album }
     end
   end
 
