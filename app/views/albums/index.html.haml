@@ -1,11 +1,12 @@
 #side-content
-  = render partial: "users/sidebar", locals: { user: current_user, side_nav: :albums }
+  = render partial: "users/sidebar", locals: { user: user, side_nav: :albums }
 
 #main-content
   .island
 
     %ul.top-controls.menu
-      %li= link_to "Add album", new_album_url, class: [:uiButton, :uiButtonLarge]
+      - if can? :create_albums, user
+        %li= link_to "Add album", new_album_url, class: [:uiButton, :uiButtonLarge]
 
     %h1 Albums
 
@@ -13,18 +14,22 @@
 
       %ul.albums
         - for album in user.albums.desc(:_id)
-          %li.album
-            .thumbs
-              %a{ href: album_url(album) }
-                .placeholder
-                  .default
-                    = image_tag album.media.last.image.thumb('175x130#').url unless album.media.blank?
-            .title
-              = link_to album.title, album_url(album)
-            .nr-of-media
-              = "#{album.media.length} items"
+          - if can? :view, album
+            %li.album
+              .thumbs
+                %a{ href: album_url(album) }
+                  .placeholder
+                    .default
+                      = image_tag album.media.last.image.thumb('175x130#').url unless album.media.blank?
+              .title
+                = link_to album.title, album_url(album)
+              .nr-of-media
+                = "#{album.media.length} items"
 
     - else
 
       .no-results
-        Add an album!
+        No albums yet!
+        - if can? :create_albums, user
+          Why don't you
+          = link_to "add one?!", new_album_url

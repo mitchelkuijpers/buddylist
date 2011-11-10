@@ -19,6 +19,14 @@ class Ability
       user == u or user.friend_of? u
     end
 
+    can :create_albums, User do |u|
+      user == u
+    end
+
+    can :view_albums, User do |u|
+      user == u or user.friend_of? u
+    end
+
     can :view_posts, User do |u|
       #user == u or user.friend_of? u
       true
@@ -79,12 +87,38 @@ class Ability
 
     ### Albums ###
 
+
+    can :view, Album do |album|
+      user.owns? album or user.friend_of_owner? album
+    end
+
+
+    can :add_photo, Album do |album|
+      user.owns? album
+    end
+
+
+    can :destroy, Album do |album|
+      unless album.protected
+        user.owns? album
+      else
+        false
+      end
+    end
+
+
     ### Photos ###
 
 
     can :view, Photo do |photo|
       user.owns? photo or user.friend_of_owner? photo
     end
+
+
+    can :destroy, Photo do |photo|
+      user.owns? photo
+    end
+
 
   end
 

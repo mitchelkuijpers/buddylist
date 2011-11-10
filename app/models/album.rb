@@ -4,7 +4,7 @@ class Album
   include Mongoid::Timestamps
 
   # Relations
-  belongs_to :user
+  belongs_to :created_by, class_name: "User"
   belongs_to :user, inverse_of: :profile_photos
   has_many :media
 
@@ -12,6 +12,7 @@ class Album
   field :title, type: String
   field :protected, type: Boolean, default: false
 
+  # Callbacks
   before_destroy :destroy_media
 
 

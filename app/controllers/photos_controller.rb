@@ -39,14 +39,7 @@ class PhotosController < ApplicationController
   def set_profile
     photo = Photo.find params[:photo_id]
 
-    if current_user.profile_photos.nil?
-      current_user.profile_photos = Album.create! title: "Profile pictures", protected: true, user: current_user
-      current_user.save!
-    end
-
-    profile_pic = photo.dup
-    profile_pic.album = current_user.profile_photos
-    profile_pic.save!
+    profile_pic = Photo.create! album: current_user.profile_photos, image_uid: photo.image_uid, created_by: current_user
 
     redirect_to_back user_url current_user
   end

@@ -8,10 +8,11 @@
       %a{ href: user_url(user) }
         %span.icon.small.messages
         Wall
-    %li.albums
-      %a{ href: albums_url(user) }
-        %span.icon.small.photos
-        Albums
+    - if can? :view_albums, user
+      %li.albums
+        %a{ href: albums_url(user) }
+          %span.icon.small.photos
+          Albums
 
 
   - if can? :view_friends, user

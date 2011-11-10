@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
 
   # Catch DocumentNotFound exceptions
   rescue_from Mongoid::Errors::DocumentNotFound, with: :document_not_found
+  rescue_from CanCan::AccessDenied, with: :access_denied
 
   # Add CSRF tokens to forms
   protect_from_forgery
@@ -19,6 +20,13 @@ class ApplicationController < ActionController::Base
   #
   def document_not_found
     render "common/document_not_found"
+  end
+
+
+  # Show an 'Access Denied' error page.
+  #
+  def access_denied
+    render "common/access_denied"
   end
 
 

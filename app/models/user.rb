@@ -16,7 +16,7 @@ class User
   belongs_to :profile_photos, class_name: "Album"
   has_many :comments
   has_many :notifications
-  has_many :albums
+  has_many :albums, inverse_of: :created_by
   has_many :photos
   has_and_belongs_to_many :relationships
   has_many :created_posts, class_name: "Post", inverse_of: :created_by
@@ -27,6 +27,9 @@ class User
 
   # Properties
   field :name, type: String
+
+  # Callbacks
+  after_create :create_composites
 
 
   # Get the posts that were created by and/or for this user.
@@ -131,6 +134,15 @@ class User
     else
       false
     end
+  end
+
+
+  # Create required composite models.
+  #
+  # @note Using after_create callback
+  #
+  def create_composites
+    Album.create! title: "Profile pictures", protected: true, created_by: self
   end
 
 
