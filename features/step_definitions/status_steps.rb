@@ -1,6 +1,10 @@
 When /^"([^"]*)" has a status update "([^"]*)"$/ do |user_name, description|
-  user = User.where name: user_name
-  StatusPost.create description: description, users: [user, user]
+  users = User.where name: user_name
+  status_post = StatusPost.new description: description
+  status_post.created_by  = users.first
+  status_post.created_for = users.first
+  status_post.save
+
 end
 
 When /^I have a status update$/ do

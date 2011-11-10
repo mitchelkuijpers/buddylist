@@ -3,7 +3,8 @@ Given /^I am not authenticated$/ do
 end
 
 Given /^I have one user "([^\"]*)" with password "([^\"]*)" and name "([^\"]*)"$/ do |email, password, name|
-  user = User.create! email: email, password: password, password_confirmation: password, name: name
+  user = User.new email: email, password: password, password_confirmation: password, name: name
+  user.save
 end
 
 Given /^I am logged in as user "([^\"]*)" with password "([^\"]*)"$/ do |email, password|
@@ -13,7 +14,7 @@ Given /^I am logged in as user "([^\"]*)" with password "([^\"]*)"$/ do |email, 
     fill_in 'user[password]', :with => password
   end
   click_on 'Sign in'
-  page.should have_content('Signed in successfully.')
+  page.should have_content('Edit profile')
 end
 
 Given /^I am a new, authenticated user$/ do
@@ -33,4 +34,15 @@ end
 
 When /^I am the profile page of myself$/ do
   Given %{I am on the profile page of "testing"}
+end
+
+When /^I am friends with "([^"]*)"$/ do |user_name|
+  user   = User.where name: 'testing'
+  friend = User.where name: user_name
+
+  relation = Relationship.find_or_create_for_users user.first, friend.first
+
+  role = relation.find_or_create_role :friends
+  role.status = [RelationshipRole::STATUS_ACCEPTED, RelationshipRole::STATUS_ACCEPTED]
+  role.save
 end

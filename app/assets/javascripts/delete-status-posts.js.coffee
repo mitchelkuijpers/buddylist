@@ -21,7 +21,7 @@ jQuery ($) ->
 
         delete_button.bind 'click', (event) =>
           delete_post delete_button
-          return false
+          false
 
       # Delete a post and fadeout en remove the corresponding post
       # @param element the delete button

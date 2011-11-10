@@ -1,5 +1,6 @@
 Then /^I should see comment "([^"]*)"$/ do |comment|
-  find("div.comment:first").should have_content comment
+  save_and_open_page
+  first('.reactions').should have_content comment
 end
 
 When /^I post a comment "([^"]*)" on the status update "([^"]*)"$/ do |comment, status_update|
