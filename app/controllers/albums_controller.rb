@@ -30,7 +30,7 @@ class AlbumsController < ApplicationController
     if @album.valid? && @album.save
       redirect_to albums_url @album.created_by
     else
-      render action: :new
+      render action: :new, locals: { user: @album.user}
     end
   end
 

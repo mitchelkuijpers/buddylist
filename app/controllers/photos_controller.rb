@@ -24,7 +24,7 @@ class PhotosController < ApplicationController
 
       redirect_to album_url @photo.album
     else
-      render action: :new
+      render action: :new, locals: { album: @photo.album }
     end
   end
 

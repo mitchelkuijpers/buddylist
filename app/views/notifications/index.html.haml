@@ -1,8 +1,7 @@
 .island
 
-  -#@TODO: Remove css
   - unless notifications.size == 0
-    %ul.top-controls.menu{style:"float: right"}
+    %ul.top-controls.menu
       %li= link_to "Delete all notifications", destroy_notification_path, class: :uiButton, method: :delete
 
 
@@ -10,10 +9,11 @@
 
   - unless notifications.size == 0
 
-    %p
-      You have
-      =unread_notifications
-      unread notifications.
+    - unless unread_notifications == 0
+      %p
+        You have
+        =unread_notifications
+        unread notifications.
 
     %ul.notifications
       - for notify in notifications do
