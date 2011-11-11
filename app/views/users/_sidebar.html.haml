@@ -21,7 +21,7 @@
       = link_to "Friends (#{user.friends.count})", ""
 
     %ul.user-friends
-      - user.friends.each do |friend|
+      - for friend in user.friends
         %li
           = user_picture friend, :medium
           = link_to_author friend
