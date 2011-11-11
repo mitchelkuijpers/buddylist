@@ -14,4 +14,5 @@ end
 When /^I am om the page of my latest status update$/ do
   latest_status_update = StatusPost.first( sort: [[ :date, :desc]] );
   visit("/status/#{latest_status_update._id}")
+  save_and_open_page
 end
