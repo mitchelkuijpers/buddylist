@@ -19,18 +19,19 @@ module UsersHelper
   def user_photo user, size = :medium, target = :user
     unless user.profile_photos.media.blank?
       sizes = {
-        small: '32x32#',
-        medium: '50x50#',
-        sidebar: '180x'
+              small:   '32x32#',
+              medium:  '50x50#',
+              sidebar: '180x'
       }
-      url = user.profile_photos.media.last.image.thumb(sizes[size]).url
-    else
-      url = "person-picture-#{size}.gif"
-    end
+      url   = user.profile_photos.media.last.image.thumb(sizes[size]).url
 
-    if target == :photo
-      target = photo_url user.profile_photos.media.last
+      if target == :photo
+        target = photo_url user.profile_photos.media.last
+      else
+        target = user_url user
+      end
     else
+      url    = "person-picture-#{size}.gif"
       target = user_url user
     end
 
