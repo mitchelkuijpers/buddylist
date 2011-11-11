@@ -13,7 +13,6 @@ class User
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
 
   # Associations
-  belongs_to :profile_photos, class_name: "Album"
   has_many :comments
   has_many :notifications
   has_many :albums, inverse_of: :created_by
@@ -111,6 +110,11 @@ class User
   #end
 
 
+  # Check whether the user owns an item
+  #
+  # @param item [Object] The item to check
+  # @return [Boolean] Whether the user owns the item
+  #
   def owns? item
     if item.respond_to? :created_by
       if item.respond_to? :created_for
@@ -124,6 +128,11 @@ class User
   end
 
 
+  # Check whether the user is a friend of an item's owner
+  #
+  # @param item [Object] The item to check
+  # @return [Boolean] Whether the user is a friend of the item's owner
+  #
   def friend_of_owner? item
     if item.respond_to? :created_by
       if item.respond_to? :created_for
@@ -142,7 +151,14 @@ class User
   # @note Using after_create callback
   #
   def create_composites
-    Album.create! title: "Profile pictures", protected: true, created_by: self
+    Album.create! title: "Profile pictures", protected: true, role: Album::ROLE_PROFILE_PHOTOS, created_by: self
+  end
+
+
+  # Get the user's profile pictures album
+  #
+  def profile_photos
+    Album.where(created_by_id: self.id, role: Album::ROLE_PROFILE_PHOTOS).limit(1).first
   end
 
 

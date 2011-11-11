@@ -1,6 +1,6 @@
 .person-sidebar
 
-  =user_picture user, :sidebar
+  = user_photo user, :sidebar, :photo
 
 
   %ul.side-nav{ class: side_nav ||= nil }
@@ -21,9 +21,9 @@
       = link_to "Friends (#{user.friends.count})", ""
 
     %ul.user-friends
-      - user.friends.each do |friend|
+      - for friend in user.friends
         %li
-          = user_picture friend, :medium
+          = user_photo friend, :medium
           = link_to_author friend
 
   %ul.user-options

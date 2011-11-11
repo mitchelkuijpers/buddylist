@@ -1,0 +1,8 @@
+%ul#new-posts
+  %li
+    Status post
+  %li
+    Video post
+
+= render partial: 'status_posts/new', locals: { receiver: receiver }
+= render partial: 'video_posts/new', locals: { receiver: receiver }

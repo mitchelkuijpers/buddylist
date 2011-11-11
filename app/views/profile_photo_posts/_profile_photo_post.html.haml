@@ -1,0 +1,21 @@
+.post
+
+  = user_photo post.created_by, :medium, :photo
+
+  %p
+    = link_to_author post.created_by
+    changed his profile photo.
+
+  %ul.menu.reactions-menu
+    %li
+      #{time_ago_in_words post.created_at} ago
+
+    - if can? :create_like, post.photo
+      %li
+        = render partial: "likables/likable", locals: { likable: post.photo }
+
+  .reactions
+    - unless (liking_users = format_liking_users(post.photo)).blank?
+      .liking-users
+        %span.icon.small.like
+        = liking_users

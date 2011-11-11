@@ -4,6 +4,7 @@ Buddylist::Application.routes.draw do
 
   devise_for :users
 
+
   # Users
   get     'users/search(.format)' => 'users#search',                      as: :search_user
   get     'users/:user_id(.:format)' => 'users#view',                     as: :user

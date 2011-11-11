@@ -1,5 +1,5 @@
 #side-content
-
+  = render partial: "users/sidebar", locals: { user: current_user }
 
 #main-content
   .island
@@ -13,7 +13,7 @@
       .users.friend-requests
         - users.each do |user|
           .user
-            = user_picture user, :medium
+            = user_photo user, :medium
             = link_to_author user
 
             .controls

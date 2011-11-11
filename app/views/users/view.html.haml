@@ -15,5 +15,8 @@
       %dt Name
       %dd= user.name
 
-    = render partial: 'status_posts/new', locals: { receiver: user } if can? :create_posts, user
-    = render partial: user.posts, as: :post if can? :view_posts, user
+    - if can? :create_posts, user
+      = render partial: 'posts/new', locals: { receiver: user }
+
+    - if can? :view_posts, user
+      = render partial: user.posts, as: :post
