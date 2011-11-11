@@ -11,6 +11,9 @@ Relationship.delete_all
 Notification.delete_all
 Post.delete_all
 Comment.delete_all
+Album.delete_all
+Media.delete_all
+UserTag.delete_all
 
 
 # Users

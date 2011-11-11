@@ -1,10 +1,12 @@
-.post
+.post.photo-post.commentable.likable
 
   = user_photo post.created_by, :medium, :photo
 
   %p
     = link_to_author post.created_by
-    changed his profile photo.
+    added #{link_to 'this photo', photo_url(post.photo)} to album #{link_to post.photo.album.title, album_url(post.photo.album)}.
+
+  = link_to image_tag(post.photo.image.thumb('400x400').url, class: :photo), photo_url(post.photo)
 
   %ul.menu.reactions-menu
     %li
@@ -13,9 +15,15 @@
     - if can? :create_like, post.photo
       %li
         = render partial: "likables/likable", locals: { likable: post.photo }
+    - if can? :create_comment, post.photo
+      %li
+        %button.uiLink.add-comment Comment
 
   .reactions
     - unless (liking_users = format_liking_users(post.photo)).blank?
       .liking-users
         %span.icon.small.like
         = liking_users
+
+
+    = render partial: "commentable/commentable", locals: { commentable: post.photo }

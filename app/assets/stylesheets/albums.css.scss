@@ -87,6 +87,11 @@ a.photo:hover {
   border-color: #aaa;
 }
 
+.photo-post .photo {
+  display: inline;
+  margin: 10px 0 5px;
+}
+
 .photo-canvas {
   max-height: 500px;
   margin: 10px 0 20px;

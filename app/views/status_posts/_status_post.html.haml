@@ -4,7 +4,7 @@
     %a{ href: destroy_status_post_url(post), class: [:destroy], "data-method" => "delete", "data-confirm" => "Are you sure you want to delete this post?"}
       %span.icon.small.destroy-post
 
-  = user_picture post.created_by, :medium
+  = user_photo post.created_by, :medium
 
   %p.author
     - unless post.created_by == post.created_for

@@ -3,7 +3,7 @@
 
     %ul.top-controls.menu
       - if can? :destroy, photo
-        %li= link_to 'Delete Photo', destroy_photo_url(photo), method: :delete, class: [:uiButton, :uiButtonLarge]
+        %li= link_to 'Delete Photo', destroy_photo_url(photo), method: :delete, class: [:uiButton, :uiButtonLarge], confirm: "Are you sure you want to delete this photo?"
 
     %h1= photo.album.title
 

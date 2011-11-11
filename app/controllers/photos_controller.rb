@@ -1,5 +1,8 @@
 class PhotosController < ApplicationController
 
+  # Require an authenticated user
+  before_filter :authenticate_user!
+
 
   def new
     album = Album.find params[:album_id]
@@ -45,7 +48,7 @@ class PhotosController < ApplicationController
       end
     end
 
-    photo.delete
+    photo.destroy
 
     redirect_to photo.album
   end

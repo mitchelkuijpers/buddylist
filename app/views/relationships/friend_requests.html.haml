@@ -13,7 +13,7 @@
       .users.friend-requests
         - users.each do |user|
           .user
-            = user_picture user, :medium
+            = user_photo user, :medium
             = link_to_author user
 
             .controls
