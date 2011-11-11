@@ -4,5 +4,5 @@
 #main-content
   .island
 
-    = render partial: "status_posts/new", locals: { receiver: current_user }
+    = render partial: "posts/new", locals: { receiver: current_user }
     = render partial: newsfeed.posts, as: :post

@@ -15,6 +15,11 @@ Buddylist::Application.routes.draw do
   get     'status/:post_id(.:format)' => 'statusPosts#view',              as: :status_post
   delete  'status/:post_id/destroy(.:format)' => 'statusPosts#destroy',   as: :destroy_status_post
 
+  # Videos
+  post    'videos/create' => 'videoPosts#create',                         as: :create_video_post
+  get     'videos/:video_id(.:format)' => 'videoPosts#view',              as: :video_post
+  delete  'videos/:video_id/destroy(.:format)' => 'videoPosts#destroy',   as: :destroy_video_post
+
   # Comments
   post    'comments/create' => 'comments#create',                         as: :create_comment
   get     'comments/:comment_id(.:format)' => 'comments#view',            as: :comment

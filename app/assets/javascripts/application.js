@@ -62,6 +62,12 @@ $(document).ready(function() {
   $(".post.status-post").setDeletableStatusPosts({delete_button_selector: '.destroy-post-wrapper'});
   $(".comment").setDeletableStatusPosts();
 
+  $('a[rel*=facebox]').facebox()
+
+  $(document).bind("afterClose.facebox", function() {
+    $('iframe').remove();
+  })
+
 });
 
 
