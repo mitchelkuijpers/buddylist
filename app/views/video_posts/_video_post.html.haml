@@ -1,3 +1,41 @@
-%h3 Video
+.post.status-post.commentable.likable
 
-%p = sharable.description
+  - if can? :destroy, post
+    %a{ href: destroy_video_post_url(post), class: [:destroy], "data-method" => "delete", "data-confirm" => "Are you sure you want to delete this video?"}
+      %span.icon.small.destroy-post
+
+  = user_picture post.created_by, :medium
+
+  %p.author
+    - unless post.created_by == post.created_for
+      #{link_to_author post.created_by}
+      %span.to ►
+    #{link_to_author post.created_for}
+
+    - unless (tagged_users = format_tagged_users(post)).blank?
+      = simple_format post.description + tagged_users, class: :description, sanitize: false
+    - else
+      = simple_format post.description, class: :description, sanitize: false
+
+    =render partial: "video_posts/video_post_small", locals: {videopost: post}
+
+
+  %ul.menu.reactions-menu
+    %li.date-created
+      #{time_ago_in_words post.created_at} ago
+
+    - if can? :create_like, post
+      %li
+        = render partial: "likables/likable", locals: { likable: post }
+
+    - if can? :create_comment, post
+      %li
+        %button.uiLink.add-comment Comment
+
+  .reactions
+    - unless (liking_users = format_liking_users(post)).blank?
+      .liking-users
+        %span.icon.small.like
+        = liking_users
+
+    = render partial: "commentable/commentable", locals: { commentable: post }

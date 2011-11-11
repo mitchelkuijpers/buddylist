@@ -1,0 +1,20 @@
+= form_for (@video_post ||= VideoPost.new), url: create_video_post_url do |form|
+
+  = render partial: "layouts/common/validation_errors", locals: { model: @video_post }
+
+  = hidden_field_tag :receiver_id, receiver.id
+
+  .uiTextInputWrapper.small
+    .input.large.post-description
+      = form.text_area :link_url, placeholder: "video url", class: :autogrow
+    .input.large.post-description
+      = form.text_area :description, placeholder: "What's keeping you busy?", class: :autogrow
+    .input.tag_users.with-label.hidden
+      %label With
+      = text_area_tag :tagged_users, nil, placeholder: "With…", class: "token-input", "data-source" => user_friends_url(current_user)
+    .controls.show-on-focus
+      %ul.menu
+        %li{ "data-toggle" => ".input.tag_users"}
+          %span.icon.small.tag-user
+      = form.submit "Share", class: [:uiButton, :uiButtonConfirm]
+%br

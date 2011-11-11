@@ -7,7 +7,7 @@ class AlbumsController < ApplicationController
   def index
     user = User.find params[:user_id]
 
-    authorize! :view_albumss, user
+    authorize! :view_albums, user
 
     render locals: { user: user }
   end
@@ -25,7 +25,7 @@ class AlbumsController < ApplicationController
   def create
     @album = Album.new params[:album]
 
-    authorize! :create_albums, @album.user
+    authorize! :create_albums, @album.created_by
 
     if @album.valid? && @album.save
       redirect_to albums_url @album.created_by

@@ -1,0 +1,5 @@
+%a{ href: "#info", rel: "facebox" }
+  %img{ src: "http://img.youtube.com/vi/" + get_code_video(videopost.link_url) +  "/1.jpg" }
+
+%div#info{ style: "display: none" }
+  %iframe{ width: 560, height: "315", src: determine_video_resource(videopost.link_url) }

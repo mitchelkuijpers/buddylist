@@ -19,6 +19,10 @@ class Ability
       user == u or user.friend_of? u
     end
 
+    can :create_video_posts, User do |u|
+      user == u or user.friend_of? u
+    end
+
     can :create_albums, User do |u|
       user == u
     end
