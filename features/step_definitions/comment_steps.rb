@@ -18,3 +18,7 @@ When /^"([^"]*)" has a comment "([^"]*)" on my latest status update$/ do |user_n
   comment.commentable = commentable
   comment.save
 end
+
+When /^I click on delete on my comment$/ do
+  pending
+end
